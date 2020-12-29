@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 @Component
 public class ViewPointExample {
     /**
@@ -687,52 +688,62 @@ public class ViewPointExample {
             return (Criteria) this;
         }
 
-        public Criteria andTpPriceEqualTo(Integer value) {
+        public Criteria andTpPriceEqualTo(String value) {
             addCriterion("tp_price =", value, "tpPrice");
             return (Criteria) this;
         }
 
-        public Criteria andTpPriceNotEqualTo(Integer value) {
+        public Criteria andTpPriceNotEqualTo(String value) {
             addCriterion("tp_price <>", value, "tpPrice");
             return (Criteria) this;
         }
 
-        public Criteria andTpPriceGreaterThan(Integer value) {
+        public Criteria andTpPriceGreaterThan(String value) {
             addCriterion("tp_price >", value, "tpPrice");
             return (Criteria) this;
         }
 
-        public Criteria andTpPriceGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTpPriceGreaterThanOrEqualTo(String value) {
             addCriterion("tp_price >=", value, "tpPrice");
             return (Criteria) this;
         }
 
-        public Criteria andTpPriceLessThan(Integer value) {
+        public Criteria andTpPriceLessThan(String value) {
             addCriterion("tp_price <", value, "tpPrice");
             return (Criteria) this;
         }
 
-        public Criteria andTpPriceLessThanOrEqualTo(Integer value) {
+        public Criteria andTpPriceLessThanOrEqualTo(String value) {
             addCriterion("tp_price <=", value, "tpPrice");
             return (Criteria) this;
         }
 
-        public Criteria andTpPriceIn(List<Integer> values) {
+        public Criteria andTpPriceLike(String value) {
+            addCriterion("tp_price like", value, "tpPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpPriceNotLike(String value) {
+            addCriterion("tp_price not like", value, "tpPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpPriceIn(List<String> values) {
             addCriterion("tp_price in", values, "tpPrice");
             return (Criteria) this;
         }
 
-        public Criteria andTpPriceNotIn(List<Integer> values) {
+        public Criteria andTpPriceNotIn(List<String> values) {
             addCriterion("tp_price not in", values, "tpPrice");
             return (Criteria) this;
         }
 
-        public Criteria andTpPriceBetween(Integer value1, Integer value2) {
+        public Criteria andTpPriceBetween(String value1, String value2) {
             addCriterion("tp_price between", value1, value2, "tpPrice");
             return (Criteria) this;
         }
 
-        public Criteria andTpPriceNotBetween(Integer value1, Integer value2) {
+        public Criteria andTpPriceNotBetween(String value1, String value2) {
             addCriterion("tp_price not between", value1, value2, "tpPrice");
             return (Criteria) this;
         }
@@ -1004,6 +1015,146 @@ public class ViewPointExample {
 
         public Criteria andTpCreattimeNotBetween(Date value1, Date value2) {
             addCriterion("tp_creatTime not between", value1, value2, "tpCreattime");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeIsNull() {
+            addCriterion("tp_vlongitude is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeIsNotNull() {
+            addCriterion("tp_vlongitude is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeEqualTo(String value) {
+            addCriterion("tp_vlongitude =", value, "tpVlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeNotEqualTo(String value) {
+            addCriterion("tp_vlongitude <>", value, "tpVlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeGreaterThan(String value) {
+            addCriterion("tp_vlongitude >", value, "tpVlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeGreaterThanOrEqualTo(String value) {
+            addCriterion("tp_vlongitude >=", value, "tpVlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeLessThan(String value) {
+            addCriterion("tp_vlongitude <", value, "tpVlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeLessThanOrEqualTo(String value) {
+            addCriterion("tp_vlongitude <=", value, "tpVlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeLike(String value) {
+            addCriterion("tp_vlongitude like", value, "tpVlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeNotLike(String value) {
+            addCriterion("tp_vlongitude not like", value, "tpVlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeIn(List<String> values) {
+            addCriterion("tp_vlongitude in", values, "tpVlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeNotIn(List<String> values) {
+            addCriterion("tp_vlongitude not in", values, "tpVlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeBetween(String value1, String value2) {
+            addCriterion("tp_vlongitude between", value1, value2, "tpVlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlongitudeNotBetween(String value1, String value2) {
+            addCriterion("tp_vlongitude not between", value1, value2, "tpVlongitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeIsNull() {
+            addCriterion("tp_vlatitude is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeIsNotNull() {
+            addCriterion("tp_vlatitude is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeEqualTo(String value) {
+            addCriterion("tp_vlatitude =", value, "tpVlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeNotEqualTo(String value) {
+            addCriterion("tp_vlatitude <>", value, "tpVlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeGreaterThan(String value) {
+            addCriterion("tp_vlatitude >", value, "tpVlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeGreaterThanOrEqualTo(String value) {
+            addCriterion("tp_vlatitude >=", value, "tpVlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeLessThan(String value) {
+            addCriterion("tp_vlatitude <", value, "tpVlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeLessThanOrEqualTo(String value) {
+            addCriterion("tp_vlatitude <=", value, "tpVlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeLike(String value) {
+            addCriterion("tp_vlatitude like", value, "tpVlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeNotLike(String value) {
+            addCriterion("tp_vlatitude not like", value, "tpVlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeIn(List<String> values) {
+            addCriterion("tp_vlatitude in", values, "tpVlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeNotIn(List<String> values) {
+            addCriterion("tp_vlatitude not in", values, "tpVlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeBetween(String value1, String value2) {
+            addCriterion("tp_vlatitude between", value1, value2, "tpVlatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVlatitudeNotBetween(String value1, String value2) {
+            addCriterion("tp_vlatitude not between", value1, value2, "tpVlatitude");
             return (Criteria) this;
         }
     }

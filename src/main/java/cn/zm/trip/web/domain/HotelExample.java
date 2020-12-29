@@ -614,52 +614,62 @@ public class HotelExample {
             return (Criteria) this;
         }
 
-        public Criteria andPeopleNumEqualTo(Integer value) {
+        public Criteria andPeopleNumEqualTo(String value) {
             addCriterion("people_num =", value, "peopleNum");
             return (Criteria) this;
         }
 
-        public Criteria andPeopleNumNotEqualTo(Integer value) {
+        public Criteria andPeopleNumNotEqualTo(String value) {
             addCriterion("people_num <>", value, "peopleNum");
             return (Criteria) this;
         }
 
-        public Criteria andPeopleNumGreaterThan(Integer value) {
+        public Criteria andPeopleNumGreaterThan(String value) {
             addCriterion("people_num >", value, "peopleNum");
             return (Criteria) this;
         }
 
-        public Criteria andPeopleNumGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPeopleNumGreaterThanOrEqualTo(String value) {
             addCriterion("people_num >=", value, "peopleNum");
             return (Criteria) this;
         }
 
-        public Criteria andPeopleNumLessThan(Integer value) {
+        public Criteria andPeopleNumLessThan(String value) {
             addCriterion("people_num <", value, "peopleNum");
             return (Criteria) this;
         }
 
-        public Criteria andPeopleNumLessThanOrEqualTo(Integer value) {
+        public Criteria andPeopleNumLessThanOrEqualTo(String value) {
             addCriterion("people_num <=", value, "peopleNum");
             return (Criteria) this;
         }
 
-        public Criteria andPeopleNumIn(List<Integer> values) {
+        public Criteria andPeopleNumLike(String value) {
+            addCriterion("people_num like", value, "peopleNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andPeopleNumNotLike(String value) {
+            addCriterion("people_num not like", value, "peopleNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andPeopleNumIn(List<String> values) {
             addCriterion("people_num in", values, "peopleNum");
             return (Criteria) this;
         }
 
-        public Criteria andPeopleNumNotIn(List<Integer> values) {
+        public Criteria andPeopleNumNotIn(List<String> values) {
             addCriterion("people_num not in", values, "peopleNum");
             return (Criteria) this;
         }
 
-        public Criteria andPeopleNumBetween(Integer value1, Integer value2) {
+        public Criteria andPeopleNumBetween(String value1, String value2) {
             addCriterion("people_num between", value1, value2, "peopleNum");
             return (Criteria) this;
         }
 
-        public Criteria andPeopleNumNotBetween(Integer value1, Integer value2) {
+        public Criteria andPeopleNumNotBetween(String value1, String value2) {
             addCriterion("people_num not between", value1, value2, "peopleNum");
             return (Criteria) this;
         }
@@ -814,52 +824,62 @@ public class HotelExample {
             return (Criteria) this;
         }
 
-        public Criteria andPriceEqualTo(Integer value) {
+        public Criteria andPriceEqualTo(String value) {
             addCriterion("price =", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotEqualTo(Integer value) {
+        public Criteria andPriceNotEqualTo(String value) {
             addCriterion("price <>", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceGreaterThan(Integer value) {
+        public Criteria andPriceGreaterThan(String value) {
             addCriterion("price >", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPriceGreaterThanOrEqualTo(String value) {
             addCriterion("price >=", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceLessThan(Integer value) {
+        public Criteria andPriceLessThan(String value) {
             addCriterion("price <", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceLessThanOrEqualTo(Integer value) {
+        public Criteria andPriceLessThanOrEqualTo(String value) {
             addCriterion("price <=", value, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceIn(List<Integer> values) {
+        public Criteria andPriceLike(String value) {
+            addCriterion("price like", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotLike(String value) {
+            addCriterion("price not like", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceIn(List<String> values) {
             addCriterion("price in", values, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotIn(List<Integer> values) {
+        public Criteria andPriceNotIn(List<String> values) {
             addCriterion("price not in", values, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceBetween(Integer value1, Integer value2) {
+        public Criteria andPriceBetween(String value1, String value2) {
             addCriterion("price between", value1, value2, "price");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotBetween(Integer value1, Integer value2) {
+        public Criteria andPriceNotBetween(String value1, String value2) {
             addCriterion("price not between", value1, value2, "price");
             return (Criteria) this;
         }
@@ -931,6 +951,146 @@ public class HotelExample {
 
         public Criteria andImgUrlNotBetween(String value1, String value2) {
             addCriterion("img_url not between", value1, value2, "imgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeIsNull() {
+            addCriterion("longitude is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeIsNotNull() {
+            addCriterion("longitude is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeEqualTo(String value) {
+            addCriterion("longitude =", value, "longitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeNotEqualTo(String value) {
+            addCriterion("longitude <>", value, "longitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeGreaterThan(String value) {
+            addCriterion("longitude >", value, "longitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeGreaterThanOrEqualTo(String value) {
+            addCriterion("longitude >=", value, "longitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeLessThan(String value) {
+            addCriterion("longitude <", value, "longitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeLessThanOrEqualTo(String value) {
+            addCriterion("longitude <=", value, "longitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeLike(String value) {
+            addCriterion("longitude like", value, "longitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeNotLike(String value) {
+            addCriterion("longitude not like", value, "longitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeIn(List<String> values) {
+            addCriterion("longitude in", values, "longitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeNotIn(List<String> values) {
+            addCriterion("longitude not in", values, "longitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeBetween(String value1, String value2) {
+            addCriterion("longitude between", value1, value2, "longitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLongitudeNotBetween(String value1, String value2) {
+            addCriterion("longitude not between", value1, value2, "longitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeIsNull() {
+            addCriterion("latitude is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeIsNotNull() {
+            addCriterion("latitude is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeEqualTo(String value) {
+            addCriterion("latitude =", value, "latitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeNotEqualTo(String value) {
+            addCriterion("latitude <>", value, "latitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeGreaterThan(String value) {
+            addCriterion("latitude >", value, "latitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeGreaterThanOrEqualTo(String value) {
+            addCriterion("latitude >=", value, "latitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeLessThan(String value) {
+            addCriterion("latitude <", value, "latitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeLessThanOrEqualTo(String value) {
+            addCriterion("latitude <=", value, "latitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeLike(String value) {
+            addCriterion("latitude like", value, "latitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeNotLike(String value) {
+            addCriterion("latitude not like", value, "latitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeIn(List<String> values) {
+            addCriterion("latitude in", values, "latitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeNotIn(List<String> values) {
+            addCriterion("latitude not in", values, "latitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeBetween(String value1, String value2) {
+            addCriterion("latitude between", value1, value2, "latitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andLatitudeNotBetween(String value1, String value2) {
+            addCriterion("latitude not between", value1, value2, "latitude");
             return (Criteria) this;
         }
     }
