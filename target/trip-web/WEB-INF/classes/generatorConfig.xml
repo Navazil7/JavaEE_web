@@ -54,10 +54,10 @@
 		</javaClientGenerator>
 
 		<!--&lt;!&ndash;tp_viewpoint&ndash;&gt;-->
-		<table tableName="tp_viewpoint" mapperName="ViewPointMapper" domainObjectName="ViewPoint" enableCountByExample="false"
-		       enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
-		       selectByExampleQueryId="false">
-		</table>
+<!--		<table tableName="tp_viewpoint" mapperName="ViewPointMapper" domainObjectName="ViewPoint" enableCountByExample="false"-->
+<!--		       enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"-->
+<!--		       selectByExampleQueryId="false">-->
+<!--		</table>-->
 
 		<!--生成对应表及类名-->
 		<!--<table tableName="reply" mapperName="replyMapper" domainObjectName="Reply" enableCountByExample="false"-->
@@ -82,6 +82,12 @@
 <!--		       enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"-->
 <!--		       selectByExampleQueryId="false">-->
 <!--		</table>-->
+
+		<!--生成对应表及类名-->
+		<table tableName="tp_station" mapperName="StationMapper" domainObjectName="Station" enableCountByExample="false"
+			   enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
+			   selectByExampleQueryId="false">
+		</table>
 
 	</context>
 </generatorConfiguration>
