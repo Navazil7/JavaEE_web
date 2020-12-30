@@ -19,11 +19,7 @@
 
 	<div class="register-box-body">
 		<%--danger alert--%>
-		<c:if test="${msg.msg != null}">
-			<div class="alert alert-${msg.status == 200 ? "success" : "danger"} alert-dismissible">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-				<h5>${msg.msg}</h5>
-				<c:if test="${msg.status == 200}">
+			<c:if test="${msg.status == 200}">
 				<div style= "text-align:left">
 					恭喜，注册成功！ <br><b id="show"></b>秒钟之后，自动登陆跳转<br>
 				</div>
@@ -31,7 +27,6 @@
 					var time = 3;
 					function tiaozhuan()
 					{
-
 						$('#show').text(time);
 						if(time==0)
 							location.href="/user/index.action";
@@ -40,9 +35,7 @@
 					setInterval("tiaozhuan()",1000);
 					window.onLoad=tiaozhuan();
 				</script>
-				</c:if>
-			</div>
-		</c:if>
+			</c:if>
 		<%--danger alert--%>
 		<p class="login-box-msg">注册一个新用户</p>
 		<form action="/user/regstform" method="post">
