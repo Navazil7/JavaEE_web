@@ -17,7 +17,7 @@ public class User implements Serializable {
 	private String phone;
 	private Date regDate;
 	private Date updateTime;
-	private String like;
+	private String tp_like;
 
 	public User(String uname, String uemail, String upwd) {
 		this.uname = uname;
@@ -115,12 +115,12 @@ public class User implements Serializable {
 		this.updateTime = updateTime;
 	}
 
-	public String getLike() {
-		return like;
+	public String getTp_like() {
+		return tp_like;
 	}
 
-	public void setLike(String like) {
-		this.like = like;
+	public void setTp_like(String tp_like) {
+		this.tp_like = tp_like;
 	}
 
 	@Override
@@ -136,7 +136,7 @@ public class User implements Serializable {
 				", phone='" + phone + '\'' +
 				", regDate=" + regDate +
 				", updateTime=" + updateTime +
-				", like='" + like + '\'' +
+				", tp_like='" + tp_like + '\'' +
 				'}';
 	}
 }
