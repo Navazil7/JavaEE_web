@@ -57,7 +57,7 @@
 							</div>
 						</div>
 						<div class="item">
-							<img src="/static/assets/img/test/grass.png" alt="Second slide">
+							<img src="/static/assets/img/test/sky.png" alt="Second slide">
 							<div class="carousel-caption"><h1>来一场说走就走的旅行</h1>Closing WebApplicationContext for namespace
 								'springServlet-servlet': startup date [Thu May 02 10:23:29
 							</div>
