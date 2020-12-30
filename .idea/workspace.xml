@@ -7,6 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5212e55f-297d-4d2a-95c4-1b89c98316e5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
@@ -19,20 +20,24 @@
       <change beforePath="$PROJECT_DIR$/123.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/CustController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/CustController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/ForumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/ForumController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/dao/HotelDao.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/dao/ViewPointDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/dao/ViewPointDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/Hotel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/HotelExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/HotelExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/ViewPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/ViewPoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/ViewPointExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/ViewPointExample.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/HotelMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/HotelMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TrafficMapepr.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TrafficMapepr.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ViewPointMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ViewPointMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/rebel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/rebel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/trip_web_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/trip_web_db.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/tripweb.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tripweb.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/traffic_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/traffic_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/proscenium/user/regst.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/proscenium/user/regst.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +73,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="E:\IDEA\JavaEE_web\.idea" />
+      </set>
+    </option>
+  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -76,7 +88,9 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1lajKmj08rbWfY89cfOpr1O0oOY" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -95,6 +109,10 @@
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IDEA\JavaEE_web\src\main\webapp\WEB-INF\views\proscenium\user" />
+      <recent name="E:\IDEA\JavaEE_web\src\main\java\cn\zm\trip\web\controller" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\IDEA\JavaEE_web\src\main\resources" />
     </key>
@@ -106,7 +124,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.35">
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cn.zm.trip.web.Test" />
       <module name="tripweb-master" />
@@ -294,6 +312,7 @@
       <workItem from="1609147642638" duration="3396000" />
       <workItem from="1609158369370" duration="2032000" />
       <workItem from="1609220213813" duration="816000" />
+      <workItem from="1609238446872" duration="6697000" />
     </task>
     <servers />
   </component>
@@ -309,6 +328,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1609066598470" />
+    <state x="574" y="132" key="#com.intellij.ide.util.MemberChooser" timestamp="1609248183226">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="132" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1609248183226" />
     <state x="553" y="302" width="429" height="225" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1609137977663">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -321,58 +344,62 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1609141712726" />
-    <state width="1493" height="252" key="GridCell.Tab.0.bottom" timestamp="1609162508143">
+    <state width="1493" height="279" key="GridCell.Tab.0.bottom" timestamp="1609250725164">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609162508143" />
-    <state width="1493" height="252" key="GridCell.Tab.0.center" timestamp="1609162508143">
+    <state width="1493" height="279" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609250725164" />
+    <state width="1493" height="279" key="GridCell.Tab.0.center" timestamp="1609250725164">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1609162508143" />
-    <state width="1493" height="252" key="GridCell.Tab.0.left" timestamp="1609162508142">
+    <state width="1493" height="279" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1609250725164" />
+    <state width="1493" height="279" key="GridCell.Tab.0.left" timestamp="1609250725164">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1609162508142" />
-    <state width="1493" height="252" key="GridCell.Tab.0.right" timestamp="1609162508143">
+    <state width="1493" height="279" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1609250725164" />
+    <state width="1493" height="279" key="GridCell.Tab.0.right" timestamp="1609250725164">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="252" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1609162508143" />
-    <state width="1493" height="191" key="GridCell.Tab.1.bottom" timestamp="1609152231037">
+    <state width="1493" height="279" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1609250725164" />
+    <state width="1493" height="279" key="GridCell.Tab.1.bottom" timestamp="1609250725164">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609152231037" />
-    <state width="1493" height="191" key="GridCell.Tab.1.center" timestamp="1609152231036">
+    <state width="1493" height="279" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609250725164" />
+    <state width="1493" height="279" key="GridCell.Tab.1.center" timestamp="1609250725164">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1609152231036" />
-    <state width="1493" height="191" key="GridCell.Tab.1.left" timestamp="1609152231036">
+    <state width="1493" height="279" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1609250725164" />
+    <state width="1493" height="279" key="GridCell.Tab.1.left" timestamp="1609250725164">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1609152231036" />
-    <state width="1493" height="191" key="GridCell.Tab.1.right" timestamp="1609152231037">
+    <state width="1493" height="279" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1609250725164" />
+    <state width="1493" height="279" key="GridCell.Tab.1.right" timestamp="1609250725164">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1609152231037" />
-    <state width="1493" height="191" key="GridCell.Tab.2.bottom" timestamp="1609152231037">
+    <state width="1493" height="279" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1609250725164" />
+    <state width="1493" height="279" key="GridCell.Tab.2.bottom" timestamp="1609250725165">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609152231037" />
-    <state width="1493" height="191" key="GridCell.Tab.2.center" timestamp="1609152231037">
+    <state width="1493" height="279" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609250725165" />
+    <state width="1493" height="279" key="GridCell.Tab.2.center" timestamp="1609250725164">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1609152231037" />
-    <state width="1493" height="191" key="GridCell.Tab.2.left" timestamp="1609152231037">
+    <state width="1493" height="279" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1609250725164" />
+    <state width="1493" height="279" key="GridCell.Tab.2.left" timestamp="1609250725164">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1609152231037" />
-    <state width="1493" height="191" key="GridCell.Tab.2.right" timestamp="1609152231037">
+    <state width="1493" height="279" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1609250725164" />
+    <state width="1493" height="279" key="GridCell.Tab.2.right" timestamp="1609250725164">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1609152231037" />
+    <state width="1493" height="279" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1609250725164" />
     <state x="272" y="58" key="SettingsEditor" timestamp="1609066606763">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="272" y="58" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1609066606763" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1609244049540">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1609244049540" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/trip_web$Tomcat_9_0_35.ic" NAME="Tomcat 9.0.35 Coverage Results" MODIFIED="1608981137127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

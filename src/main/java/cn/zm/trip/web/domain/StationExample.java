@@ -533,6 +533,76 @@ public class StationExample {
             addCriterion("tp_slatitude not between", value1, value2, "tpSlatitude");
             return (Criteria) this;
         }
+
+        public Criteria andTpScityIsNull() {
+            addCriterion("tp_scity is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpScityIsNotNull() {
+            addCriterion("tp_scity is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpScityEqualTo(String value) {
+            addCriterion("tp_scity =", value, "tpScity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpScityNotEqualTo(String value) {
+            addCriterion("tp_scity <>", value, "tpScity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpScityGreaterThan(String value) {
+            addCriterion("tp_scity >", value, "tpScity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpScityGreaterThanOrEqualTo(String value) {
+            addCriterion("tp_scity >=", value, "tpScity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpScityLessThan(String value) {
+            addCriterion("tp_scity <", value, "tpScity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpScityLessThanOrEqualTo(String value) {
+            addCriterion("tp_scity <=", value, "tpScity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpScityLike(String value) {
+            addCriterion("tp_scity like", value, "tpScity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpScityNotLike(String value) {
+            addCriterion("tp_scity not like", value, "tpScity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpScityIn(List<String> values) {
+            addCriterion("tp_scity in", values, "tpScity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpScityNotIn(List<String> values) {
+            addCriterion("tp_scity not in", values, "tpScity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpScityBetween(String value1, String value2) {
+            addCriterion("tp_scity between", value1, value2, "tpScity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpScityNotBetween(String value1, String value2) {
+            addCriterion("tp_scity not between", value1, value2, "tpScity");
+            return (Criteria) this;
+        }
     }
 
     /**

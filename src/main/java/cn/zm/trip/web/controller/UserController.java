@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,6 +68,15 @@ public class UserController {
 	}
 
 	/**
+	 * 跳转首页
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "index", method = RequestMethod.GET)
+	public String index() {
+		return "redirect:/index";
+	}
+	/**
 	 * 跳转注册用户
 	 *
 	 * @return
@@ -77,7 +87,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "regstform", method = RequestMethod.POST)
-	public String regst(String uname, String uemail, String upwd, String reupwd, Model model) {
+	public String regst(String uname, String uemail, String upwd, String reupwd, Model model) throws AWTException {
 		if (uemail == null || upwd == null || uemail.trim().equals("") || upwd.trim().equals("")) {
 			model.addAttribute("msg", Msg.fail("用户名或密码不可为空,请重新输入!"));
 		} else if (!reupwd.equals(upwd)) {
@@ -85,6 +95,19 @@ public class UserController {
 		} else {
 			userService.insertUser(uname, uemail, upwd);
 			model.addAttribute("msg", Msg.success("用户注册成功!"));
+
+			//注册成功后自动登录
+			String prefix = "/static/upload/useravatar/";
+			User user = userService.userLogin(new User(uemail, upwd));
+			if (user != null) {
+				String suffix = user.getUpic();
+				if(suffix==null||suffix=="")suffix="default.jpg";
+				user.setUpic(suffix);
+				userService.updataUserInfo(user);
+				user.setUpic(prefix+suffix);
+				session.setAttribute("user", user);
+
+			}
 		}
 		System.out.println(!uemail.trim().equals(""));
 		return "proscenium/user/regst";
@@ -96,10 +119,8 @@ public class UserController {
 	@RequestMapping(value = "info", method = RequestMethod.GET)
 	public String info(String uid) {
 		User user = userService.userGet(uid);
-
 		String prefix = "/static/upload/useravatar/";
 		String suffix = user.getUpic();
-
 		user.setUpic(prefix+suffix);
 
 		session.setAttribute("user", user);
@@ -123,10 +144,11 @@ public class UserController {
 	public String userEditHandle(User user) {
 		//显示首页的景点
 		String prefix = "/static/upload/useravatar/";
-		userService.updataUserInfo(user);
 		String suffix = user.getUpic();
-		user.setUpic(prefix + suffix);
-		session.setAttribute("user", userService.userGet(user.getUid()));
+		user.setUpic(suffix);
+		userService.updataUserInfo(user);
+		user.setUpic(prefix+suffix);
+		session.setAttribute("user", user);
 		session.setAttribute("msg", Msg.success("用户信息更新成功!"));
 		return "proscenium/user/edit";
 	}

@@ -1157,6 +1157,76 @@ public class ViewPointExample {
             addCriterion("tp_vlatitude not between", value1, value2, "tpVlatitude");
             return (Criteria) this;
         }
+
+        public Criteria andTpVcityIsNull() {
+            addCriterion("tp_vcity is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVcityIsNotNull() {
+            addCriterion("tp_vcity is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVcityEqualTo(String value) {
+            addCriterion("tp_vcity =", value, "tpVcity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVcityNotEqualTo(String value) {
+            addCriterion("tp_vcity <>", value, "tpVcity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVcityGreaterThan(String value) {
+            addCriterion("tp_vcity >", value, "tpVcity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVcityGreaterThanOrEqualTo(String value) {
+            addCriterion("tp_vcity >=", value, "tpVcity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVcityLessThan(String value) {
+            addCriterion("tp_vcity <", value, "tpVcity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVcityLessThanOrEqualTo(String value) {
+            addCriterion("tp_vcity <=", value, "tpVcity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVcityLike(String value) {
+            addCriterion("tp_vcity like", value, "tpVcity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVcityNotLike(String value) {
+            addCriterion("tp_vcity not like", value, "tpVcity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVcityIn(List<String> values) {
+            addCriterion("tp_vcity in", values, "tpVcity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVcityNotIn(List<String> values) {
+            addCriterion("tp_vcity not in", values, "tpVcity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVcityBetween(String value1, String value2) {
+            addCriterion("tp_vcity between", value1, value2, "tpVcity");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpVcityNotBetween(String value1, String value2) {
+            addCriterion("tp_vcity not between", value1, value2, "tpVcity");
+            return (Criteria) this;
+        }
     }
 
     /**
