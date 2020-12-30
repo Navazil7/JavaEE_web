@@ -7,72 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5212e55f-297d-4d2a-95c4-1b89c98316e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/trip_web_db3.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/upload/useravatar/default.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/e4c2a095-cbdb-49f3-8edc-dc7eb3b02c29.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e4c2a095-cbdb-49f3-8edc-dc7eb3b02c29.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tripweb.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tripweb.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/proscenium/user/regst.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/proscenium/user/regst.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/commons/GenerateCharacters.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/commons/GenerateCharacters.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/commons/MybatisGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/commons/MybatisGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/ArticleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/CustController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/CustController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/HotelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/HotelController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/IndexController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/TrafficController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/TrafficController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/UploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/UploadController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/ViewPointController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/controller/ViewPointController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/Forum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/Forum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/ForumExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/ForumExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/ForumExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/ForumExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/Hotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/Hotel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/HotelExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/HotelExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/HotelExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/HotelExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/Traffic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/Traffic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/TrafficExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/TrafficExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/TrafficExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/TrafficExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/ViewPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/ViewPoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/ViewPointExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/ViewPointExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/ViewPointExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/zm/trip/web/domain/ViewPointExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tripweb.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tripweb.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/commons/GenerateCharacters.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/commons/GenerateCharacters.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/commons/MybatisGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/commons/MybatisGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/ArticleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/CustController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/CustController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/HotelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/HotelController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/IndexController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/TrafficController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/TrafficController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/UploadController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/UploadController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/ViewPointController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/controller/ViewPointController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/Forum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/Forum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/ForumExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/ForumExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/ForumExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/ForumExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/Hotel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/Hotel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/HotelExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/HotelExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/HotelExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/HotelExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/Traffic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/Traffic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/TrafficExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/TrafficExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/TrafficExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/TrafficExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/ViewPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/ViewPoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/ViewPointExample$Criterion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/ViewPointExample$Criterion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/ViewPointExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/cn/zm/trip/web/domain/ViewPointExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/trip_web_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/trip_web_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/tripweb.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/classes/tripweb.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/trip-web/WEB-INF/views/proscenium/user/regst.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/trip-web/WEB-INF/views/proscenium/user/regst.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +50,13 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="userSettingsFile" value="D:\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1lajKmj08rbWfY89cfOpr1O0oOY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -139,7 +81,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3137931" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
@@ -386,6 +328,7 @@
       <workItem from="1609147642638" duration="3396000" />
       <workItem from="1609158369370" duration="2032000" />
       <workItem from="1609220213813" duration="816000" />
+      <workItem from="1609307829631" duration="169000" />
     </task>
     <servers />
   </component>
@@ -409,10 +352,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1609144175760" />
-    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1609141712726">
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1609307996743">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1609141712726" />
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1609307996743" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1609305660150">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -477,10 +420,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.5.right/0.0.1536.824@0.0.1536.824" timestamp="1609303877149" />
-    <state x="272" y="0" key="SettingsEditor" timestamp="1609303820271">
+    <state x="272" y="0" key="SettingsEditor" timestamp="1609307999262">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="272" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1609303820271" />
+    <state x="272" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1609307999262" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
