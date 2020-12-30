@@ -40,7 +40,7 @@
 			<%--内容开始--%>
 			<!-- Main content -->
 			<section class="content">
-				<div id="myCarousel" class="carousel slide ">
+				<div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="4000">
 					<!-- 轮播（Carousel）指标 -->
 					<ol class="carousel-indicators">
 						<li data-target="#myCarousel" data-slide-to="0"
