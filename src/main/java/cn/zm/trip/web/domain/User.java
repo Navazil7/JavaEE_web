@@ -17,6 +17,7 @@ public class User implements Serializable {
 	private String phone;
 	private Date regDate;
 	private Date updateTime;
+	private String like;
 
 	public User(String uname, String uemail, String upwd) {
 		this.uname = uname;
@@ -114,6 +115,14 @@ public class User implements Serializable {
 		this.updateTime = updateTime;
 	}
 
+	public String getLike() {
+		return like;
+	}
+
+	public void setLike(String like) {
+		this.like = like;
+	}
+
 	@Override
 	public String toString() {
 		return "User{" +
@@ -127,6 +136,7 @@ public class User implements Serializable {
 				", phone='" + phone + '\'' +
 				", regDate=" + regDate +
 				", updateTime=" + updateTime +
+				", like='" + like + '\'' +
 				'}';
 	}
 }
