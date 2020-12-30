@@ -57,7 +57,8 @@
 											<select class="form-control" data-city="-- 选择市 --"></select>
 											<select class="form-control" data-district="-- 选择区 --"></select>
 										<div class="form-group">
-											<button class="btn btn-primary" id="reset" type="button">重置</button>
+										<div class="form-group">
+											<button class="btn btn-primary" id="reset1" type="button">重置</button>
 										</div>
 									</div>
 									<%--目的地--%>
@@ -67,7 +68,7 @@
 										<select class="form-control" data-city="-- 选择市 --"></select>
 										<select class="form-control" data-district="-- 选择区 --"></select>
 										<div class="form-group">
-											<button class="btn btn-primary" id="reset" type="button">重置</button>
+											<button class="btn btn-primary" id="reset2" type="button">重置</button>
 										</div>
 									</div>
 								</div>
