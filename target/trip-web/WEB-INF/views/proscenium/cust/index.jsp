@@ -55,19 +55,21 @@
 										出发地：
 											<select class="form-control" data-province="-- 选择省 --"></select>
 											<select class="form-control" data-city="-- 选择市 --"></select>
-											<select class="form-control" data-district="-- 选择区 --"></select>
+											<select class="form-control" data-district="-- 选择区 --" style="display: none"></select>
 										<div class="form-group">
-											<button class="btn btn-primary" id="reset" type="button">重置</button>
+										<div class="form-group">
+											<button class="btn btn-primary"  id="reset1" type="reset">重置</button>
 										</div>
 									</div>
+										<br>
 									<%--目的地--%>
 									<div class="form-group" data-toggle="distpicker" id="des_city">
 										目的地：
 										<select class="form-control" data-province="-- 选择省 --"></select>
 										<select class="form-control" data-city="-- 选择市 --"></select>
-										<select class="form-control" data-district="-- 选择区 --"></select>
-										<div class="form-group">
-											<button class="btn btn-primary" id="reset" type="button">重置</button>
+										<select class="form-control" data-district="-- 选择区 --" style="display: none"></select>
+										<div class="form-group" >
+											<button class="btn btn-primary"  id="reset2" type="reset">重置</button>
 										</div>
 									</div>
 								</div>
@@ -127,9 +129,7 @@
 	<jsp:include page="../../../includes/footer.jsp"/>
 
 		<%--省市区联动插件--%>
-		<script src="/static/assets/plugins/jQueryDistpicker20160621/js/distpicker.data.js"></script>
-		<script src="/static/assets/plugins/jQueryDistpicker20160621/js/distpicker.js"></script>
-
+		<script src="https://cdn.bootcdn.net/ajax/libs/distpicker/2.0.6/distpicker.js"></script>
 	<script>
 
         $.fn.distpicker.setDefaults({
