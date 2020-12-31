@@ -6,39 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5212e55f-297d-4d2a-95c4-1b89c98316e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e4c2a095-cbdb-49f3-8edc-dc7eb3b02c29.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e4c2a095-cbdb-49f3-8edc-dc7eb3b02c29.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/tripweb-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tripweb-master.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/123.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/CustController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/CustController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/ForumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/ForumController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/dao/HotelDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/dao/ViewPointDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/dao/ViewPointDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/HotelExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/HotelExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/ViewPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/ViewPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/ViewPointExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/zm/trip/web/domain/ViewPointExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/HotelMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/HotelMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TrafficMapepr.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TrafficMapepr.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ViewPointMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ViewPointMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/rebel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/rebel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/trip_web_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/trip_web_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tripweb.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tripweb.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/traffic_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/traffic_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/proscenium/user/regst.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/proscenium/user/regst.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="5212e55f-297d-4d2a-95c4-1b89c98316e5" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,13 +41,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="E:\IDEA\JavaEE_web\.idea" />
-      </set>
-    </option>
-  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -93,16 +54,16 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -279,19 +240,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <option name="contentProportion" value="0.2124317" />
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -314,11 +262,12 @@
       <workItem from="1609220213813" duration="816000" />
       <workItem from="1609238446872" duration="6697000" />
       <workItem from="1609309998602" duration="5010000" />
+      <workItem from="1609377980065" duration="320000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="74" key="#Project_Structure" timestamp="1608980907900">
