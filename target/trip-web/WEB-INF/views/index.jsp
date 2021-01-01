@@ -40,7 +40,7 @@
 			<%--内容开始--%>
 			<!-- Main content -->
 			<section class="content">
-				<div id="myCarousel" class="carousel slide ">
+				<div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="4000">
 					<!-- 轮播（Carousel）指标 -->
 					<ol class="carousel-indicators">
 						<li data-target="#myCarousel" data-slide-to="0"
@@ -51,7 +51,7 @@
 					<!-- 轮播（Carousel）项目 -->
 					<div class="carousel-inner">
 						<div class="item active">
-							<img src="/static/assets/img/test/city.png" alt="First slide">
+							<img src="/static/assets/img/test/sky.png" alt="First slide">
 							<div class="carousel-caption"><h1>来一场说走就走的旅行</h1>Closing WebApplicationContext for namespace
 								'springServlet-servlet': startup date [Thu May 02 10:23:29
 							</div>
