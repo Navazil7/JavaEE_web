@@ -91,8 +91,6 @@ CREATE TABLE `tp_hotel` (
   `price` varchar(100) DEFAULT NULL,
   `img_url` varchar(100) DEFAULT NULL,
   `content` text DEFAULT NULL,
-  `longitude` varchar(45) DEFAULT NULL,
-  `latitude` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`hid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -161,8 +159,6 @@ CREATE TABLE `tp_viewpoint` (
   `tp_opentime` varchar(100) DEFAULT NULL,
   `tp_creatTime` timestamp NULL DEFAULT NULL,
   `tp_vcontent` text,
-  `longitude` varchar(45) DEFAULT NULL,
-  `latitude` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`tp_vid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
