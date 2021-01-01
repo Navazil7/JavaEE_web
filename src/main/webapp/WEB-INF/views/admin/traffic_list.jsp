@@ -99,13 +99,14 @@
 							<td><span class="label label-primary">${traffic.tpType}</span></td>
 							<td>${traffic.tpCurrent}</td>
 							<td>${traffic.tpDestination}</td>
+							<fmt:parseDate value="${traffic.tpCurrentTime}" pattern="yyyy-MM-dd HH:mm:ss" var="CurrentTime"></fmt:parseDate>
+							<fmt:parseDate value="${traffic.tpArriveTime}" pattern="yyyy-MM-dd HH:mm:ss" var="ArriveTime"></fmt:parseDate>
 
-<%--						<td><fmt:formatDate value="${traffic.tpCurrentTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>--%>
-<%--						<td><fmt:formatDate value="${traffic.tpArriveTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>--%>
 
-							<td>${traffic.tpCurrentTime}</td>
-							<td>${traffic.tpArriveTime}</td>
-
+							<td><fmt:formatDate value="${CurrentTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+							<td><fmt:formatDate value="${ArriveTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+								<%--							<td>${traffic.tpCurrentTime}</td>--%>
+								<%--							<td>${traffic.tpArriveTime}</td>--%>
 							<td><span class="label label-primary">${traffic.tpTprice}</span></td>
 							<td>
 									<%--<button type="button" class="btn btn-success btn-xs"><i class="fa fa-search"></i>查看--%>
