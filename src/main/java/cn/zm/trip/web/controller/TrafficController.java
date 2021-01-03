@@ -47,4 +47,14 @@ public class TrafficController {
 		}
 		return queryTraffics;
 	}
+
+	@RequestMapping(value = "selectTrafficByid", method = RequestMethod.GET)
+	public List<Traffic> trafficbyid(int traffic_id,Model model) {
+		System.out.println("----------------"+traffic_id);
+		Traffic traffic = trafficDao.selectByPrimaryKey(traffic_id);
+		List<Traffic> queryTraffics = new ArrayList<>();
+		queryTraffics.add(traffic);
+		System.out.println("-----------------"+traffic.getTpTid());
+		return queryTraffics;
+	}
 }

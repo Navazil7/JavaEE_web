@@ -12,14 +12,24 @@
 	<jsp:include page="../../../includes/header.jsp"/>
 </head>
 <style>
-	.traffic-choose{
+	.traffic-choose,.hotel-choose{
 		position: absolute;
 		display: inline-block;
 		border: 1px solid #2c2c2c;
 		width:13px;
 		height:13px;
 		border-radius: 3px;
-
+	}
+	.view-choose{
+		position: absolute;
+		display: inline-block;
+		border: 1px solid #2c2c2c;
+		width:13px;
+		height:13px;
+		border-radius: 3px;
+	}
+	.view,.hotel{
+		margin: 20px;
 	}
 	input[type="radio"] {
 		appearance: none;
@@ -36,7 +46,7 @@
 	input[type="radio"]:checked:after {
 	/*content:"\2714";*/
 	/*text-align: center;*/
-		font-weight:bold
+		font-weight:bold;
 		font-size:13px;
 		font-family:Sans-serif;
 		background: transparent;
@@ -46,9 +56,95 @@
 		transform:matrix(-0.766044,-0.642788,-0.642788,0.766044,0,0);
 		-webkit-transform:matrix(-0.766044,-0.642788,-0.642788,0.766044,0,0);
 	}
+	input[type="checkbox"] {
+		appearance: none;
+		-webkit-appearance: none;
+		outline: none;
+		margin: 0;
+	}
+	input[type="checkbox"]:after {
+		display: inline-block;
+		position: absolute;
+		content:"";
+		background-color: transparent;
+	}
+	input[type="checkbox"]:checked:after {
+		/*content:"\2714";*/
+		/*text-align: center;*/
+		font-weight:bold;
+		font-size:13px;
+		font-family:Sans-serif;
+		background: transparent;
+		top: -4px;
+		left: 2px;
+		content:"L";
+		transform:matrix(-0.766044,-0.642788,-0.642788,0.766044,0,0);
+		-webkit-transform:matrix(-0.766044,-0.642788,-0.642788,0.766044,0,0);
+	}
+	/*订单块固定屏幕*/
+	#order{
+		position: fixed;
+		top: 100px;
+		left: 0px;
+		right: 0px;
+		bottom: 100px;
+		margin:  0 auto;
+		z-index: 99;
+		width: 500px;
+		height: auto;
+		min-height: 300px;
+		max-height: 600px;
+		background: white ;
+		opacity:0.9;
+		border: 1px solid #5a6268;
+	}
+	.close {
+		background: white;
+		color: red;
+		border-radius: 12px;
+		line-height: 20px;
+		text-align: center;
+		height: 20px;
+		width: 20px;
+		font-size: 18px;
+		padding: 1px;
+		top: 5px;
+		right: 5px;
+		position: absolute;
+	}
+	/* use cross as close button */
+	.close::before {
+		content: "\2716";
+	}
 </style>
 <body class="skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
+<div id="order">
+	<div class="container">
+		<p class="btn bg-orange btn-flat margin" style="cursor: default">请确认你的订单</p>
+		<span class="close" style="float: right"></span>
+	</div>
+	<hr>
+	<div class="container  col-lg-12"style="width:100%;height: 400px;overflow:scroll;">
+			<table id="order_table" class="table table-bordered table-striped">
+				<thead>
+				<tr>
+					<th>编号</th>
+					<th>类型</th>
+					<th>内容</th>
+					<th>数量</th>
+					<th>价格</th>
+				</tr>
+				</thead>
+				<tbody>
 
+				</tbody>
+			</table>
+		</div>
+	<hr>
+	<div class="container" >
+		<div style="width: 200px ;display: inline-block" ><p>总价:<label id="total"></label></p></div><button class="btn btn-primary"  >提交订单</button>
+	</div>
+</div>
 <div class="wrapper" style="height: auto; min-height: 100%;">
 
 	<jsp:include page="../../../includes/top_navigation_reception.jsp"/>
@@ -162,8 +258,13 @@
 					</div>
 					<%--结果--%>
 					<div class="container" id="hotel_cust"></div>
+						<br>
+						<br>
+						<hr>
+						<div class="container" style="text-align: center;padding: 20px">
+							<button class="btn btn-primary" onclick="produce_order()" >生成订单</button>
+						</div>
 				</div>
-
 			</section>
 			<br>
 			<!-- /.container -->
@@ -186,7 +287,6 @@
         $.fn.distpicker.setDefaults({
             autoSelect:false
         });
-
 
         var currentCity= "";
         var desCity="";
@@ -250,7 +350,7 @@
                             var tpSpendTime = new Date(data[i].tpArriveTime - data[i].tpCurrentTime).Format("hh:mm:ss");
                             $("#traffic_table tbody").append(
                                 '<tr>'
-									+ '<td><label><input type="radio" name = "traffic-choose" class = "traffic-choose"  value = "'+i+'">'+'</label></td>'
+									+ '<td><label class = "traffic"><input type="radio" name = "traffic-choose" class = "traffic-choose"  value = "'+data[i].tpTid+'">'+'</label></td>'
                                 + '<td><span class="label label-primary">' + data[i].tpType + '</span></td>'
                                 + '<td>' + data[i].tpCurrent + '</td>'
                                 + '<td>' + data[i].tpDestination + '</td>'
@@ -286,7 +386,7 @@
 							var tpSpendTime = new Date(data[i].tpArriveTime - data[i].tpCurrentTime).Format("hh:mm:ss");
 							$("#traffic_table tbody").append(
 									'<tr>'
-									+ '<td><label><input type="radio" name = "traffic-choose" class = "traffic-choose"  value = "'+i+'">'+'</label></td>'
+									+ '<td><label><input type="radio" name = "traffic-choose" class = "traffic-choose"  value = "'+data[i].tpTid+'">'+'</label></td>'
 									+ '<td><span class="label label-primary">' + data[i].tpType + '</span></td>'
 									+ '<td>' + data[i].tpCurrent + '</td>'
 									+ '<td>' + data[i].tpDestination + '</td>'
@@ -318,11 +418,12 @@
                 success: function (data) {
                     // console.log(data);
                     for (var i = 0; i < data.length; i++) {
-                        var title = data[i].tpTitle.substring(1, 9);
+                        var title = data[i].tpTitle.substring(0, 9);
 
                         $("#view_cust").append(
                             '<div class="col-sm-6 col-md-4 col-lg-3 viewpages">'
                             + '<div class="thumbnail" style="height: 400px;">'
+								+ '<label class = "view"><input type="checkbox" name = "view-choose" class = "view-choose"  value = "'+data[i].tpVid+'">'+'</label>'
                             + '<a href="/view/content?tpVid= ' + data[i].tpVid + ' ">'
                             + '<img src="/static/upload/viewavatar/' + data[i].tpVpic + ' " alt="..." class="img-rounded">'
                             + '</a>'
@@ -363,6 +464,7 @@
 
                             '<div class="col-sm-6 col-md-4 col-lg-5">'
 	                        + '<div class="thumbnail"  style="height: 450px;">'
+								+ '<label class = "hotel"><input type="checkbox" name = "hotel-choose" class = "hotel-choose"  value = "'+data[i].hid+'">'+'</label>'
                             + '<a href="/hotel/content?hid=' + data[i].hid + '">'
                             + '<img src="' + data[i].imgUrl + '">'
                             + '</a>'
@@ -384,7 +486,10 @@
                 }
             });
         }
-
+		//×
+		$(".close").on("click",function () {
+				$(this).parent().parent().remove();
+		})
         Date.prototype.Format = function (fmt) { //author: meizz
             var o = {
                 "M+": this.getMonth() + 1,                  //月份
@@ -402,6 +507,141 @@
                     fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
             return fmt;
         }
+        function produce_order(){
+        	// 获取得都是各自得id值，只传入id 通过后台获取所需数据
+        	var traf=$("input[name='traffic-choose']:checked").val();
+        	console.log(traf);
+			var hotels=new Array();
+			$('input[name="hotel-choose"]:checked').each(function(index, element) {
+				console.log($(this).val());
+				hotels.push($(this).val());
+			});
+			var views=new Array();
+			$('input[name="view-choose"]:checked').each(function(index, element) {
+				console.log($(this).val());
+				views.push($(this).val());
+			});
+			if(traf==''){
+				alert("交通工具未选择");
+			}
+			else if(views[0]==''){
+				alert("景点未选择");
+			}
+			else if(hotels[0]==''){
+				alert("旅馆未选择");
+			}
+			else{
+				$("body").append("<div id=\"order\">\n" +
+						"\t<div class=\"container\">\n" +
+						"\t\t<p class=\"btn bg-orange btn-flat margin\" style=\"cursor: default\">请确认你的订单</p>\n" +
+						"\t\t<span class=\"close\" style=\"float: right\"></span>\n" +
+						"\t</div>\n" +
+						"\t<hr>\n" +
+						"\t<div class=\"container  col-lg-12\"style=\"width:100%;height: 400px;overflow:scroll;\">\n" +
+						"\t\t\t<table id=\"order_table\" class=\"table table-bordered table-striped\">\n" +
+						"\t\t\t\t<thead>\n" +
+						"\t\t\t\t<tr>\n" +
+						"\t\t\t\t\t<th>编号</th>\n" +
+						"\t\t\t\t\t<th>类型</th>\n" +
+						"\t\t\t\t\t<th>内容</th>\n" +
+						"\t\t\t\t\t<th>数量</th>\n" +
+						"\t\t\t\t\t<th>价格</th>\n" +
+						"\t\t\t\t</tr>\n" +
+						"\t\t\t\t</thead>\n" +
+						"\t\t\t\t<tbody>\n" +
+						"\n" +
+						"\t\t\t\t</tbody>\n" +
+						"\t\t\t</table>\n" +
+						"\t\t</div>\n" +
+						"\t<hr>\n" +
+						"\t<div class=\"container\" >\n" +
+						"\t\t<div style=\"width: 200px ;display: inline-block\" ><p>总价:<label id=\"total\"></label></p></div><button class=\"btn btn-primary\"  >提交订单</button>\n" +
+						"\t</div>\n" +
+						"</div>");
+						ajax_traffic_cart(traf);
+						// ajax_hotel_cart(hotels);
+						// ajax_viewPoint_cart(views);
+			}
+		}
+		function ajax_traffic_cart(traffic_id) {
+				$.ajax({
+					url: '/traffic/selectTrafficByid',
+					type: 'GET',
+					data: {
+						traffic_id: traffic_id,
+					},
+					success: function (data) {
+						console.log(data);
+						var tpDestination;
+						for (var i = 0; i < data.length; i++) {
+							var tpCurrentTime = new Date(data[i].tpCurrentTime).Format("yyyy-MM-dd:hh:mm:ss");
+							var tpArriveTime = new Date(data[i].tpArriveTime).Format("yyyy-MM-dd:hh:mm:ss");
+							console.log(data[i].tpArriveTime - data[i].tpCurrentTime);
+							$("#order_table tbody").append(
+									'<tr>'
+									+ '<td>' + data[i].Tid + '</td>'
+									+ '<td><span class="label label-primary kind">交通出行</span></td>'
+									+ '<td>' + data[i].tpType +'---'+ data[i].tpCurrent+'---'+data[i].tpDestination +','+tpCurrentTime+'---'+tpArriveTime+ '</td>'
+									+ '<td><input id="min" type="button" value="-" /><input id="quantity" type="text" value="1" /><input id="add" type="button" value="+" /></td>'
+									+ '<td><span class="label label-primary">￥' + data[i].tpTprice + '</span></td>'
+									+ '</tr>'
+							);
+							tpDestination = data[i].tpDestination;
+						}
+					}
+				});
+		}
+		function ajax_hotel_cart(hotels) {
+			$.ajax({
+				url: '/cust/hotels',
+				type: 'POST',
+				data: {
+					hotels_id:hotels
+				},
+				traditional: true,
+				success: function (data) {
+					console.log(data);
+					for (var i = 0; i < data.length; i++) {
+						var title = data[i].title.substring(0, 9);
+						$("#order_table tbody").append(
+								'<tr>'
+								+ '<td>' + data[i].hid + '</td>'
+								+ '<td><span class="label label-primary kind">住宿</span></td>'
+								+ '<td>' + data[i].title +'---'+data[i].house_type+'---'+ data[i].bed_type+'---'+data[i].zip + '</td>'
+								+ '<td><input id="min" type="button" value="-" /><input id="quantity" type="text" value="1" /><input id="add" type="button" value="+" /></td>'
+								+ '<td><span class="label label-primary">￥' + data[i].price + '</span></td>'
+								+ '</tr>'
+						);
+					}
+				}
+			});
+		}
+		function ajax_viewPoint_cart(views) {
+			$.ajax({
+				url: '/cust/viewPointCart',
+				type: 'POST',
+				data: {
+					views: views
+				},
+				traditional: true,
+				success: function (data) {
+					// console.log(data);
+					for (var i = 0; i < data.length; i++) {
+						var title = data[i].tpTitle.substring(0, 9);
+						$("#order_table tbody").append(
+								'<tr>'
+								+ '<td>' + data[i].tpVid + '</td>'
+								+ '<td><span class="label label-primary kind">景点</span></td>'
+								+ '<td>' + data[i].tpTitle +'---'+data[i].tpVtype+'---'+ data[i].tpLevel+'星级---'+data[i].zip + '</td>'
+								+ '<td><input id="min" type="button" value="-" /><input id="quantity" type="text" value="1" /><input id="add" type="button" value="+" /></td>'
+								+ '<td><span class="label label-primary">￥' + data[i].tpPrice + '</span></td>'
+								+ '</tr>'
+						);
+					}
+				}
+			});
+		}
+
 	</script>
 </body>
 </html>

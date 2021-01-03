@@ -44,7 +44,15 @@ public class CustController {
 		List<ViewPoint> viewPoints = viewPointDao.selectByExample(example);
 		return viewPoints;
 	}
-
+	@RequestMapping(value = "viewPointCart", method = RequestMethod.GET)
+	public List<ViewPoint> viewPointCart(int[] views) {
+		List<ViewPoint> viewPoints = null;
+		for(int i:views){
+			ViewPoint	viewpoint=viewPointDao.selectByPrimaryKey(i);
+			viewPoints.add(viewpoint);
+		}
+		return viewPoints;
+	}
 	/**
 	 * 定制返回酒店
 	 */
@@ -62,6 +70,15 @@ public class CustController {
 			hotel.setImgUrl(filePath + fileSuffix);
 		}
 		System.out.println(hotels);
+		return hotels;
+	}
+	@RequestMapping(value = "hotels", method = RequestMethod.GET)
+	public List<Hotel> hotels(int[] hotels_id) {
+		List<Hotel> hotels = null;
+		for (int i: hotels_id){
+			Hotel h=hotelDao.selectByPrimaryKey(i);
+			hotels.add(h);
+		}
 		return hotels;
 	}
 }
