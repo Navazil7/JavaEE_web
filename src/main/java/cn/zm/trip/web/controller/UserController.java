@@ -76,6 +76,11 @@ public class UserController {
 		return "proscenium/user/regst";
 	}
 
+	@RequestMapping(value = "index", method = RequestMethod.GET)
+	public String autologin() {
+		return "redirect:/index";
+	}
+
 	@RequestMapping(value = "regstform", method = RequestMethod.POST)
 	public String regst(String uname, String uemail, String upwd, String reupwd, Model model) {
 		if (uemail == null || upwd == null || uemail.trim().equals("") || upwd.trim().equals("")) {
@@ -85,6 +90,17 @@ public class UserController {
 		} else {
 			userService.insertUser(uname, uemail, upwd);
 			model.addAttribute("msg", Msg.success("用户注册成功!"));
+			//注册成功后自动登录
+			String prefix = "/static/upload/useravatar/";
+			User user = userService.userLogin(new User(uemail, upwd));
+			if (user != null) {
+				String suffix = user.getUpic();
+				if(suffix==null||suffix=="")suffix="default.jpg";
+				user.setUpic(suffix);
+				userService.updataUserInfo(user);
+				user.setUpic(prefix+suffix);
+				session.setAttribute("user", user);
+			}
 		}
 		System.out.println(!uemail.trim().equals(""));
 		return "proscenium/user/regst";
@@ -123,10 +139,11 @@ public class UserController {
 	public String userEditHandle(User user) {
 		//显示首页的景点
 		String prefix = "/static/upload/useravatar/";
-		userService.updataUserInfo(user);
 		String suffix = user.getUpic();
-		user.setUpic(prefix + suffix);
-		session.setAttribute("user", userService.userGet(user.getUid()));
+		userService.updataUserInfo(user);
+
+		user.setUpic(prefix+suffix);
+		session.setAttribute("user", user);
 		session.setAttribute("msg", Msg.success("用户信息更新成功!"));
 		return "proscenium/user/edit";
 	}

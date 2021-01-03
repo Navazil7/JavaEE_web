@@ -11,7 +11,42 @@
 	<title>Hotel | 酒店</title>
 	<jsp:include page="../../../includes/header.jsp"/>
 </head>
+<style>
+	.traffic-choose{
+		position: absolute;
+		display: inline-block;
+		border: 1px solid #2c2c2c;
+		width:13px;
+		height:13px;
+		border-radius: 3px;
 
+	}
+	input[type="radio"] {
+		appearance: none;
+		-webkit-appearance: none;
+		outline: none;
+		margin: 0;
+	}
+	input[type="radio"]:after {
+		display: inline-block;
+		position: absolute;
+		content:"";
+		background-color: transparent;
+	}
+	input[type="radio"]:checked:after {
+	/*content:"\2714";*/
+	/*text-align: center;*/
+		font-weight:bold
+		font-size:13px;
+		font-family:Sans-serif;
+		background: transparent;
+		top: -4px;
+		left: 2px;
+		content:"L";
+		transform:matrix(-0.766044,-0.642788,-0.642788,0.766044,0,0);
+		-webkit-transform:matrix(-0.766044,-0.642788,-0.642788,0.766044,0,0);
+	}
+</style>
 <body class="skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
 
 <div class="wrapper" style="height: auto; min-height: 100%;">
@@ -44,6 +79,21 @@
 					<div class="container">
 						<br>
 						<p class="btn bg-orange btn-flat margin" style="cursor: default">选择您的出行</p>
+						<div style="display: inline-block;width: 150px;border-right:50px ">交通工具:<select style="float: right" id="traffic-type">
+							<option value="火车">火车</option>
+							<option value="飞机">飞机</option>
+							<option value="大巴">大巴</option>
+							<option value="ALL" selected>ALL</option></select></div>
+						<div style="display: inline-block;width: 200px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp定制方案:<select  style="float: right" id="diy-type">
+							<option value="1">时间优先</option>
+							<option value="2">价格优先</option>
+							<option value="3">奢华定制</option>
+							<option value="4" selected>无要求</option></select></div>
+						<div style="float: right;padding-right: 50px;">
+						<button class="btn btn-primary" onclick="ajax_city(currentCity,desCity);" >查询</button>
+							<div style="width: 20px;display: inline-block"></div>
+						<button class="btn btn-primary" >一键定制</button>
+						</div>
 						<br>
 						<br>
 						<%--出发地--%>
@@ -141,6 +191,9 @@
         var currentCity= "";
         var desCity="";
         $("#current_city select").on("change", function () {
+			$("#traffic_table tbody").empty();
+			$("#view_cust").empty();
+			$("#hotel_cust").empty();
             $this = $(this);
             currentCity = $this.children("option:selected").val();
             if(currentCity==""){
@@ -150,10 +203,12 @@
                 }
             }
             console.log(currentCity,desCity);
-            ajax_city(currentCity, desCity);
         });
 
         $("#des_city select").on("change", function () {
+			$("#traffic_table tbody").empty();
+			$("#view_cust").empty();
+			$("#hotel_cust").empty();
             $this = $(this);
             desCity = $this.children("option:selected").val();
             if(desCity==""){
@@ -163,15 +218,18 @@
                 }
             }
             console.log(currentCity,desCity);
-            ajax_city(currentCity, desCity);
         });
-
-        // 交通表异步加载
+		$("#traffic-type").on("change", function (){
+			ajax_city(currentCity,desCity);
+		});
+		// 交通表异步加载
         function ajax_city(currentCity, desCity) {
             $("#traffic_table tbody").empty();
             $("#view_cust").empty();
             $("#hotel_cust").empty();
-            if (currentCity != "" && desCity != "") {
+            var traf=$("#traffic-type").val();
+            console.log(traf);
+            if (currentCity != "" && desCity != ""&&traf=="ALL") {
                 // console.log(currentCity);
                 // console.log(desCity);
                 $.ajax({
@@ -179,7 +237,8 @@
                     type: 'GET',
                     data: {
                         currentCity: currentCity,
-                        desCity: desCity
+                        desCity: desCity,
+						trafic:traf
                     },
                     success: function (data) {
                         console.log(data);
@@ -191,6 +250,7 @@
                             var tpSpendTime = new Date(data[i].tpArriveTime - data[i].tpCurrentTime).Format("hh:mm:ss");
                             $("#traffic_table tbody").append(
                                 '<tr>'
+									+ '<td><label><input type="radio" name = "traffic-choose" class = "traffic-choose"  value = "'+i+'">'+'</label></td>'
                                 + '<td><span class="label label-primary">' + data[i].tpType + '</span></td>'
                                 + '<td>' + data[i].tpCurrent + '</td>'
                                 + '<td>' + data[i].tpDestination + '</td>'
@@ -207,6 +267,42 @@
                     }
                 });
             }
+            else if(currentCity != "" && desCity != ""&&traf!="ALL"){
+				$.ajax({
+					url: '/traffic/selectByCurrentAndDestination',
+					type: 'GET',
+					data: {
+						currentCity: currentCity,
+						desCity: desCity,
+						trafic:traf
+					},
+					success: function (data) {
+						console.log(data);
+						var tpDestination;
+						for (var i = 0; i < data.length; i++) {
+							var tpCurrentTime = new Date(data[i].tpCurrentTime).Format("yyyy-MM-dd:hh:mm:ss");
+							var tpArriveTime = new Date(data[i].tpArriveTime).Format("yyyy-MM-dd:hh:mm:ss");
+							console.log(data[i].tpArriveTime - data[i].tpCurrentTime);
+							var tpSpendTime = new Date(data[i].tpArriveTime - data[i].tpCurrentTime).Format("hh:mm:ss");
+							$("#traffic_table tbody").append(
+									'<tr>'
+									+ '<td><label><input type="radio" name = "traffic-choose" class = "traffic-choose"  value = "'+i+'">'+'</label></td>'
+									+ '<td><span class="label label-primary">' + data[i].tpType + '</span></td>'
+									+ '<td>' + data[i].tpCurrent + '</td>'
+									+ '<td>' + data[i].tpDestination + '</td>'
+									+ '<td>' + tpCurrentTime + '</td>'
+									+ '<td>' + tpArriveTime + '</td>'
+									+ '<td>' + tpSpendTime + '</td>'
+									+ '<td><span class="label label-primary">￥' + data[i].tpTprice + '</span></td>'
+									+ '</tr>'
+							);
+							tpDestination = data[i].tpDestination;
+						}
+						ajax_viewPoint_cust(desCity);
+						ajax_hotel_cust(desCity);
+					}
+				});
+			}
         }
 
         // 景点AJAX
