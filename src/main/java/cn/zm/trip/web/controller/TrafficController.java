@@ -26,8 +26,8 @@ public class TrafficController {
 	 * @param model
 	 * @return
 	 */
-	@ResponseBody
 	@RequestMapping(value = "selectByCurrentAndDestination", method = RequestMethod.GET)
+	@ResponseBody
 	public List<Traffic> traffic(String currentCity, String desCity,String trafic,Model model) {
 		TrafficExample example = new TrafficExample();
 		List<Traffic> traffics = trafficDao.selectByExample(example);
@@ -49,6 +49,7 @@ public class TrafficController {
 	}
 
 	@RequestMapping(value = "selectTrafficByid", method = RequestMethod.GET)
+	@ResponseBody
 	public List<Traffic> trafficbyid(int traffic_id,Model model) {
 		System.out.println("----------------"+traffic_id);
 		Traffic traffic = trafficDao.selectByPrimaryKey(traffic_id);

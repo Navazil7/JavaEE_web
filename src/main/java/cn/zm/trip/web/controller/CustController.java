@@ -9,10 +9,12 @@ import cn.zm.trip.web.domain.ViewPoint;
 import cn.zm.trip.web.domain.ViewPointExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -44,9 +46,10 @@ public class CustController {
 		List<ViewPoint> viewPoints = viewPointDao.selectByExample(example);
 		return viewPoints;
 	}
-	@RequestMapping(value = "viewPointCart", method = RequestMethod.GET)
+	@RequestMapping(value = "viewPointCart", method = RequestMethod.POST)
+	@ResponseBody
 	public List<ViewPoint> viewPointCart(int[] views) {
-		List<ViewPoint> viewPoints = null;
+		List<ViewPoint> viewPoints = new ArrayList<ViewPoint>();
 		for(int i:views){
 			ViewPoint	viewpoint=viewPointDao.selectByPrimaryKey(i);
 			viewPoints.add(viewpoint);
@@ -72,13 +75,21 @@ public class CustController {
 		System.out.println(hotels);
 		return hotels;
 	}
-	@RequestMapping(value = "hotels", method = RequestMethod.GET)
+
+	@RequestMapping(value = "hotels", method = RequestMethod.POST)
+	@ResponseBody
 	public List<Hotel> hotels(int[] hotels_id) {
-		List<Hotel> hotels = null;
+		List<Hotel> hotels = new ArrayList<Hotel>();
 		for (int i: hotels_id){
 			Hotel h=hotelDao.selectByPrimaryKey(i);
 			hotels.add(h);
 		}
 		return hotels;
+	}
+	@RequestMapping(value = "HandleOrder", method = RequestMethod.POST)
+	@ResponseBody
+	public String HandleOrder(int[]IDs,int[]Num,String[] Type,int totalPrice, Model model) {
+			//调用订单接口 Type区分订单类型 IDs为该类型的id值 totalPrice订单总价 Num为每项订单的数量
+		return "Success";
 	}
 }

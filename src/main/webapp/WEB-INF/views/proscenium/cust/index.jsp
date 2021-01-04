@@ -118,33 +118,33 @@
 	}
 </style>
 <body class="skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
-<div id="order">
-	<div class="container">
-		<p class="btn bg-orange btn-flat margin" style="cursor: default">请确认你的订单</p>
-		<span class="close" style="float: right"></span>
-	</div>
-	<hr>
-	<div class="container  col-lg-12"style="width:100%;height: 400px;overflow:scroll;">
-			<table id="order_table" class="table table-bordered table-striped">
-				<thead>
-				<tr>
-					<th>编号</th>
-					<th>类型</th>
-					<th>内容</th>
-					<th>数量</th>
-					<th>价格</th>
-				</tr>
-				</thead>
-				<tbody>
+<%--<div id="order">--%>
+<%--	<div class="container">--%>
+<%--		<p class="btn bg-orange btn-flat margin" style="cursor: default">请确认你的订单</p>--%>
+<%--		<span class="close" style="float: right"></span>--%>
+<%--	</div>--%>
+<%--	<hr>--%>
+<%--	<div class="container  col-lg-12"style="width:100%;height: 400px;overflow:scroll;">--%>
+<%--			<table id="order_table" class="table table-bordered table-striped">--%>
+<%--				<thead>--%>
+<%--				<tr>--%>
+<%--					<th>编号</th>--%>
+<%--					<th>类型</th>--%>
+<%--					<th>内容</th>--%>
+<%--					<th>数量</th>--%>
+<%--					<th>价格</th>--%>
+<%--				</tr>--%>
+<%--				</thead>--%>
+<%--				<tbody>--%>
 
-				</tbody>
-			</table>
-		</div>
-	<hr>
-	<div class="container" >
-		<div style="width: 200px ;display: inline-block" ><p>总价:<label id="total"></label></p></div><button class="btn btn-primary"  >提交订单</button>
-	</div>
-</div>
+<%--				</tbody>--%>
+<%--			</table>--%>
+<%--		</div>--%>
+<%--	<hr>--%>
+<%--	<div class="container" >--%>
+<%--		<div style="width: 200px ;display: inline-block" ><p>总价:<label id="total"></label></p></div><button class="btn btn-primary"  >提交订单</button>--%>
+<%--	</div>--%>
+<%--</div>--%>
 <div class="wrapper" style="height: auto; min-height: 100%;">
 
 	<jsp:include page="../../../includes/top_navigation_reception.jsp"/>
@@ -489,7 +489,7 @@
 		//×
 		$(".close").on("click",function () {
 				$(this).parent().parent().remove();
-		})
+		});
         Date.prototype.Format = function (fmt) { //author: meizz
             var o = {
                 "M+": this.getMonth() + 1,                  //月份
@@ -555,13 +555,18 @@
 						"\t\t</div>\n" +
 						"\t<hr>\n" +
 						"\t<div class=\"container\" >\n" +
-						"\t\t<div style=\"width: 200px ;display: inline-block\" ><p>总价:<label id=\"total\"></label></p></div><button class=\"btn btn-primary\"  >提交订单</button>\n" +
+						"\t\t<div style=\"width: 200px ;display: inline-block\" ><p>总价:<label id=\"total\"></label></p></div><button class=\"btn btn-primary\" onclick='sub_order()' >提交订单</button>\n" +
 						"\t</div>\n" +
 						"</div>");
+					$(".close").on("click",function () {
+						$(this).parent().parent().remove();
+					});
 						ajax_traffic_cart(traf);
-						// ajax_hotel_cart(hotels);
-						// ajax_viewPoint_cart(views);
+				        ajax_hotel_cart(hotels);
+				        ajax_viewPoint_cart(views);
+
 			}
+
 		}
 		function ajax_traffic_cart(traffic_id) {
 				$.ajax({
@@ -579,11 +584,11 @@
 							console.log(data[i].tpArriveTime - data[i].tpCurrentTime);
 							$("#order_table tbody").append(
 									'<tr>'
-									+ '<td>' + data[i].Tid + '</td>'
+									+ '<td class="ID" ">' + data[i].tpTid + '</td>'
 									+ '<td><span class="label label-primary kind">交通出行</span></td>'
-									+ '<td>' + data[i].tpType +'---'+ data[i].tpCurrent+'---'+data[i].tpDestination +','+tpCurrentTime+'---'+tpArriveTime+ '</td>'
-									+ '<td><input id="min" type="button" value="-" /><input id="quantity" type="text" value="1" /><input id="add" type="button" value="+" /></td>'
-									+ '<td><span class="label label-primary">￥' + data[i].tpTprice + '</span></td>'
+									+ '<td>' + data[i].tpType +'---'+ data[i].tpCurrent+'---'+data[i].tpDestination +'<br>'+tpCurrentTime+'---'+tpArriveTime+ '</td>'
+									+ '<td><div style="display: width: 15px"><input class="plus" style="width:15px" type="button" value="+" onclick="plus(this)"/></div><div style="display: width: 15px"><span class="quantity" type="text" style="width: 15px;"  >0</span></div><div style="width: 15px;"><input class="minus" style="width:15px" type="button" value="-" onclick="minus(this)"/></div></td>'
+									+ '<td><span class="label label-primary">' + data[i].tpTprice + '</span></td>'
 									+ '</tr>'
 							);
 							tpDestination = data[i].tpDestination;
@@ -605,11 +610,11 @@
 						var title = data[i].title.substring(0, 9);
 						$("#order_table tbody").append(
 								'<tr>'
-								+ '<td>' + data[i].hid + '</td>'
+								+ '<td class="ID">' + data[i].hid + '</td>'
 								+ '<td><span class="label label-primary kind">住宿</span></td>'
-								+ '<td>' + data[i].title +'---'+data[i].house_type+'---'+ data[i].bed_type+'---'+data[i].zip + '</td>'
-								+ '<td><input id="min" type="button" value="-" /><input id="quantity" type="text" value="1" /><input id="add" type="button" value="+" /></td>'
-								+ '<td><span class="label label-primary">￥' + data[i].price + '</span></td>'
+								+ '<td>' + data[i].title +'---'+data[i].houseType+'---'+ data[i].bedType+'<br>'+data[i].zip + '</td>'
+								+ '<td><div style="display: width: 15px"><input class="plus" style="width:15px" type="button" value="+"onclick="plus(this)" /></div><div style="display: width: 15px"><span class="quantity" type="text" style="width: 15px;" >0</span></div><div style="width: 15px;"><input class="minus" style="width:15px" type="button" value="-" onclick="minus(this)"/></div></td>'
+								+ '<td><span class="label label-primary">' + data[i].price + '</span></td>'
 								+ '</tr>'
 						);
 					}
@@ -630,18 +635,72 @@
 						var title = data[i].tpTitle.substring(0, 9);
 						$("#order_table tbody").append(
 								'<tr>'
-								+ '<td>' + data[i].tpVid + '</td>'
+								+ '<td class="ID">' + data[i].tpVid + '</td>'
 								+ '<td><span class="label label-primary kind">景点</span></td>'
-								+ '<td>' + data[i].tpTitle +'---'+data[i].tpVtype+'---'+ data[i].tpLevel+'星级---'+data[i].zip + '</td>'
-								+ '<td><input id="min" type="button" value="-" /><input id="quantity" type="text" value="1" /><input id="add" type="button" value="+" /></td>'
-								+ '<td><span class="label label-primary">￥' + data[i].tpPrice + '</span></td>'
+								+ '<td>' + data[i].tpTitle +'---'+data[i].tpVtype+'---'+ data[i].tpLevel+'星级<br>'+data[i].tpZip + '</td>'
+								+ '<td><div style="display: width: 15px"><input class="plus" style="width:15px" type="button" value="+" onclick="plus(this)"/></div><div style="display: width: 15px"><span class="quantity" type="text" style="width: 15px;">0</span></div><div style="width: 15px;"><input class="minus" style="width:15px"  type="button" value="-" onclick="minus(this)"/></div></td>'
+								+ '<td><span class="label label-primary price">'+data[i].tpPrice+'</span></td>'
 								+ '</tr>'
 						);
 					}
 				}
 			});
 		}
+		// 计算总价
+		function Total() {
+			var tol=0;
+			var p=0;
+			var n=0;
 
+			$(".quantity").each(function (index,item) {
+					 p=parseInt($(this).parent().parent().next().find("span").text());
+					 n=parseInt($(this).parent().parent().find("span").text());
+					 tol=tol+p*n;
+			});
+			$("#total").text(tol);
+		}
+		function plus(obj){
+			var num = $(obj).parent().parent().find("span");//单品数量增加
+			num.text(parseInt(num.text())+1);
+			Total();
+		};
+		function minus(obj) {
+			var num = $(obj).parent().parent().find("span");
+			if (parseInt(num.text())) {
+				num.text(parseInt(num.text()) - 1);
+				Total();
+			} else {
+				num.text("0");
+			}
+		}
+		function sub_order() {
+			var IDs=new Array();
+			var Type=new Array();
+			var Num=new Array();
+			var totalPrice=$("#total");
+			$("#order_table tbody .ID").each(function (index,element) {
+				IDs.push($(this).text());
+				alert($(this).text());
+				Type.push($(this).next().find("span").text());
+				alert($(this).next().find("span").text());
+				Num.push($(this).next().next().next().find("span").text());
+				alert($(this).next().next().next().find("span").text());
+			});
+
+			$.ajax({
+				url: '/cust/HandleOrder',
+				type: 'GET',
+				data: {
+					IDs:IDs,
+					Num:Num,
+					Type:Type,
+					totalPrice:totalPrice,
+				},
+				success: function (data) {
+
+				}
+			});
+		}
 	</script>
 </body>
 </html>
