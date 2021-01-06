@@ -227,6 +227,7 @@
 						<table id="traffic_table" class="table table-bordered table-striped">
 							<thead>
 							<tr>
+								<th></th>
 								<th>类型</th>
 								<th>出发地</th>
 								<th>目的地</th>
@@ -329,6 +330,7 @@
             $("#hotel_cust").empty();
             var traf=$("#traffic-type").val();
             console.log(traf);
+
             if (currentCity != "" && desCity != ""&&traf=="ALL") {
                 // console.log(currentCity);
                 // console.log(desCity);

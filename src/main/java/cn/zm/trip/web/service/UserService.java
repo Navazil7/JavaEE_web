@@ -16,6 +16,16 @@ public interface UserService {
 	 * @return
 	 */
 	List<User> selectAll();
+	/**
+	 * 查询用户名
+	 * @return
+	 */
+	User selectbyname(String name);
+	/**
+	 * 查询用户邮箱
+	 * @return
+	 */
+	User selectbyemail(String email);
 
 	/**
 	 * 搜索功能
@@ -47,5 +57,6 @@ public interface UserService {
 	 * 用户信息新增
 	 */
 	void updataUserInfo(User user);
+
 
 }

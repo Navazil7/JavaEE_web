@@ -5,9 +5,11 @@ import cn.zm.trip.web.dao.ForumDao;
 import cn.zm.trip.web.domain.Forum;
 import cn.zm.trip.web.domain.ForumExample;
 import cn.zm.trip.web.domain.User;
-import cn.zm.trip.web.domain.ViewPoint;
+import cn.zm.trip.web.event.EmailEvent;
+import cn.zm.trip.web.event.EventPublisher;
 import cn.zm.trip.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +31,10 @@ public class UserController {
 	private ForumDao forumDao;
 	@Autowired
 	private ForumExample example;
-
+	@Autowired
+	private ApplicationContext applicationContext;
+	@Autowired
+	EventPublisher eventPublisher;
 	/**
 	 * index页用户登录
 	 */
@@ -90,6 +95,10 @@ public class UserController {
 		} else {
 			userService.insertUser(uname, uemail, upwd);
 			model.addAttribute("msg", Msg.success("用户注册成功!"));
+			//注册成功发送邮件
+			EmailEvent emailEvent=new EmailEvent(this,uemail,"注册成功");
+			eventPublisher.pushListener(emailEvent);
+//			applicationContext.publishEvent(emailEvent);
 			//注册成功后自动登录
 			String prefix = "/static/upload/useravatar/";
 			User user = userService.userLogin(new User(uemail, upwd));

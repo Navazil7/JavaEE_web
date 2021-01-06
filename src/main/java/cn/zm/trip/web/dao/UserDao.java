@@ -19,7 +19,16 @@ public interface UserDao {
 	 * @return
 	 */
 	List<User> selectAll();
-
+	/**
+	 * 查询用户名
+	 * @return
+	 */
+	User selectbyname(String name);
+	/**
+	 * 查询用户邮箱
+	 * @return
+	 */
+	User selectbyemail(String email);
 	/**
 	 * 用户模糊查询
 	 * @param user

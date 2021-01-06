@@ -37,6 +37,16 @@
 		SELECT <include refid="UserColumns"/> FROM tp_user
 	</select>
 
+	<!--查询by用户名-->
+	<select id="selectbyname" parameterType="String" resultType="User">
+		SELECT <include refid="UserColumns"/> FROM tp_user where tp_uname = #{uname};
+	</select>
+
+	<!--查询用户by邮箱-->
+	<select id="selectbyemail" parameterType="String" resultType="User">
+		SELECT <include refid="UserColumns"/> FROM tp_user where tp_uemail = #{uemail};
+	</select>
+
 	<!--用户列表模糊搜索-->
 	<select id="search" resultType="User">
 		SELECT
