@@ -4,110 +4,108 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
-/**
- * @author TyCoding
- * @date 2018/5/15 下午4:44
- */
 @Component
 public class Reply implements Serializable {
 
     //回复信息编号
-    private int lr_id;
+    private int tp_rid;
     //回复人
-    private String lr_name;
+    private String tp_rname;
     //回复时间
-    private String lr_date;
+    private String tp_rdate;
     //回复内容
-    private String lr_content;
+    private String tp_rcontent;
     //给谁回复
-    private String lr_for_name;
-    //哪条留下的回复言
-    private String lr_for_words;
-    //给哪条回复信息回复的
-    private String lr_for_reply;
-    //在哪篇文章下的回复
-    private String lr_for_article_id;
-    //在哪篇文章留言(id)
-    private String lr_forumId;
-    //在哪篇文章留言(id)
-    private String lr_hotel_id;
+    private String tp_r_for_name;
+    //哪个留言的回复
+    private String tp_r_for_words;
+    //哪个回复的回复
+    private String tp_r_for_reply;
+    //在哪个景点下的回复
+    private String tp_r_viewpointId;
+    //在哪个帖子的回复
+    private String tp_r_forumId;
+    //在哪个酒店的回复
+    private String tp_r_hotelId;
 
-    public int getLr_id() {
-        return lr_id;
+    public int getTp_rid() {
+        return tp_rid;
     }
 
-    public void setLr_id(int lr_id) {
-        this.lr_id = lr_id;
+    public void setTp_rid(int tp_rid) {
+        this.tp_rid = tp_rid;
     }
 
-    public String getLr_name() {
-        return lr_name;
+    public String getTp_rname() {
+        return tp_rname;
     }
 
-    public void setLr_name(String lr_name) {
-        this.lr_name = lr_name;
+    public void setTp_rname(String tp_rname) {
+        this.tp_rname = tp_rname;
     }
 
-    public String getLr_date() {
-        return lr_date;
+    public String getTp_rdate() {
+        return tp_rdate;
     }
 
-    public void setLr_date(String lr_date) {
-        this.lr_date = lr_date;
+    public void setTp_rdate(String tp_rdate) {
+        this.tp_rdate = tp_rdate;
     }
 
-    public String getLr_content() {
-        return lr_content;
+    public String getTp_rcontent() {
+        return tp_rcontent;
     }
 
-    public void setLr_content(String lr_content) {
-        this.lr_content = lr_content;
+    public void setTp_rcontent(String tp_rcontent) {
+        this.tp_rcontent = tp_rcontent;
     }
 
-    public String getLr_for_name() {
-        return lr_for_name;
+    public String getTp_r_for_name() {
+        return tp_r_for_name;
     }
 
-    public void setLr_for_name(String lr_for_name) {
-        this.lr_for_name = lr_for_name;
+    public void setTp_r_for_name(String tp_r_for_name) {
+        this.tp_r_for_name = tp_r_for_name;
     }
 
-    public String getLr_for_words() {
-        return lr_for_words;
+    public String getTp_r_for_words() {
+        return tp_r_for_words;
     }
 
-    public void setLr_for_words(String lr_for_words) {
-        this.lr_for_words = lr_for_words;
+    public void setTp_r_for_words(String tp_r_for_words) {
+        this.tp_r_for_words = tp_r_for_words;
     }
 
-    public String getLr_for_reply() {
-        return lr_for_reply;
+    public String getTp_r_for_reply() {
+        return tp_r_for_reply;
     }
 
-    public void setLr_for_reply(String lr_for_reply) {
-        this.lr_for_reply = lr_for_reply;
+    public void setTp_r_for_reply(String tp_r_for_reply) {
+        this.tp_r_for_reply = tp_r_for_reply;
     }
 
-    public String getLr_for_article_id() {
-        return lr_for_article_id;
+    public String getTp_r_viewpointId() {
+        return tp_r_viewpointId;
     }
 
-    public void setLr_for_article_id(String lr_for_article_id) {
-        this.lr_for_article_id = lr_for_article_id;
-    }
-    public String getLr_forumId() {
-        return lr_forumId;
+    public void setTp_r_viewpointId(String tp_r_viewpointId) {
+        this.tp_r_viewpointId = tp_r_viewpointId;
     }
 
-    public void setLr_forumId(String lr_forumId) {
-        this.lr_forumId = lr_forumId;
+    public String getTp_r_forumId() {
+        return tp_r_forumId;
     }
 
-    public String getLr_hotel_id() {
-        return lr_hotel_id;
+    public void setTp_r_forumId(String tp_r_forumId) {
+        this.tp_r_forumId = tp_r_forumId;
     }
 
-    public void setLr_hotel_id(String lr_hotel_id) {
-        this.lr_hotel_id = lr_hotel_id;
+    public String getTp_r_hotelId() {
+        return tp_r_hotelId;
+    }
+
+    public void setTp_r_hotelId(String tp_r_hotelId) {
+        this.tp_r_hotelId = tp_r_hotelId;
     }
 }
+

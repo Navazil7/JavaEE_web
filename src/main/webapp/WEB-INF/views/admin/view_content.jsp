@@ -30,7 +30,7 @@
 			<ol class="breadcrumb">
 				<br>
 				<li><a href="#"><i class="fa fa-users"></i> Operate </a></li>
-				<li class="active">Users</li>
+				<li class="active">View</li>
 			</ol>
 		</section>
 

@@ -26,19 +26,36 @@ public class TrafficController {
 	 * @param model
 	 * @return
 	 */
-	@ResponseBody
 	@RequestMapping(value = "selectByCurrentAndDestination", method = RequestMethod.GET)
-	public List<Traffic> traffic(String currentCity, String desCity, Model model) {
+	@ResponseBody
+	public List<Traffic> traffic(String currentCity, String desCity,String trafic,Model model) {
 		TrafficExample example = new TrafficExample();
 		List<Traffic> traffics = trafficDao.selectByExample(example);
 
 		List<Traffic> queryTraffics = new ArrayList<>();
 
-		for(Traffic traffic : traffics){
-			if (currentCity.equals(traffic.getTpCurrent()) && desCity.equals(traffic.getTpDestination())){
-				queryTraffics.add(traffic);
+		for(Traffic traffic : traffics) {
+			if (trafic.equals("ALL")) {
+				if (currentCity.equals(traffic.getTpCurrent()) && desCity.equals(traffic.getTpDestination())) {
+					queryTraffics.add(traffic);
+				}
+			} else {
+				if (currentCity.equals(traffic.getTpCurrent()) && desCity.equals(traffic.getTpDestination()) && traffic.getTpType().equals(trafic)) {
+					queryTraffics.add(traffic);
+				}
 			}
 		}
+		return queryTraffics;
+	}
+
+	@RequestMapping(value = "selectTrafficByid", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Traffic> trafficbyid(int traffic_id,Model model) {
+		System.out.println("----------------"+traffic_id);
+		Traffic traffic = trafficDao.selectByPrimaryKey(traffic_id);
+		List<Traffic> queryTraffics = new ArrayList<>();
+		queryTraffics.add(traffic);
+		System.out.println("-----------------"+traffic.getTpTid());
 		return queryTraffics;
 	}
 }

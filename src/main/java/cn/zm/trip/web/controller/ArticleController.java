@@ -32,7 +32,7 @@ public class ArticleController {
 	@RequestMapping(value="/saveWords")
 	public String saveWords(Words words){
 		if(words != null){
-			String r_id = words.getLw_for_article_id();
+			String r_id = words.getTp_w_viewpointId();
 			viewPointService.saveWords(words);
 			return "redirect:toArticleView.do?r_id="+r_id;
 		}else{
@@ -47,7 +47,7 @@ public class ArticleController {
 	public String saveReply(Reply reply){
 		if(reply != null){
 			viewPointService.saveReply(reply);
-			String r_id = reply.getLr_for_article_id();
+			String r_id = reply.getTp_r_viewpointId();
 			return "redirect:toArticleView.do?r_id="+r_id;
 		}else{
 			return null;
@@ -87,7 +87,7 @@ public class ArticleController {
 	public String saveForumReply(Reply reply){
 		if(reply != null){
 			viewPointService.saveReply(reply);
-			String tpFid = reply.getLr_forumId();
+			String tpFid = reply.getTp_r_forumId();
 			return "redirect:toForumArticleView.do?tpFid=" + tpFid;
 		}else{
 			return null;
@@ -100,7 +100,7 @@ public class ArticleController {
 	@RequestMapping(value="/saveforumWords")
 	public String saveForumWords(Words words){
 		if(words != null){
-			String forumId = words.getLw_forumId();//获取什么类型的ID
+			String forumId = words.getTp_w_forumId();//获取什么类型的ID
 			viewPointService.saveWords(words);
 			return "redirect:toForumArticleView.do?tpFid=" + forumId;
 		}else{
@@ -143,7 +143,7 @@ public class ArticleController {
 	public String saveHotelReply(Reply reply){
 		if(reply != null){
 			viewPointService.saveReply(reply);
-			String hid = reply.getLr_hotel_id();
+			String hid = reply.getTp_r_hotelId();
 			return "redirect:toHotelArticleView.do?hid=" + hid;
 		}else{
 			return null;
@@ -156,7 +156,7 @@ public class ArticleController {
 	@RequestMapping(value="/saveHotelWords")
 	public String saveHotelWords(Words words){
 		if(words != null){
-			String hid = words.getLw_hotel_id();
+			String hid = words.getTp_w_hotelId();
 			viewPointService.saveWords(words);
 			return "redirect:toHotelArticleView.do?hid=" + hid;
 		}else{

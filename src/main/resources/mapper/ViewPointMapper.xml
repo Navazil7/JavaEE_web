@@ -366,86 +366,86 @@
 
 	<!--Words-->
 	<resultMap id="WordsBaseMap" type="cn.zm.trip.web.domain.Words">
-		<id column="lw_id" jdbcType="INTEGER" property="lw_id" />
-		<result column="lw_name" jdbcType="VARCHAR" property="lw_name" />
-		<result column="lw_date" jdbcType="VARCHAR" property="lw_date" />
-		<result column="lw_content" jdbcType="VARCHAR" property="lw_content" />
-		<result column="lw_for_name" jdbcType="VARCHAR" property="lw_for_name" />
-		<result column="lw_for_article_id" jdbcType="VARCHAR" property="lw_for_article_id" />
-		<result column="lw_forumId" jdbcType="VARCHAR" property="lw_forumId" />
-		<result column="lw_hotel_id" jdbcType="VARCHAR" property="lw_hotel_id" />
+		<id column="tp_wid" jdbcType="INTEGER" property="tp_wid" />
+		<result column="tp_wname" jdbcType="VARCHAR" property="tp_wname" />
+		<result column="tp_wdate" jdbcType="VARCHAR" property="tp_wdate" />
+		<result column="tp_wcontent" jdbcType="VARCHAR" property="tp_wcontent" />
+		<result column="tp_w_for_name" jdbcType="VARCHAR" property="tp_w_for_name" />
+		<result column="tp_w_viewpointId" jdbcType="VARCHAR" property="tp_w_viewpointId" />
+		<result column="tp_w_forumId" jdbcType="VARCHAR" property="tp_w_forumId" />
+		<result column="tp_w_hotelId" jdbcType="VARCHAR" property="tp_w_hotelId" />
 	</resultMap>
 
 	<!--Reply-->
 	<resultMap id="ReplyBaseMap" type="cn.zm.trip.web.domain.Reply">
-		<id column="lr_id" jdbcType="INTEGER" property="lr_id" />
-		<result column="lr_name" jdbcType="VARCHAR" property="lr_name" />
-		<result column="lr_date" jdbcType="VARCHAR" property="lr_date" />
-		<result column="lr_content" jdbcType="VARCHAR" property="lr_content" />
-		<result column="lr_for_name" jdbcType="VARCHAR" property="lr_for_name" />
-		<result column="lr_for_words" jdbcType="VARCHAR" property="lr_for_words" />
-		<result column="lr_for_article_id" jdbcType="VARCHAR" property="lr_for_article_id" />
-		<result column="lr_forumId" jdbcType="VARCHAR" property="lr_forumId" />
-		<result column="lr_hotel_id" jdbcType="VARCHAR" property="lr_hotel_id" />
+		<id column="tp_rid" jdbcType="INTEGER" property="tp_rid" />
+		<result column="tp_rname" jdbcType="VARCHAR" property="tp_rname" />
+		<result column="tp_rdate" jdbcType="VARCHAR" property="tp_rdate" />
+		<result column="tp_rcontent" jdbcType="VARCHAR" property="tp_rcontent" />
+		<result column="tp_r_for_name" jdbcType="VARCHAR" property="tp_r_for_name" />
+		<result column="tp_r_for_words" jdbcType="VARCHAR" property="tp_r_for_words" />
+		<result column="tp_r_viewpointId" jdbcType="VARCHAR" property="tp_r_viewpointId" />
+		<result column="tp_r_forumId" jdbcType="VARCHAR" property="tp_r_forumId" />
+		<result column="tp_r_hotelId" jdbcType="VARCHAR" property="tp_r_hotelId" />
 	</resultMap>
 
 
 	<!-- 保存留言信息 -->
 	<insert id="saveWords" parameterType="cn.zm.trip.web.domain.Words">
-        insert into words(
-          lw_name,
-          lw_date,
-          lw_content,
-          lw_for_name,
-          lw_for_article_id,
-          lw_forumId,
-          lw_hotel_id
+        insert into tp_words(
+          tp_wname,
+          tp_wdate,
+          tp_wcontent,
+          tp_w_for_name,
+          tp_w_viewpointId,
+          tp_w_forumId,
+          tp_w_hotelId
         )
         values(
-          #{lw_name},
-          #{lw_date},
-          #{lw_content},
-          #{lw_for_name},
-          #{lw_for_article_id},
-          #{lw_forumId},
-          #{lw_hotel_id}
+          #{tp_wname},
+          #{tp_wdate},
+          #{tp_wcontent},
+          #{tp_w_for_name},
+          #{tp_w_viewpointId},
+          #{tp_w_forumId},
+          #{tp_w_hotelId}
         )
     </insert>
 
 	<!-- 保存回复信息 -->
 	<insert id="saveReply" parameterType="cn.zm.trip.web.domain.Reply">
-        insert into reply(
-          lr_name,
-          lr_date,
-          lr_content,
-          lr_for_name,
-          lr_for_words,
-          lr_for_reply,
-          lr_for_article_id,
-          lr_forumId,
-          lr_hotel_id
+        insert into tp_reply(
+          tp_rname,
+          tp_rdate,
+          tp_rcontent,
+          tp_r_for_name,
+          tp_r_for_words,
+          tp_r_for_reply,
+          tp_r_viewpointId,
+          tp_r_forumId,
+          tp_r_hotelId
         )
         values(
-          #{lr_name},
-          #{lr_date},
-          #{lr_content},
-          #{lr_for_name},
-          #{lr_for_words},
-          #{lr_for_reply},
-          #{lr_for_article_id},
-          #{lr_forumId},
-          #{lr_hotel_id}
+          #{tp_rname},
+          #{tp_rdate},
+          #{tp_rcontent},
+          #{tp_r_for_name},
+          #{tp_r_for_words},
+          #{tp_r_for_reply},
+          #{tp_r_viewpointId},
+          #{tp_r_forumId},
+          #{tp_r_hotelId}
         )
     </insert>
 
 	<!-- 查询所有留言信息 -->
 	<select id="findByWords" resultMap="WordsBaseMap">
-        select * from words
+        select * from tp_words
     </select>
 
 	<!-- 查询所有回复信息 -->
 	<select id="findByReply" resultMap="ReplyBaseMap">
-        select * from reply
+        select * from tp_reply
     </select>
 
 

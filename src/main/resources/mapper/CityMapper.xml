@@ -152,4 +152,11 @@
       tp_cprovince = #{tpCprovince,jdbcType=VARCHAR}
     where tp_cid = #{tpCid,jdbcType=INTEGER}
   </update>
+
+
+<!--  返回所有城市-->
+  <select id="selectAllCity" resultMap="BaseResultMap">
+    select * from tp_city
+  </select>
+
 </mapper>

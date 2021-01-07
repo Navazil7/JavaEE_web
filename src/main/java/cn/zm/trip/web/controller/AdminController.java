@@ -43,6 +43,8 @@ public class AdminController {
 	private WordsDao wordsDao;
 	@Autowired
 	private ReplyDao replyDao;
+	@Autowired
+	private StationDao stationDao;
 
 	/**
 	 * **********login start***************
@@ -214,6 +216,56 @@ public class AdminController {
 	}
 
 	/**
+	 * 后台评论模糊搜索
+	 */
+	@RequestMapping(value = "wordsPointSearch", method = RequestMethod.GET)
+	public String wordsPointSearch(String keyword, Model model) {
+
+		Words words = new Words();
+
+		words.setTp_wname(keyword);
+		words.setTp_wcontent(keyword);
+		words.setTp_wdate(keyword);
+		words.setTp_w_for_name(keyword);
+		words.setTp_w_forumId(keyword);
+		words.setTp_w_hotelId(keyword);
+		words.setTp_w_viewpointId(keyword);
+
+		List<Words> byWords = wordsDao.wordsPointSearch(words);
+
+		model.addAttribute("byWords", byWords);
+		model.addAttribute("msg", Msg.success("留言查询成功!"));
+
+		return "admin/words_list";
+	}
+
+	/**
+	 * 后台回复模糊搜索
+	 */
+	@RequestMapping(value = "replyPointSearch", method = RequestMethod.GET)
+	public String replyPointSearch(String keyword, Model model) {
+
+		Reply reply = new Reply();
+
+		reply.setTp_rname(keyword);
+		reply.setTp_rcontent(keyword);
+		reply.setTp_rdate(keyword);
+		reply.setTp_r_for_name(keyword);
+		reply.setTp_r_for_reply(keyword);
+		reply.setTp_r_for_words(keyword);
+		reply.setTp_r_forumId(keyword);
+		reply.setTp_r_hotelId(keyword);
+		reply.setTp_r_viewpointId(keyword);
+
+		List<Reply> replys = replyDao.replyPointSearch(reply);
+
+		model.addAttribute("replys", replys);
+		model.addAttribute("msg", Msg.success("回复查询成功!"));
+
+		return "admin/reply_list";
+	}
+
+	/**
 	 * 后台交通列表模糊搜索
 	 */
 	@RequestMapping(value = "trafficPointSearch", method = RequestMethod.GET)
@@ -231,6 +283,26 @@ public class AdminController {
 		model.addAttribute("msg", Msg.success("交通查询成功!"));
 
 		return "admin/traffic_list";
+	}
+
+	/**
+	 * 后台站点列表模糊搜索
+	 */
+	@RequestMapping(value = "stationPointSearch", method = RequestMethod.GET)
+	public String stationPointSearch(String keyword, Model model) {
+
+		Station station = new Station();
+
+		station.setTpSname(keyword);
+		station.setTpSlocal(keyword);
+		station.setTpScity(keyword);
+
+		List<Station> stations = stationDao.stationPointSearch(station);
+
+		model.addAttribute("stations", stations);
+		model.addAttribute("msg", Msg.success("站点查询成功!"));
+
+		return "admin/station_list";
 	}
 
 	/**
@@ -460,6 +532,29 @@ public class AdminController {
 	}
 
 	/**
+	 * 跳转
+	 * 站点编辑
+	 */
+	@RequestMapping(value = "stationedit", method = RequestMethod.GET)
+	public String stationEdit(Integer tpSid, Model model) {
+
+		Station station = stationDao.selectByPrimaryKey(tpSid);
+
+		model.addAttribute("station", station);
+		return "admin/station_edit";
+	}
+
+	/**
+	 * 跳转站点更新业务
+	 */
+	@RequestMapping(value = "stationedithandle", method = RequestMethod.POST)
+	public String stationedithandle(Station station) {
+		stationDao.updateByPrimaryKeySelective(station);
+		session.setAttribute("msg", Msg.success("站点信息保存成功!"));
+		return "redirect:stationList";
+	}
+
+	/**
 	 * 跳转景点更新业务
 	 */
 	@RequestMapping(value = "hoteledithandle", method = RequestMethod.POST)
@@ -510,11 +605,25 @@ public class AdminController {
 	public String hotelInsert(Hotel hotel, Model model) {
 		if (hotel.getHid() == null) {
 			hotelDao.insertSelective(hotel);
-			model.addAttribute("msg", Msg.success("新增景点成功!"));
+			model.addAttribute("msg", Msg.success("新增酒店成功!"));
 			return "redirect:hotellist";
 		}
-		model.addAttribute("msg", Msg.fail("新增景点失败!"));
+		model.addAttribute("msg", Msg.fail("新增酒店失败!"));
 		return "redirect:hoteledit";
+	}
+
+	/**
+	 * 站店新增
+	 */
+	@RequestMapping(value = "stationInsert", method = RequestMethod.POST)
+	public String stationInsert(Station station, Model model) {
+		if (station.getTpSid() == null) {
+			stationDao.insertSelective(station);
+			model.addAttribute("msg", Msg.success("新增站点成功!"));
+			return "redirect:stationList";
+		}
+		model.addAttribute("msg", Msg.fail("新增站点失败!"));
+		return "redirect:stationedit";
 	}
 
 	/**
@@ -614,6 +723,21 @@ public class AdminController {
 		return "admin/traffic_list";
 	}
 
+	/**Station**
+	 * 跳转站点列表页面
+	 */
+	@RequestMapping(value = "stationList", method = RequestMethod.GET)
+	public String stationList(Model model) {
+		StationExample example = new StationExample();
+		example.setOrderByClause("tp_sid desc");
+		List<Station> stations = stationDao.selectByExample(example);
+
+		model.addAttribute("stations", stations);
+		return "admin/station_list";
+	}
+
+
+
 	/**
 	 * 跳转交通新增页面
 	 * @return
@@ -621,6 +745,15 @@ public class AdminController {
 	@RequestMapping(value = "trafficInsert", method = RequestMethod.GET)
 	public String trafficInsert() {
 		return "admin/traffic_insert";
+	}
+
+	/**
+	 * 跳转站点新增页面
+	 * @return
+	 */
+	@RequestMapping(value = "stationInsert", method = RequestMethod.GET)
+	public String stationInsert() {
+		return "admin/station_insert";
 	}
 
 	/**
@@ -670,6 +803,32 @@ public class AdminController {
 	}
 
 	/**
+	 * 单机删除
+	 * @return
+	 */
+	@RequestMapping(value = "stationDelete", method = RequestMethod.GET)
+	public String stationDelete(Integer tpSid, Model model) {
+		stationDao.deleteByPrimaryKey(tpSid);
+		model.addAttribute("msg", Msg.success(tpSid + "号删除成功！"));
+		return "redirect:stationList";
+	}
+	/**
+	 * 批量删除
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "stationMutiDelete", method = RequestMethod.GET)
+	public String stationsMutiDelete(Integer[] tpSids, Model model) {
+
+		for (Integer tpSid : tpSids){
+			stationDao.deleteByPrimaryKey(tpSid);
+
+		}
+		model.addAttribute("msg", Msg.success(Arrays.toString(tpSids) + "号删除成功！"));
+		return "1";
+	}
+
+	/**
 	 * 跳转交通编辑页面
 	 * @return String
 	 */
@@ -701,6 +860,7 @@ public class AdminController {
 		return "redirect:trafficList";
 	}
 
+
 	/**
 	 * 跳转评论列表
 	 * @return
@@ -718,13 +878,13 @@ public class AdminController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "wordsMutiDelete", method = RequestMethod.GET)
-	public String wordsMutiDelete(Integer[] lw_ids, Model model) {
+	public String wordsMutiDelete(Integer[] tp_wids, Model model) {
 
-		for (Integer lw_id : lw_ids){
-			wordsDao.deleteByPrimaryKey(lw_id);
+		for (Integer tp_wid : tp_wids){
+			wordsDao.deleteByPrimaryKey(tp_wid);
 
 		}
-		model.addAttribute("msg", Msg.success(Arrays.toString(lw_ids) + "号删除成功！"));
+		model.addAttribute("msg", Msg.success(Arrays.toString(tp_wids) + "号删除成功！"));
 		return "1";
 	}
 
@@ -733,9 +893,9 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping(value = "wordsDelete", method = RequestMethod.GET)
-	public String wordsDelete(Integer lw_id, Model model) {
-		wordsDao.deleteByPrimaryKey(lw_id);
-		model.addAttribute("msg", Msg.success(lw_id + "号删除成功！"));
+	public String wordsDelete(Integer tp_wid, Model model) {
+		wordsDao.deleteByPrimaryKey(tp_wid);
+		model.addAttribute("msg", Msg.success(tp_wid + "号删除成功！"));
 		return "redirect:wordsList";
 	}
 
@@ -756,12 +916,12 @@ public class AdminController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "replyMutiDelete", method = RequestMethod.GET)
-	public String replyMutiDelete(Integer[] lr_ids, Model model) {
-		for (Integer lr_id : lr_ids){
-			replyDao.deleteByPrimaryKey(lr_id);
+	public String replyMutiDelete(Integer[] tp_rids, Model model) {
+		for (Integer tp_rid : tp_rids){
+			replyDao.deleteByPrimaryKey(tp_rid);
 
 		}
-		model.addAttribute("msg", Msg.success(Arrays.toString(lr_ids) + "号删除成功！"));
+		model.addAttribute("msg", Msg.success(Arrays.toString(tp_rids) + "号删除成功！"));
 		return "1";
 	}
 
@@ -770,9 +930,9 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping(value = "replyDelete", method = RequestMethod.GET)
-	public String replyDelete(Integer lr_id, Model model) {
-		replyDao.deleteByPrimaryKey(lr_id);
-		model.addAttribute("msg", Msg.success(lr_id + "号删除成功！"));
+	public String replyDelete(Integer tp_rid, Model model) {
+		replyDao.deleteByPrimaryKey(tp_rid);
+		model.addAttribute("msg", Msg.success(tp_rid + "号删除成功！"));
 		return "redirect:replyList";
 	}
 

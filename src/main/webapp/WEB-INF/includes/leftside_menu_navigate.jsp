@@ -14,7 +14,9 @@
                 <p>${admin.aname}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
-        </div>
+        </div><li class="treeview">
+
+    </li>
 
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
@@ -96,14 +98,27 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-car"></i> <span>交通管理</span>
+                    <i class="fa fa-car"></i> <span>交通票据管理</span>
                     <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/admin/trafficList" target="admin"><i class="fa fa-circle-o"></i>交通列表</a></li>
-                    <li><a href="/admin/trafficInsert" target="admin"><i class="fa fa-circle-o"></i>交通新增</a></li>
+                    <li><a href="/admin/trafficList" target="admin"><i class="fa fa-circle-o"></i>票据列表</a></li>
+                    <li><a href="/admin/trafficInsert" target="admin"><i class="fa fa-circle-o"></i>票据新增</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-plane"></i> <span>交通站点管理</span>
+                    <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin/stationList" target="admin"><i class="fa fa-circle-o"></i>站点列表</a></li>
+                    <li><a href="/admin/stationInsert" target="admin"><i class="fa fa-circle-o"></i>站点新增</a></li>
                 </ul>
             </li>
 

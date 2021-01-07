@@ -13,84 +13,83 @@ import java.io.Serializable;
 public class Words implements Serializable {
 
     //编号
-    private Integer lw_id;
+    private Integer tp_wid;
     //留言人
-    private String lw_name;
+    private String tp_wname;
     //留言时间
-    private String lw_date;
+    private String tp_wdate;
     //留言内容
-    private String lw_content;
+    private String tp_wcontent;
     //给谁留言
-    private String lw_for_name;
+    private String tp_w_for_name;
+    //在哪个景点留言(id)
+    private String tp_w_viewpointId;
     //在哪篇文章留言(id)
-    private String lw_for_article_id;
-    //在哪篇文章留言(id)
-    private String lw_forumId;
-    //在哪篇文章留言(id)
-    private String lw_hotel_id;
+    private String tp_w_forumId;
+    //在哪家酒店留言(id)
+    private String tp_w_hotelId;
 
-
-    public int getLw_id() {
-        return lw_id;
+    public Integer getTp_wid() {
+        return tp_wid;
     }
 
-    public void setLw_id(int lw_id) {
-        this.lw_id = lw_id;
+    public void setTp_wid(Integer tp_wid) {
+        this.tp_wid = tp_wid;
     }
 
-    public String getLw_name() {
-        return lw_name;
+    public String getTp_wname() {
+        return tp_wname;
     }
 
-    public void setLw_name(String lw_name) {
-        this.lw_name = lw_name;
+    public void setTp_wname(String tp_wname) {
+        this.tp_wname = tp_wname;
     }
 
-    public String getLw_date() {
-        return lw_date;
+    public String getTp_wdate() {
+        return tp_wdate;
     }
 
-    public void setLw_date(String lw_date) {
-        this.lw_date = lw_date;
+    public void setTp_wdate(String tp_wdate) {
+        this.tp_wdate = tp_wdate;
     }
 
-    public String getLw_content() {
-        return lw_content;
+    public String getTp_wcontent() {
+        return tp_wcontent;
     }
 
-    public void setLw_content(String lw_content) {
-        this.lw_content = lw_content;
+    public void setTp_wcontent(String tp_wcontent) {
+        this.tp_wcontent = tp_wcontent;
     }
 
-    public String getLw_for_name() {
-        return lw_for_name;
+    public String getTp_w_for_name() {
+        return tp_w_for_name;
     }
 
-    public void setLw_for_name(String lw_for_name) {
-        this.lw_for_name = lw_for_name;
+    public void setTp_w_for_name(String tp_w_for_name) {
+        this.tp_w_for_name = tp_w_for_name;
     }
 
-    public String getLw_for_article_id() {
-        return lw_for_article_id;
+    public String getTp_w_viewpointId() {
+        return tp_w_viewpointId;
     }
 
-    public void setLw_for_article_id(String lw_for_article_id) {
-        this.lw_for_article_id = lw_for_article_id;
+    public void setTp_w_viewpointId(String tp_w_viewpointId) {
+        this.tp_w_viewpointId = tp_w_viewpointId;
     }
 
-    public String getLw_forumId() {
-        return lw_forumId;
+    public String getTp_w_forumId() {
+        return tp_w_forumId;
     }
 
-    public void setLw_forumId(String lw_forumId) {
-        this.lw_forumId = lw_forumId;
+    public void setTp_w_forumId(String tp_w_forumId) {
+        this.tp_w_forumId = tp_w_forumId;
     }
 
-    public String getLw_hotel_id() {
-        return lw_hotel_id;
+    public String getTp_w_hotelId() {
+        return tp_w_hotelId;
     }
 
-    public void setLw_hotel_id(String lw_hotel_id) {
-        this.lw_hotel_id = lw_hotel_id;
+    public void setTp_w_hotelId(String tp_w_hotelId) {
+        this.tp_w_hotelId = tp_w_hotelId;
     }
 }

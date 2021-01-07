@@ -10,6 +10,7 @@
 <head>
 	<title>View | 景点</title>
 	<jsp:include page="../../../includes/header.jsp"/>
+	<script type="text/javascript" src="../../static/assets/js/user/login.js"></script>
 </head>
 
 <body class="skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
@@ -51,7 +52,7 @@
 					<c:forEach items="${viewPoints}" var="viewPoint">
 						<%--自定义内容--%>
 						<div class="col-sm-6 col-md-4 col-lg-3 viewpages">
-							<div class="thumbnail" style="height: 420px;">
+							<div class="thumbnail" style="height: 570px;">
 								<a href="/view/content?tpVid=${viewPoint.tpVid}">
 									<img src="${viewPoint.tpVpic}" alt="..." class="img-rounded">
 								</a>
@@ -61,14 +62,17 @@
 											<div class="col-md-12">
 												<h3>${fn:substring(viewPoint.tpTitle,0,30)}</h3>
 												<h5>
-													[${viewPoint.tpVname}&nbsp;<small>| ${viewPoint.tpLocation}</small>
+													[${viewPoint.tpVname}&nbsp;<small>| ${viewPoint.tpVcity}</small>
 													]
 												</h5>
 												<strong>等级: ${viewPoint.tpLevel}</strong>|<strong>开放时间: ${viewPoint.tpOpentime}</strong>|<strong>类型: ${viewPoint.tpVtype}</strong><br>
-												详细地址:${fn:substring(viewPoint.tpZip,0,7)}...<br/>电话: ${viewPoint.tpVphone}
+												详细地址:${fn:substring(viewPoint.tpLocation,0,7)}...<br/>电话: ${viewPoint.tpVphone}
 												<div class="form-group" style="text-align: right;">
 													<a class="btn" style="color: #0b97c4"
 													   href="/view/content?tpVid=${viewPoint.tpVid}">查看更多 »</a>
+												</div>
+												<div align="center">
+													<button style="width: 60px" class="btn-google" onclick="isLogin(1,${viewPoint.tpVid},${user.uid})">预订</button>
 												</div>
 											</div>
 										</div>

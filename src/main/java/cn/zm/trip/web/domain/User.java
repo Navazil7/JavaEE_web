@@ -7,136 +7,140 @@ import java.util.Date;
 
 @Component
 public class User implements Serializable {
-	private String uid;
-	private String uname;
-	private String uemail;
-	private String upwd;
-	private String age;
-	private String gender;
-	private String upic;
-	private String phone;
-	private Date regDate;
-	private Date updateTime;
-	private String tp_like;
+    private String uid;
+    private String uname;
+    private String uemail;
+    private String upwd;
+    private String age;
+    private String gender;
+    private String upic;
+    private String phone;
+    private Date regDate;
+    private Date updateTime;
+    private String tp_like;
 
-	public User(String uname, String uemail, String upwd) {
-		this.uname = uname;
-		this.uemail = uemail;
-		this.upwd = upwd;
-		this.regDate = new Date();
-		this.updateTime = new Date();
-	}
+    public User(String uname, String uemail, String upwd) {
+        this.uname = uname;
+        this.uemail = uemail;
+        this.upwd = upwd;
+        this.regDate = new Date();
+        this.updateTime = new Date();
+    }
 
-	public User(String uemail, String upwd) {
-		this.uemail = uemail;
-		this.upwd = upwd;
-		this.regDate = new Date();
-		this.updateTime = new Date();
-	}
+    public User(String uemail, String upwd) {
+        this.uemail = uemail;
+        this.upwd = upwd;
+        this.regDate = new Date();
+        this.updateTime = new Date();
+    }
 
-	public User() {
-		this.regDate = new Date();
-		this.updateTime = new Date();
-	}
+    public User() {
+        this.regDate = new Date();
+        this.updateTime = new Date();
+    }
 
-	public String getUid() {
-		return uid;
-	}
+    public String getUid() {
+        return uid;
+    }
 
-	public void setUid(String uid) {
-		this.uid = uid;
-	}
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
-	public String getUname() {
-		return uname;
-	}
+    public String getUname() {
+        return uname;
+    }
 
-	public void setUname(String uname) {
-		this.uname = uname;
-	}
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
 
-	public String getUemail() {
-		return uemail;
-	}
+    public String getUemail() {
+        return uemail;
+    }
 
-	public void setUemail(String uemail) {
-		this.uemail = uemail;
-	}
+    public void setUemail(String uemail) {
+        this.uemail = uemail;
+    }
 
-	public String getUpwd() {
-		return upwd;
-	}
+    public String getUpwd() {
+        return upwd;
+    }
 
-	public void setUpwd(String upwd) {
-		this.upwd = upwd;
-	}
+    public void setUpwd(String upwd) {
+        this.upwd = upwd;
+    }
 
-	public String getAge() {
-		return age;
-	}
+    public String getAge() {
+        return age;
+    }
 
-	public void setAge(String age) {
-		this.age = age;
-	}
+    public void setAge(String age) {
+        this.age = age;
+    }
 
-	public String getGender() {
-		return gender;
-	}
+    public String getGender() {
+        return gender;
+    }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-	public String getUpic() {
-		return upic;
-	}
+    public String getUpic() {
+        return upic;
+    }
 
-	public void setUpic(String upic) {
-		this.upic = upic;
-	}
+    public void setUpic(String upic) {
+        this.upic = upic;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public Date getRegDate() {
-		return regDate;
-	}
+    public Date getRegDate() {
+        return regDate;
+    }
 
-	public Date getUpdateTime() {
-		return updateTime;
-	}
+    public void setRegDate(Date regDate) {
+        this.regDate = regDate;
+    }
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
+    public Date getUpdateTime() {
+        return updateTime;
+    }
 
-	public String getTp_like() {
-		return tp_like;
-	}
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 
-	public void setTp_like(String tp_like) {
-		this.tp_like = tp_like;
-	}
+    public String getTp_like() {
+        return tp_like;
+    }
 
-	@Override
-	public String toString() {
-		return "User{" +
-				"uid='" + uid + '\'' +
-				", uname='" + uname + '\'' +
-				", uemail='" + uemail + '\'' +
-				", upwd='" + upwd + '\'' +
-				", age='" + age + '\'' +
-				", gender='" + gender + '\'' +
-				", upic='" + upic + '\'' +
-				", phone='" + phone + '\'' +
-				", regDate=" + regDate +
-				", updateTime=" + updateTime +
-				", tp_like='" + tp_like + '\'' +
-				'}';
-	}
+    public void setTp_like(String tp_like) {
+        this.tp_like = tp_like;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "uid='" + uid + '\'' +
+                ", uname='" + uname + '\'' +
+                ", uemail='" + uemail + '\'' +
+                ", upwd='" + upwd + '\'' +
+                ", age='" + age + '\'' +
+                ", gender='" + gender + '\'' +
+                ", upic='" + upic + '\'' +
+                ", phone='" + phone + '\'' +
+                ", regDate=" + regDate +
+                ", updateTime=" + updateTime +
+                ", tp_like='" + tp_like + '\'' +
+                '}';
+    }
 }

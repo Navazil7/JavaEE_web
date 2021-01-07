@@ -30,8 +30,8 @@
 
 			<ol class="breadcrumb">
 				<br>
-				<li><a href="#"><i class="fa fa-users"></i> Traffic </a></li>
-				<li class="active">列表</li>
+				<li><a href="#"><i class="fa fa-users"></i> Operate </a></li>
+				<li class="active">Traffic</li>
 			</ol>
 		</section>
 

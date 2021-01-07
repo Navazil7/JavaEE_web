@@ -57,7 +57,7 @@
 					</div>
 					<div class="box-tools">
 						<%--模糊搜索框--%>
-						<form action="/admin/usersearch" method="get">
+						<form action="/admin/wordsPointSearch" method="get">
 							<div class="input-group input-group-sm" style="width: 150px;">
 								<input type="text" name="keyword" class="form-control pull-right" placeholder="模糊搜索...">
 
@@ -95,20 +95,20 @@
 						<tr>
 							<td>
 								<label>
-									<input name="lw_id" value="${byWord.lw_id}" type="checkbox"
+									<input name="tp_wid" value="${byWord.tp_wid}" type="checkbox"
 									       class="minimal minimal-myminor">
 								</label>
 							</td>
-							<td>${byWord.lw_id}</td>
-							<td><span class="label label-primary">${byWord.lw_name}</span></td>
-							<td>${byWord.lw_date}</td>
-							<td>${byWord.lw_content}</td>
-							<td>${byWord.lw_for_name}</td>
-							<td>${byWord.lw_for_article_id}</td>
-							<td>${byWord.lw_forumId}</td>
-							<td>${byWord.lw_hotel_id}</td>
+							<td>${byWord.tp_wid}</td>
+							<td><span class="label label-primary">${byWord.tp_wname}</span></td>
+							<td>${byWord.tp_wdate}</td>
+							<td>${byWord.tp_wcontent}</td>
+							<td>${byWord.tp_w_for_name}</td>
+							<td>${byWord.tp_w_viewpointId}</td>
+							<td>${byWord.tp_w_forumId}</td>
+							<td>${byWord.tp_w_hotelId}</td>
 							<td>
-								<a href="/admin/wordsDelete?lw_id=${byWord.lw_id}" class="btn btn-danger  btn-xs"><i
+								<a href="/admin/wordsDelete?tp_wid=${byWord.tp_wid}" class="btn btn-danger  btn-xs"><i
 										class="fa fa-trash"></i>删除
 								</a>
 							</td>
@@ -145,12 +145,12 @@
         console.log(_checkbox.length);
 
         $(".usersectiondelete").click(function () {
-            var lw_ids = [];
+            var tp_wids = [];
             var seletes = $(".minimal-myminor");
             console.log(seletes);
             for (var i = 0; i < seletes.length; i++) {
                 if ($(seletes[i]).prop("checked")) {
-                    lw_ids.push($(seletes[i]).val());
+                    tp_wids.push($(seletes[i]).val());
                 }
             }
 
@@ -158,7 +158,7 @@
                 url: "wordsMutiDelete",
                 type: "GET",
                 data: {
-                    "lw_ids": lw_ids
+                    "tp_wids": tp_wids
                 },
                 traditional: true,
                 success: function (message) {

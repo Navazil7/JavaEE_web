@@ -10,6 +10,7 @@
 <head>
 	<title>Hotel | 酒店</title>
 	<jsp:include page="../../../includes/header.jsp"/>
+	<script type="text/javascript" src="../../static/assets/js/user/login.js"></script>
 </head>
 
 <body class="skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
@@ -64,7 +65,7 @@
 						<!-- ITEM -->
 						<div class="col-lg-1"></div>
 						<div class="col-sm-6 col-md-4 col-lg-5">
-							<div class="thumbnail"  style="height: 450px;">
+							<div class="thumbnail"  style="height: 470px;">
 								<a href="/hotel/content?hid=${hotel.hid}">
 										<%--<img src="${viewPoint.tpVpic}" alt="..." class="img-rounded">--%>
 									<img src="${hotel.imgUrl}" alt="...">
@@ -72,14 +73,17 @@
 								<div class="caption">
 									<h3>${hotel.title}</h3>
 									<ol>
-										<li><p style="color: #ffa309">城市：${hotel.local}|房屋类型：${hotel.houseType}|床类型：${hotel.bedType}</p> </li>
-										<li><p style="color: #0b93d5">价格：￥${hotel.price} | 详细地址：${hotel.zip}</p></li>
+										<li><p style="color: #ffa309">城市：${hotel.city}|房屋类型：${hotel.houseType}|床类型：${hotel.bedType}</p> </li>
+										<li><p style="color: #0b93d5">价格：￥${hotel.price} | 详细地址：${hotel.local}</p></li>
 									</ol>
 								</div>
 								<div class="form-group" style="text-align: right;">
 									<a class="btn" style="color: #0b97c4"
 									   href="/hotel/content?hid=${hotel.hid}">查看详情»</a>
 								</div>
+                                <div align="center">
+                                    <button style="width: 60px" class="btn-google" onclick="isLogin(2,${hotel.hid},${user.uid})">预订</button>
+                                </div>
 							</div>
 						</div>
 						<!-- END / ITEM -->

@@ -62,7 +62,7 @@ public class HotelController {
 	}
 
 	/**
-	 * 钱台酒店模糊搜索
+	 * 用户酒店模糊搜索
 	 */
 	@RequestMapping(value = "hotelPointSearch", method = RequestMethod.GET)
 	public String hotelPointSearch(String keyword, Model model) {

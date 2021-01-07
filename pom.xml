@@ -206,6 +206,20 @@
 			<version>${jackson.version}</version>
 		</dependency>
 		<!-- Json End -->
+
+		<!--spring支持-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>4.1.7.RELEASE</version>
+		</dependency>
+		<!--邮件发送-->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

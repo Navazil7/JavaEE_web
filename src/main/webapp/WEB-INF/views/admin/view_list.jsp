@@ -30,8 +30,8 @@
 
 			<ol class="breadcrumb">
 				<br>
-				<li><a href="#"><i class="fa fa-users"></i> Operate </a></li>
-				<li class="active">Users</li>
+				<li><a href="#"><i class="fa fa-users"></i> Views </a></li>
+				<li class="active">列表</li>
 			</ol>
 		</section>
 
@@ -77,7 +77,7 @@
 								</label>
 							</th>
 							<th>编码|Id</th>
-							<th>归属地|Local</th>
+							<th>城市|City</th>
 							<th>标题|Title</th>
 							<th>景点名|Name</th>
 							<th>类型|Type</th>
@@ -85,7 +85,9 @@
 							<th>等级|Level</th>
 							<th>票价|Price</th>
 							<th>缩图|Pic</th>
-							<th>地址|Zip</th>
+							<th>地址|Address</th>
+							<th>经度|Longitude</th>
+							<th>纬度|Latitude</th>
 							<th>开放时间|Open</th>
 							<th>创建时间|Create</th>
 							<th>操作|operate</th>
@@ -100,7 +102,7 @@
 									</label>
 								</td>
 								<td>${viewPoint.tpVid}</td>
-								<td><span class="label label-primary">${viewPoint.tpLocation}</span></td>
+								<td><span class="label label-primary">${viewPoint.tpVcity}</span></td>
 								<td>${fn:substring(viewPoint.tpTitle,0,3)}...</td>
 								<td>${fn:substring(viewPoint.tpVname,0,3)}...</td>
 								<td>${viewPoint.tpVtype}</td>
@@ -108,7 +110,9 @@
 								<td><span class="label label-primary">${viewPoint.tpLevel}</span></td>
 								<td>${viewPoint.tpPrice}</td>
 								<td><img style="width: 50px;height: 30px;" src="${viewPoint.tpVpic}" /></td>
-								<td>${fn:substring(viewPoint.tpZip,0,4)}...</td>
+								<td>${fn:substring(viewPoint.tpLocation,0,4)}...</td>
+								<td>${fn:substring(viewPoint.tpVlongitude,0,8)}...</td>
+								<td>${fn:substring(viewPoint.tpVlatitude,0,8)}...</td>
 								<td>${viewPoint.tpOpentime}</td>
 								<td><fmt:formatDate value="${viewPoint.tpCreattime}" pattern="yyyy-MM-dd"/></td>
 								<td>

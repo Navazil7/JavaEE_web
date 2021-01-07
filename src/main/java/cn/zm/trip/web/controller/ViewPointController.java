@@ -26,6 +26,14 @@ public class ViewPointController {
 	private ViewPointDao viewPointDao;
 
 	/**
+	 * 返回首页
+	 */
+	@RequestMapping(value = "index",method = RequestMethod.GET)
+	public  String backToIndex(){
+		return "redirect:/index";
+	}
+
+	/**
 	 * 旅游景点跳转
 	 * @return
 	 */

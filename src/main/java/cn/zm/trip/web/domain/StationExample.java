@@ -324,6 +324,76 @@ public class StationExample {
             return (Criteria) this;
         }
 
+        public Criteria andTpStypeIsNull() {
+            addCriterion("tp_stype is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStypeIsNotNull() {
+            addCriterion("tp_stype is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStypeEqualTo(String value) {
+            addCriterion("tp_stype =", value, "tpStype");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStypeNotEqualTo(String value) {
+            addCriterion("tp_stype <>", value, "tpStype");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStypeGreaterThan(String value) {
+            addCriterion("tp_stype >", value, "tpStype");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStypeGreaterThanOrEqualTo(String value) {
+            addCriterion("tp_stype >=", value, "tpStype");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStypeLessThan(String value) {
+            addCriterion("tp_stype <", value, "tpStype");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStypeLessThanOrEqualTo(String value) {
+            addCriterion("tp_stype <=", value, "tpStype");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStypeLike(String value) {
+            addCriterion("tp_stype like", value, "tpStype");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStypeNotLike(String value) {
+            addCriterion("tp_stype not like", value, "tpStype");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStypeIn(List<String> values) {
+            addCriterion("tp_stype in", values, "tpStype");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStypeNotIn(List<String> values) {
+            addCriterion("tp_stype not in", values, "tpStype");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStypeBetween(String value1, String value2) {
+            addCriterion("tp_stype between", value1, value2, "tpStype");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStypeNotBetween(String value1, String value2) {
+            addCriterion("tp_stype not between", value1, value2, "tpStype");
+            return (Criteria) this;
+        }
+
         public Criteria andTpSlocalIsNull() {
             addCriterion("tp_slocal is null");
             return (Criteria) this;

@@ -15,7 +15,6 @@
 	<style>
 	.modal-dialog{
 			right:50px;
-		z-index: 10000;
 		}
 	</style>
 </head>
@@ -90,8 +89,8 @@
 							<div class="form-group">
 								<label for="local" class="col-sm-2 control-label">城市</label>
 								<div class="col-sm-10">
-									<input type="text" name="local" class="form-control" id="local"
-									       placeholder="${hotel.local}">
+									<input type="text" name="city" class="form-control" id="city"
+									       placeholder="${hotel.city}">
 								</div>
 							</div>
 
@@ -139,42 +138,42 @@
 
 							<%--详细地址--%>
 								<div class="form-group">
-									<label for="zip" class="col-sm-2 control-label">详细地址</label>
+									<label for="local" class="col-sm-2 control-label">详细地址</label>
 
 									<div class="col-sm-2">
-										<input type="text" name="zip" class="form-control" id="zip" placeholder="${viewPoint.tpLocation}">
+										<input type="text" name="local" class="form-control" id="local" placeholder="${hotel.local}">
 									</div>
 
 									<label for="longitude" class="col-sm-1 control-label">经度</label>
 
 									<div class="col-sm-1">
-										<input type="text" name="longitude" class="form-control" id="longitude" placeholder="${viewPoint.tpVlongitude}">
+										<input type="text" name="longitude" class="form-control" id="longitude" placeholder="${hotel.longitude}">
 									</div>
 
 									<label for="latitude" class="col-sm-1 control-label">纬度</label>
 
 									<div class="col-sm-1">
-										<input type="text" name="latitude" class="form-control" id="latitude" placeholder="${viewPoint.tpVlatitude}">
+										<input type="text" name="latitude" class="form-control" id="latitude" placeholder="${hotel.latitude}">
 									</div>
 
 									<div class="col-sm-1">
 									</div>
 
-									<div class="col-sm-2">
+									<div class="col-sm-2" style="position: relative;z-index: 100000;">
 										<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" type="button">打开地图……</button>
 										<!-- 模态框（Modal） -->
 										<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-											<div class="modal-dialog">
+											<div class="modal-dialog" >
 												<div class="modal-content" style="width: 1000px;height: 600px;">
 													<div class="modal-header">
 														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 														<h4 class="modal-title" id="myModalLabel">选择一个地点</h4>
 													</div>
-													<div class="modal-body">
+													<div class="modal-body" style="position: relative;z-index: 100000;">
 														<!--这是地图的div-->
 														<div id="allmap" style="width: 100%;height: 500px;"></div>
 														<!--这是地址详情框-->
-														<input type="text" id="zip2">
+														<input type="text" id="local2">
 														<!--这是 经度-->
 														<input type="text" id="vlongitude">
 														<!--这是 维度-->
@@ -313,11 +312,11 @@
 			var addComp = rs.addressComponents;
 			var site = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
 			//将对应的HTML元素设置值
-			$("#zip2").val(site);
+			$("#local2").val(site);
 			$("#vlongitude").val(pt.lng);
 			$("#vlatitude").val(pt.lat);
 
-			$("#zip").val(site);
+			$("#local").val(site);
 			$("#longitude").val(pt.lng);
 			$("#latitude").val(pt.lat);
 

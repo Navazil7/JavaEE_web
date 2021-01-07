@@ -16,8 +16,6 @@
 	<style>
 		.modal-dialog{
 			right:50px;
-			z-index: 200000;
-			position: relative;
 		}
 	</style>
 
@@ -43,7 +41,7 @@
 			<ol class="breadcrumb">
 				<br>
 				<li><a href="#"><i class="fa fa-users"></i> Operate </a></li>
-				<li class="active">Users</li>
+				<li class="active">Views</li>
 			</ol>
 		</section>
 
@@ -91,10 +89,10 @@
 
 								<%--uname--%>
 								<div class="form-group">
-									<label for="tpLocation" class="col-sm-2 control-label">景点归属</label>
+									<label for="tpVcity" class="col-sm-2 control-label">城市</label>
 									<div class="col-sm-10">
-										<input type="text" name="tpLocation" class="form-control" id="tpLocation"
-										       placeholder="${viewPoint.tpLocation}">
+										<input type="text" name="tpVcity" class="form-control" id="tpVcity"
+											   value="${viewPoint.tpVcity}" placeholder="${viewPoint.tpVcity}">
 									</div>
 								</div>
 
@@ -104,48 +102,44 @@
 
 									<div class="col-sm-10">
 										<input type="text" name="tpTitle" class="form-control" id="tpTitle"
-										       placeholder="${viewPoint.tpTitle}">
+											   value="${viewPoint.tpTitle}" placeholder="${viewPoint.tpTitle}">
 									</div>
 								</div>
 
-								<%--email--%>
 								<div class="form-group">
 									<label for="tpTitle" class="col-sm-2 control-label">景点名称</label>
 
 									<div class="col-sm-10">
 										<input type="text" name="tpVname" class="form-control" id="tpVname"
-										       placeholder="${viewPoint.tpVname}">
+											   value="${viewPoint.tpVname}" placeholder="${viewPoint.tpVname}">
 
 									</div>
 								</div>
 
-								<%--pwd--%>
 								<div class="form-group">
 									<label for="tpVtype" class="col-sm-2 control-label">景点类型</label>
 
 									<div class="col-sm-10">
 										<input type="text" name="tpVtype" class="form-control" id="tpVtype"
-										       placeholder="${viewPoint.tpVtype}">
+											   value="${viewPoint.tpVtype}" placeholder="${viewPoint.tpVtype}">
 									</div>
 								</div>
 
-								<%--age--%>
 								<div class="form-group">
 									<label for="tpVphone" class="col-sm-2 control-label">联系电话</label>
 
 									<div class="col-sm-10">
 										<input type="text" name="tpVphone" class="form-control" id="tpVphone"
-										       placeholder="${viewPoint.tpVphone}">
+											   value="${viewPoint.tpVphone}" placeholder="${viewPoint.tpVphone}">
 									</div>
 								</div>
 
-								<%--gender--%>
 								<div class="form-group">
 									<label for="tpLevel" class="col-sm-2 control-label">景点等级</label>
 
 									<div class="col-sm-10">
 										<input type="text" name="tpLevel" class="form-control" id="tpLevel"
-										       placeholder="${viewPoint.tpLevel}">
+											   value="${viewPoint.tpLevel}" placeholder="${viewPoint.tpLevel}">
 									</div>
 								</div>
 
@@ -155,34 +149,34 @@
 
 									<div class="col-sm-10">
 										<input type="text" name="tpPrice" class="form-control" id="tpPrice"
-										       placeholder="${viewPoint.tpPrice}">
+											   value="${viewPoint.tpPrice}" placeholder="${viewPoint.tpPrice}">
 									</div>
 								</div>
 
 								<%--PHONE--%>
 									<div class="form-group">
-										<label for="tpZip" class="col-sm-2 control-label">详细地址</label>
+										<label for="tpLocation" class="col-sm-2 control-label">详细地址</label>
 
 										<div class="col-sm-2">
-											<input type="text" name="tpZip" class="form-control" id="tpZip" placeholder="${viewPoint.tpLocation}">
+											<input type="text" name="tpLocation" class="form-control" id="tpLocation" value="${viewPoint.tpLocation} placeholder="${viewPoint.tpLocation}">
 										</div>
 
 										<label for="tpVlongitude" class="col-sm-1 control-label">经度</label>
 
 										<div class="col-sm-1">
-											<input type="text" name="tpVlongitude" class="form-control" id="tpVlongitude" placeholder="${viewPoint.tpVlongitude}">
+											<input type="text" name="tpVlongitude" class="form-control" id="tpVlongitude" value="${viewPoint.tpVlongitude}" placeholder="${viewPoint.tpVlongitude}">
 										</div>
 
 										<label for="tpVlatitude" class="col-sm-1 control-label">纬度</label>
 
 										<div class="col-sm-1">
-											<input type="text" name="tpVlatitude" class="form-control" id="tpVlatitude" placeholder="${viewPoint.tpVlatitude}">
+											<input type="text" name="tpVlatitude" class="form-control" id="tpVlatitude"  value="${viewPoint.tpVlatitude}" placeholder="${viewPoint.tpVlatitude}">
 										</div>
 
 										<div class="col-sm-1">
 										</div>
 
-										<div class="col-sm-2">
+										<div class="col-sm-2" style="position: relative;z-index: 100000;">
 											<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" type="button">打开地图……</button>
 											<!-- 模态框（Modal） -->
 											<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -196,7 +190,7 @@
 															<!--这是地图的div-->
 															<div id="allmap" style="width: 100%;height: 500px;"></div>
 															<!--这是地址详情框-->
-															<input type="text" id="zip">
+															<input type="text" id="Location">
 															<!--这是 经度-->
 															<input type="text" id="vlongitude">
 															<!--这是 维度-->
@@ -364,11 +358,11 @@
 			var addComp = rs.addressComponents;
 			var site = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
 			//将对应的HTML元素设置值
-			$("#zip").val(site);
+			$("#tpLocation").val(site);
 			$("#vlongitude").val(pt.lng);
 			$("#vlatitude").val(pt.lat);
 
-			$("#tpZip").val(site);
+			$("#Location").val(site);
 			$("#tpVlongitude").val(pt.lng);
 			$("#tpVlatitude").val(pt.lat);
 

@@ -16,8 +16,6 @@
 
 	.modal-dialog{
 		right:50px;
-		z-index: 200000;
-		position: relative;
 	}
 </style>
 </head>
@@ -41,7 +39,7 @@
 			<ol class="breadcrumb">
 				<br>
 				<li><a href="#"><i class="fa fa-users"></i> Operate </a></li>
-				<li class="active">Users</li>
+				<li class="active">Views</li>
 			</ol>
 		</section>
 
@@ -70,7 +68,7 @@
 							<div class="form-group">
 								<label for="tpLocation" class="col-sm-2 control-label">景点归属</label>
 								<div class="col-sm-10">
-									<input type="text" name="tpLocation" class="form-control" id="tpLocation" placeholder="${viewPoint.tpLocation}">
+									<input type="text" name="tpVcity" class="form-control" id="tpVcity" placeholder="${viewPoint.tpVcity}">
 								</div>
 							</div>
 
@@ -139,12 +137,12 @@
 								</div>
 							</div>
 
-							<%--PHONE--%>
+
 							<div class="form-group">
-								<label for="tpZip" class="col-sm-2 control-label">详细地址</label>
+								<label for="tpLocation" class="col-sm-2 control-label">详细地址</label>
 
 								<div class="col-sm-2">
-									<input type="text" name="tpZip" class="form-control" id="tpZip" placeholder="${viewPoint.tpLocation}">
+									<input type="text" name="tpLocation" class="form-control" id="tpLocation" placeholder="${viewPoint.tpLocation}">
 								</div>
 
 								<label for="tpVlongitude" class="col-sm-1 control-label">经度</label>
@@ -162,7 +160,7 @@
 								<div class="col-sm-1">
 								</div>
 
-								<div class="col-sm-2">
+								<div class="col-sm-2" style="position: relative;z-index: 100000;">
 									<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" type="button">打开地图……</button>
 									<!-- 模态框（Modal） -->
 									<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -176,7 +174,7 @@
 													<!--这是地图的div-->
 													<div id="allmap" style="width: 100%;height: 500px;"></div>
 													<!--这是地址详情框-->
-													<input type="text" id="zip">
+													<input type="text" id="Location">
 													<!--这是 经度-->
 													<input type="text" id="vlongitude">
 													<!--这是 维度-->
@@ -258,11 +256,11 @@
 			var addComp = rs.addressComponents;
 			var site = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
 			//将对应的HTML元素设置值
-			$("#zip").val(site);
+			$("#tpLocation").val(site);
 			$("#vlongitude").val(pt.lng);
 			$("#vlatitude").val(pt.lat);
 
-			$("#tpZip").val(site);
+			$("#Location").val(site);
 			$("#tpVlongitude").val(pt.lng);
 			$("#tpVlatitude").val(pt.lat);
 

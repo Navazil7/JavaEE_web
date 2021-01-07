@@ -29,8 +29,8 @@
 
 			<ol class="breadcrumb">
 				<br>
-				<li><a href="#"><i class="fa fa-users"></i> Operate </a></li>
-				<li class="active">Users</li>
+				<li><a href="#"><i class="fa fa-users"></i> Users </a></li>
+				<li class="active">列表</li>
 			</ol>
 		</section>
 

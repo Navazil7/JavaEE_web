@@ -1,20 +1,27 @@
 package cn.zm.trip.web.controller;
 
 import cn.zm.trip.web.commons.Msg;
+import cn.zm.trip.web.dao.CityDao;
 import cn.zm.trip.web.dao.ForumDao;
-import cn.zm.trip.web.domain.Forum;
-import cn.zm.trip.web.domain.ForumExample;
-import cn.zm.trip.web.domain.User;
-import cn.zm.trip.web.domain.ViewPoint;
+import cn.zm.trip.web.dao.UserDao;
+import cn.zm.trip.web.domain.*;
+import cn.zm.trip.web.event.EmailEvent;
+import cn.zm.trip.web.event.EventPublisher;
 import cn.zm.trip.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.awt.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,13 +36,22 @@ public class UserController {
 	@Autowired
 	private ForumDao forumDao;
 	@Autowired
+	private CityDao cityDao;
+	@Autowired
+	private UserDao userDao;
+	@Autowired
 	private ForumExample example;
+	@Autowired
+	private ApplicationContext applicationContext;
+	@Autowired
+	EventPublisher eventPublisher;
 
 	/**
 	 * index页用户登录
 	 */
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String userLogin(String uemail, String upwd, Model model) {
+
 		//index页面登录成功图片显示路径
 		String prefix = "/static/upload/useravatar/";
 		//index页用户登录验证
@@ -96,6 +112,11 @@ public class UserController {
 			userService.insertUser(uname, uemail, upwd);
 			model.addAttribute("msg", Msg.success("用户注册成功!"));
 
+			//注册成功发送邮件
+			EmailEvent emailEvent=new EmailEvent(this,uemail,"注册成功");
+			eventPublisher.pushListener(emailEvent);
+//			applicationContext.publishEvent(emailEvent);
+
 			//注册成功后自动登录
 			String prefix = "/static/upload/useravatar/";
 			User user = userService.userLogin(new User(uemail, upwd));
@@ -122,6 +143,11 @@ public class UserController {
 		String prefix = "/static/upload/useravatar/";
 		String suffix = user.getUpic();
 		user.setUpic(prefix+suffix);
+
+
+		//-----------------设置城市session，供调研使用-----------------
+		List<City> cities = cityDao.selectAllCity();
+		session.setAttribute("cities", cities);
 
 		session.setAttribute("user", user);
 		System.out.println(user);
@@ -199,4 +225,64 @@ public class UserController {
 	//	model.addAttribute("forum", forum);
 	//	return "proscenium/user/forum_edit";
 	//}
+
+
+	/**
+	 * 用户个人喜好调查
+	 */
+	@RequestMapping(value = "userlike", method = RequestMethod.POST)
+	public String userlike(String uid, String tp_like[], HttpServletRequest request) {
+//		User user = userService.selectByPrimaryKey(uid);
+//		String userlike = "";
+//		user.setTp_like(tp_like.toString());
+//		for (int i = 0; i < tp_like.length; ++i) {
+//			if (i < tp_like.length - 1)
+//				userlike += tp_like[i] + ",";
+//			else
+//				userlike += tp_like[i];
+//		}
+//		user.setTp_like(userlike);
+//		userService.updataUserInfo(user);
+
+//		tp_like=request.getParameterValues("tp_like");
+//		if(request==null){
+//			Integer.parseInt("aaa");
+//		}
+//		else if(tp_like==null){
+//			Integer.parseInt("bbb");
+//		}
+
+		for (int i = 0; i < tp_like.length; ++i) {
+			userService.updataUserLike(uid,tp_like[i]);
+		}
+
+
+		User user = userService.userGet(uid);
+		session.setAttribute("user", user);
+		session.setAttribute("most",userService.userLikeCity(uid));
+		return "proscenium/user/info";
+	}
+
+//	/**
+//	 * yyytest
+//	 */
+//	@RequestMapping(value = "yyytest", method = RequestMethod.POST)
+//	public String yyytest(Model model) {
+//
+//		try {
+//			File file = new File("C:\\Users\\Hasee\\Desktop\\test.txt");
+//			if(!file.exists()){
+//				file.createNewFile();
+//			}
+//			String str = "nimasile"+userDao.selectByPrimaryKey(7).getPhone()+"||"+userDao.selectByPrimaryKey(7).getTp_like();
+//			byte[] buff=str.getBytes();
+//			FileOutputStream o=new FileOutputStream(file,true);
+//			o.write(buff);
+//			o.flush();
+//			o.close();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return "admin/login";
+//	}
 }

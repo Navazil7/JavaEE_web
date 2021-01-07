@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.zm.trip.web.dao.UserDao;
+import cn.zm.trip.web.service.UserService;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
@@ -23,5 +25,7 @@ public class Test {
         MyBatisGenerator myBatisGenerator = null;
         myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
         myBatisGenerator.generate(null);
+
+
     }
 }

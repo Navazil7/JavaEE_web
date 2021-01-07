@@ -60,4 +60,10 @@ public interface CityDao {
      * @mbg.generated
      */
     int updateByPrimaryKey(City record);
+
+
+    /**
+     * 返回所有城市
+     */
+    List<City> selectAllCity();
 }

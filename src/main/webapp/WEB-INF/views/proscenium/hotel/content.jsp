@@ -61,9 +61,9 @@
 										HID:${hotel.hid}
 										<h3>${hotel.title}</h3>
 										<h4>
-											[${hotel.houseType}&nbsp;<small>| ${hotel.zip}</small>]
+											[${hotel.houseType}&nbsp;<small>| ${hotel.city}</small>]
 										</h4>
-										详细地址:${hotel.zip}<br/>联系电话: ${hotel.phone}
+										详细地址:${hotel.local}<br/>联系电话: ${hotel.phone}
 									</div>
 								</div>
 
@@ -90,11 +90,11 @@
 							<br/>
 							<!-- 留言的表单 -->
 							<form class="layui-form" action="/article/saveHotelWords" method="post">
-								<input name="lw_name" value="${user.uname}" hidden="hidden"/>
-								<input name="lw_date" value="<%=nowDate%>" hidden="hidden"/>
-								<input name="lw_hotel_id" value="${hotel.hid}" hidden="hidden"/>
+								<input name="tp_wname" value="${user.uname}" hidden="hidden"/>
+								<input name="tp_wdate" value="<%=nowDate%>" hidden="hidden"/>
+								<input name="tp_w_hotelId" value="${hotel.hid}" hidden="hidden"/>
 								<div class="layui-input-block" style="margin-left: 0;">
-								<textarea id="lw_content" name="lw_content" placeholder="请输入你的留言" class="layui-textarea"
+								<textarea id="tp_wcontent" name="tp_wcontent" placeholder="请输入你的留言" class="layui-textarea"
 								          style="height: 150px;"></textarea>
 								</div>
 								<br/>
@@ -110,19 +110,19 @@
 									<!-- 先遍历留言信息（一条留言信息，下面的全是回复信息） -->
 									<c:forEach items="${lw_list}" var="words">
 										<!-- 如果留言信息是在本文章下的才显示 -->
-										<c:if test="${words.lw_hotel_id eq hotel.hid}">
+										<c:if test="${words.tp_w_hotelId eq hotel.hid}">
 											<li style="border-top: 1px dotted #01AAED">
 												<br/>
 												<div style="text-align: left;color:#444">
 													<div>
-														<span style="color:#01AAED">${words.lw_name}</span>
+														<span style="color:#01AAED">${words.tp_wname}</span>
 													</div>
-													<div>${words.lw_content}</div>
+													<div>${words.tp_wcontent}</div>
 												</div>
 												<div>
 													<div class="comment-parent"
 													     style="text-align:left;margin-top:7px;color:#444">
-														<span>${words.lw_date}</span>
+														<span>${words.tp_wdate}</span>
 														&nbsp;&nbsp;&nbsp;&nbsp;
 														<p>
 															<a href="javascript:;" style="text-decoration: none;"
@@ -134,21 +134,21 @@
 													<div class="replycontainer layui-hide" style="margin-left: 61px;">
 														<form action="/article/saveHotelReply" method="post"
 														      class="layui-form">
-															<input name="lr_hotel_id" id="lr_hotel_id"
+															<input name="tp_r_hotelId" id="tp_r_hotelId"
 															       value="${hotel.hid}" hidden="hidden"/>
-															<input name="lr_name" id="lr_name"
+															<input name="tp_rname" id="tp_rname"
 															       value="${user.uname}"
 															       hidden="hidden"/>
-															<input name="lr_date" id="lr_date" value="<%=nowDate%>"
+															<input name="tp_rdate" id="tp_rdate" value="<%=nowDate%>"
 															       hidden="hidden"/>
-															<input name="lr_for_name" id="lr_for_name"
-															       value="${words.lw_name}" hidden="hidden"/>
-															<input name="lr_for_words" id="lr_for_words"
-															       value="${words.lw_id}" hidden="hidden"/>
-															<input name="lr_for_reply" id="lr_for_reply"
-															       value="${reply.lr_id}" hidden="hidden"/>
+															<input name="tp_r_for_name" id="tp_r_for_name"
+															       value="${words.tp_wname}" hidden="hidden"/>
+															<input name="tp_r_for_words" id="tp_r_for_words"
+															       value="${words.tp_wid}" hidden="hidden"/>
+															<input name="tp_r_for_reply" id="tp_r_for_reply"
+															       value="${reply.tp_rid}" hidden="hidden"/>
 															<div class="layui-form-item">
-															<textarea name="lr_content" id="lr_content"
+															<textarea name="tp_rcontent" id="tp_rcontent"
 															          lay-verify="replyContent" placeholder="请输入回复内容"
 															          class="layui-textarea"
 															          style="min-height:80px;"></textarea>
@@ -165,18 +165,18 @@
 												<!-- 以下是回复信息 -->
 												<c:forEach items="${lr_list}" var="reply">
 													<!-- 每次遍历出来的留言下存在回复信息才展示（本条回复信息是本条留言下的就显示在当前留言下） -->
-													<c:if test="${reply.lr_hotel_id eq hotel.hid && reply.lr_for_words eq words.lw_id}">
+													<c:if test="${reply.tp_r_hotelId eq hotel.hid && reply.tp_r_for_words eq words.tp_wid}">
 														<div style="text-align: left;margin-left:61px;color: #444">
 															<div>
-																<span style="color:#5FB878">${reply.lr_name}&nbsp;&nbsp;</span>
+																<span style="color:#5FB878">${reply.tp_rname}&nbsp;&nbsp;</span>
 															</div>
 															<div>
-																@${reply.lr_for_name}:&nbsp;&nbsp; ${reply.lr_content}</div>
+																@${reply.tp_r_for_name}:&nbsp;&nbsp; ${reply.tp_rcontent}</div>
 														</div>
 														<div>
 															<div class="comment-parent"
 															     style="text-align:left;margin-top:7px;margin-left:61px;color:#444">
-																<span>${reply.lr_date}</span>
+																<span>${reply.tp_rdate}</span>
 																&nbsp;&nbsp;&nbsp;&nbsp;
 																<p>
 																	<a href="javascript:;"
@@ -191,26 +191,26 @@
 															     style="margin-left: 61px;">
 																<form action="/article/saveHotelReply"
 																      method="post" class="layui-form">
-																	<input name="lr_hotel_id"
-																	       id="lr_hotel_id"
+																	<input name="tp_r_hotelId"
+																	       id="tp_r_hotelId"
 																	       value="${hotel.hid}" hidden="hidden"/>
-																	<input name="lr_name" id="lr_name"
+																	<input name="tp_rname" id="tp_rname"
 																	       value="${user.uname}"
 																	       hidden="hidden"/>
-																	<input name="lr_date" id="lr_date"
+																	<input name="tp_rdate" id="tp_rdate"
 																	       value="<%=nowDate%>"
 																	       hidden="hidden"/>
-																	<input name="lr_for_name" id="lr_for_name"
-																	       value="${words.lw_name}" hidden="hidden"/>
-																	<input name="lr_for_words" id="lr_for_words"
-																	       value="${words.lw_id}" hidden="hidden"/>
-																	<input name="lr_for_reply" id="lr_for_reply"
-																	       value="${reply.lr_id}" hidden="hidden"/>
+																	<input name="tp_r_for_name" id="tp_r_for_name"
+																	       value="${words.tp_wname}" hidden="hidden"/>
+																	<input name="tp_r_for_words" id="tp_r_for_words"
+																	       value="${words.tp_wid}" hidden="hidden"/>
+																	<input name="tp_r_for_reply" id="tp_r_for_reply"
+																		   value="${reply.tp_rid}" hidden="hidden"/>
 																	<div class="layui-form-item">
-                                                    <textarea name="lr_content" id="lr_content"
+                                                    <textarea name="tp_rcontent" id="tp_rcontent"
                                                               lay-verify="replyContent" placeholder="请输入回复内容"
                                                               class="layui-textarea" style="min-height:80px;">
-                                                      @${words.lw_name}:&nbsp;&nbsp;
+                                                      @${words.tp_wname}:&nbsp;&nbsp;
                                                   </textarea>
 																	</div>
 																	<div class="layui-form-item">
@@ -262,22 +262,22 @@
         }
 
         $("#replyBtn").click(function () {
-            var lr_hotel_id = $("#lr_hotel_id").val();
-            var lr_name = $("#lr_name").val();
-            var lr_date = $("#lr_date").val();
-            var lr_for_name = $("#lr_for_name").val();
-            var lr_content = $("#lr_content").val();
-            var lr_for_words = $("#lr_for_words").val();
+            var tp_r_hotelId = $("#tp_r_hotelId").val();
+            var tp_rname = $("#tp_rname").val();
+            var tp_rdate = $("#tp_rdate").val();
+            var tp_r_for_name = $("#tp_r_for_name").val();
+            var tp_rcontent = $("#tp_rcontent").val();
+            var tp_r_for_words = $("#tp_r_for_words").val();
             $.ajax({
                 url: '/article/saveHotelReply',
                 type: 'POST',
                 data: [{
-                    lr_hotel_id: lr_hotel_id,
-                    lr_name: lr_name,
-                    lr_date: lr_date,
-                    lr_for_name: lr_for_name,
-                    lr_content: lr_content,
-                    lr_for_words: lr_for_words
+                    tp_r_hotelId: tp_r_hotelId,
+                    tp_rname: tp_rname,
+                    tp_rdate: tp_rdate,
+                    tp_r_for_name: tp_r_for_name,
+                    tp_rcontent: tp_rcontent,
+                    tp_r_for_words: tp_r_for_words
                 }],
                 success: function (data) {
                     layer.open({

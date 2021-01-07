@@ -90,10 +90,19 @@
 <!--		</table>-->
 
 		<!-- 生成对应表及类名-->
-		<table tableName="tp_city" mapperName="CityMapper" domainObjectName="City" enableCountByExample="false"
-			   enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
-			   selectByExampleQueryId="false">
-		</table>
+<!--		<table tableName="tp_city" mapperName="CityMapper" domainObjectName="City" enableCountByExample="false"-->
+<!--			   enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"-->
+<!--			   selectByExampleQueryId="false">-->
+<!--		</table>-->
 
-	</context>
-</generatorConfiguration>
+<!--		生成对应表及类名-->
+<!--		<table tableName="tp_reply" mapperName="ReplyMapper" domainObjectName="Reply" >-->
+<!--		</table>-->
+
+				<table tableName="tp_user" mapperName="UserMapper" domainObjectName="User" enableCountByExample="false"
+					   enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true"
+					   selectByExampleQueryId="false">
+				</table>
+
+            </context>
+        </generatorConfiguration>

@@ -14,6 +14,10 @@
 
 <body class="skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
 
+<%--<form action="/user/yyytest" method="post">--%>
+<%--	<button type="submit">123123123213</button>--%>
+<%--</form>--%>
+
 <div class="wrapper" style="height: auto; min-height: 100%;">
 
 	<jsp:include page="../includes/top_navigation_reception.jsp"/>
@@ -40,24 +44,24 @@
 			<%--内容开始--%>
 			<!-- Main content -->
 			<section class="content">
-				<div id="myCarousel" class="carousel slide " data-ride="carousel" data-interval="4000">
+				<div id="myCarousel" class="carousel slide ">
 					<!-- 轮播（Carousel）指标 -->
 					<ol class="carousel-indicators">
 						<li data-target="#myCarousel" data-slide-to="0"
-						    class="active"></li>
+							class="active"></li>
 						<li data-target="#myCarousel" data-slide-to="1"></li>
 						<li data-target="#myCarousel" data-slide-to="2"></li>
 					</ol>
 					<!-- 轮播（Carousel）项目 -->
 					<div class="carousel-inner">
 						<div class="item active">
-							<img src="/static/assets/img/test/sky.png" alt="First slide">
+							<img src="/static/assets/img/test/city.png" alt="First slide">
 							<div class="carousel-caption"><h1>来一场说走就走的旅行</h1>Closing WebApplicationContext for namespace
 								'springServlet-servlet': startup date [Thu May 02 10:23:29
 							</div>
 						</div>
 						<div class="item">
-							<img src="/static/assets/img/test/grass.png" alt="Second slide">
+							<img src="/static/assets/img/test/sky.png" alt="Second slide">
 							<div class="carousel-caption"><h1>来一场说走就走的旅行</h1>Closing WebApplicationContext for namespace
 								'springServlet-servlet': startup date [Thu May 02 10:23:29
 							</div>
@@ -116,6 +120,9 @@
 													<a class="btn" style="color: #0b93d5"
 													   href="/view/content?tpVid=${viewPoint.tpVid}">查看更多 »</a>
 												</div>
+												<div align="center">
+													<button style="width: 60px" class="btn-google" onclick="isLogin(1,${viewPoint.tpVid},${user.uid})">预订</button>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -156,10 +163,81 @@
 									<a class="btn" style="color: #0b97c4"
 									   href="/hotel/content?hid=${hotel.hid}">查看详情»</a>
 								</div>
+								<div align="center">
+									<button style="width: 60px" class="btn-google" onclick="isLogin(2,${hotel.hid},${user.uid})">预订</button>
+								</div>
 							</div>
 						</div>
 						<!-- END / ITEM -->
 					</c:forEach>
+				</div>
+			</section>
+			<%--文章--%>
+			<section class="content-header">
+				<h1>
+					论坛 | FORUM
+					<small>概略一览</small>
+				</h1>
+				<br>
+				<hr>
+				<br>
+				<%--自定义内容--%>
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<div class="thumbnail">
+						<div class="caption">
+							<div class="container-fluid">
+								<div class="row">
+									<%--danger alert--%>
+									<c:if test="${msg.msg != null}">
+										<div class="alert alert-${msg.status == 200 ? "success" : "danger"} alert-dismissible">
+											<button type="button" class="close" data-dismiss="alert"
+													aria-hidden="true">×
+											</button>
+											<h4>${msg.msg}</h4>
+										</div>
+									</c:if>
+									<%--danger alert--%>
+
+									<%--发点什么?--%>
+									<div class="box-header">
+										<div class="col-lg-2" style="padding-left: 12px; padding-top: 10px;">
+											<a href="/forum/issue?uid=${user.uid}" type="button"
+											   class="btn btn-block btn-primary btn-lg">发点什么?</a>
+										</div>
+									</div>
+									<%--遍历帖子--%>
+									<c:forEach items="${forums}" var="forum">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<div class="post-preview">
+												<br>
+												<a href="/forum/content?tpFid=${forum.tpFid}">
+													<h2 class="post-title">${forum.tpTitle}</h2>
+													<h4 class="post-subtitle" style="font-style: italic">
+															${fn:substring(forum.tpSubTitle,0,20)}...
+													</h4>
+
+												</a>
+												<p class="post-meta" style="margin: 10px 0; color: #0b93d5;">
+													作者:${forum.tpAuthor} Create By
+													<fmt:formatDate value="${forum.tpIssueTime}" pattern="yyyy-MM-dd:HH:mm:dd"/>
+												</p>
+												<div class="tags">
+														${forum.tpTag}
+												</div>
+												<div class="form-group" style="text-align: right;">
+													<a class="btn" style="color: #0b97c4"
+													   href="/forum/content?tpFid=${forum.tpFid}">查看详情»</a>
+												</div>
+												<hr>
+											</div>
+											<!-- 如果开启评论功能 -->
+										</div>
+									</c:forEach>
+								</div>
+							</div>
+						</div>
+					</
+					div>
 				</div>
 			</section>
 		</div>

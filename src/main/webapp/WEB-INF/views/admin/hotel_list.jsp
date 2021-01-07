@@ -30,8 +30,8 @@
 
 			<ol class="breadcrumb">
 				<br>
-				<li><a href="#"><i class="fa fa-users"></i> Operate </a></li>
-				<li class="active">Hotel</li>
+				<li><a href="#"><i class="fa fa-users"></i> Hotel </a></li>
+				<li class="active">列表</li>
 			</ol>
 		</section>
 
@@ -83,7 +83,9 @@
 							<th>床型|Bed</th>
 							<th>电话|Poh</th>
 							<th>人数|Num</th>
-							<th>地址|Zip</th>
+							<th>地址|local</th>
+							<th>经度|Longitude</th>
+							<th>纬度|Latitude</th>
 							<th>大小|Size</th>
 							<th>价格|Pic</th>
 							<th>缩图|Img</th>
@@ -104,7 +106,9 @@
 								<td><span class="label label-primary">${hotel.bedType}</span></td>
 								<td>${hotel.phone}</td>
 								<td><span class="label label-primary">${hotel.peopleNum}</span></td>
-								<td>${fn:substring(hotel.zip,0,8)}...</td>
+								<td>${fn:substring(hotel.local,0,8)}...</td>
+								<td>${fn:substring(hotel.longitude,0,8)}...</td>
+								<td>${fn:substring(hotel.latitude,0,8)}...</td>
 								<td><span class="label label-primary">${hotel.houseSize}</span></td>
 								<td><span class="label label-primary">${hotel.price}</span></td>
 								<td><img style="width: 50px;height: 30px;" src="${hotel.imgUrl}" /></td>

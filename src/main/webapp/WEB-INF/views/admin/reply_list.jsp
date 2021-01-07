@@ -57,7 +57,7 @@
 					</div>
 					<div class="box-tools">
 						<%--模糊搜索框--%>
-						<form action="/admin/usersearch" method="get">
+						<form action="/admin/replyPointSearch" method="get">
 							<div class="input-group input-group-sm" style="width: 150px;">
 								<input type="text" name="keyword" class="form-control pull-right" placeholder="模糊搜索...">
 
@@ -98,22 +98,22 @@
 						<tr>
 							<td>
 								<label>
-									<input name="lr_id" value="${reply.lr_id}" type="checkbox"
-									       class="minimal minimal-myminor">
+									<input name="tp_rid" value="${reply.tp_rid}" type="checkbox"
+										   class="minimal minimal-myminor">
 								</label>
 							</td>
-							<td>${reply.lr_id}</td>
-							<td><span class="label label-primary">${reply.lr_name}</span></td>
-							<td>${reply.lr_date}</td>
-							<td>${reply.lr_content}</td>
-							<td>${reply.lr_for_name}</td>
-							<td>${reply.lr_for_words}</td>
-							<td>${reply.lr_for_reply}</td>
-							<td>${reply.lr_for_article_id}</td>
-							<td>${reply.lr_hotel_id}</td>
-							<td>${reply.lr_forumId}</td>
+							<td>${reply.tp_rid}</td>
+							<td><span class="label label-primary">${reply.tp_rname}</span></td>
+							<td>${reply.tp_rdate}</td>
+							<td>${reply.tp_rcontent}</td>
+							<td>${reply.tp_r_for_name}</td>
+							<td>${reply.tp_r_for_words}</td>
+							<td>${reply.tp_r_for_reply}</td>
+							<td>${reply.tp_r_viewpointId}</td>
+							<td>${reply.tp_r_hotelId}</td>
+							<td>${reply.tp_r_forumId}</td>
 							<td>
-								<a href="/admin/replyDelete?lr_id=${reply.lr_id}" class="btn btn-danger  btn-xs"><i
+								<a href="/admin/replyDelete?tp_rid=${reply.tp_rid}" class="btn btn-danger  btn-xs"><i
 										class="fa fa-trash"></i>删除
 								</a>
 							</td>
@@ -150,12 +150,12 @@
         console.log(_checkbox.length);
 
         $(".usersectiondelete").click(function () {
-            var lr_ids = [];
+            var tp_rids = [];
             var seletes = $(".minimal-myminor");
             console.log(seletes);
             for (var i = 0; i < seletes.length; i++) {
                 if ($(seletes[i]).prop("checked")) {
-                    lr_ids.push($(seletes[i]).val());
+                    tp_rids.push($(seletes[i]).val());
                 }
             }
 
@@ -163,7 +163,7 @@
                 url: "replyMutiDelete",
                 type: "GET",
                 data: {
-                    "lr_ids": lr_ids
+                    "tp_rids": tp_rids
                 },
                 traditional: true,
                 success: function (message) {

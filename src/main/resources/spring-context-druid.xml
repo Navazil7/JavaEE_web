@@ -16,7 +16,7 @@
 		<property name="username" value="${jdbc.username}"/>
 		<property name="password" value="${jdbc.password}"/>
 
-		<!-- 配置初始化大小、最小、最大 -->
+		<!-- 配置初始化大小、最小空闲连接数、最大连接数 -->
 		<property name="initialSize" value="${jdbc.pool.init}"/>
 		<property name="minIdle" value="${jdbc.pool.minIdle}"/>
 		<property name="maxActive" value="${jdbc.pool.maxActive}"/>
@@ -30,7 +30,10 @@
 		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
 		<property name="minEvictableIdleTimeMillis" value="300000"/>
 
+		<!-- 验证数据库连接 -->
 		<property name="validationQuery" value="${jdbc.testSql}"/>
+
+		<!-- 关闭后能节省资源，提高性能 -->
 		<property name="testWhileIdle" value="true"/>
 		<property name="testOnBorrow" value="false"/>
 		<property name="testOnReturn" value="false"/>

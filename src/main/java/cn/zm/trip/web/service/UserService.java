@@ -18,6 +18,18 @@ public interface UserService {
 	List<User> selectAll();
 
 	/**
+	 * 查询用户名
+	 * @return
+	 */
+
+	User selectbyname(String name);
+	/**
+	 * 查询用户邮箱
+	 * @return
+	 */
+	User selectbyemail(String email);
+
+	/**
 	 * 搜索功能
 	 * @param keyword
 	 * @return
@@ -48,4 +60,19 @@ public interface UserService {
 	 */
 	void updataUserInfo(User user);
 
+	/**
+	 * 根据uid查找用户
+	 */
+	User findUser(String uid);
+
+
+	/**
+	 * 用户喜好更新
+	 */
+	void updataUserLike(String uid, String city);
+
+	/**
+	 * 返回用户最喜好的城市
+	 */
+	public String userLikeCity(String uid);
 }
