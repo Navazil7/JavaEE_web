@@ -9,6 +9,18 @@
 <head>
 	<title>用户管理 | UserInfo</title>
 	<jsp:include page="../../includes/header.jsp"/>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=i6MgTgAPWXcrrde4GosOGu3ngUSUIoWz"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+	<!--这是引用个jq-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<style>
+		.modal-dialog{
+			right:50px;
+			z-index: 200000;
+			position: relative;
+		}
+	</style>
+
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -50,7 +62,7 @@
 				<div class="box box-info">
 					<div class="box box-info">
 						<div class="box-header with-border">
-							<h3 class="box-title">景点新增</h3>
+							<h3 class="box-title">景点编辑</h3>
 						</div>
 						<!-- /.box-header -->
 						<!-- form start -->
@@ -148,24 +160,58 @@
 								</div>
 
 								<%--PHONE--%>
-								<div class="form-group">
-									<label for="tpPrice" class="col-sm-2 control-label">详细地址</label>
+									<div class="form-group">
+										<label for="tpZip" class="col-sm-2 control-label">详细地址</label>
 
-									<div class="col-sm-10">
-										<input type="text" name="tpZip" class="form-control" id="tpZip"
-										       placeholder="${viewPoint.tpZip}">
+										<div class="col-sm-2">
+											<input type="text" name="tpZip" class="form-control" id="tpZip" placeholder="${viewPoint.tpLocation}">
+										</div>
+
+										<label for="tpVlongitude" class="col-sm-1 control-label">经度</label>
+
+										<div class="col-sm-1">
+											<input type="text" name="tpVlongitude" class="form-control" id="tpVlongitude" placeholder="${viewPoint.tpVlongitude}">
+										</div>
+
+										<label for="tpVlatitude" class="col-sm-1 control-label">纬度</label>
+
+										<div class="col-sm-1">
+											<input type="text" name="tpVlatitude" class="form-control" id="tpVlatitude" placeholder="${viewPoint.tpVlatitude}">
+										</div>
+
+										<div class="col-sm-1">
+										</div>
+
+										<div class="col-sm-2">
+											<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" type="button">打开地图……</button>
+											<!-- 模态框（Modal） -->
+											<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+												<div class="modal-dialog">
+													<div class="modal-content" style="width: 1000px;height: 600px;">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+															<h4 class="modal-title" id="myModalLabel">选择一个地点</h4>
+														</div>
+														<div class="modal-body">
+															<!--这是地图的div-->
+															<div id="allmap" style="width: 100%;height: 500px;"></div>
+															<!--这是地址详情框-->
+															<input type="text" id="zip">
+															<!--这是 经度-->
+															<input type="text" id="vlongitude">
+															<!--这是 维度-->
+															<input type="text" id="vlatitude">
+
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+															<%--													<button type="button" class="btn btn-primary" type="button">确定</button>--%>
+														</div>
+													</div><!-- /.modal-content -->
+												</div><!-- /.modal -->
+											</div>
+										</div>
 									</div>
-								</div>
-
-								<%--PHONE--%>
-								<div class="form-group">
-									<label for="tpPrice" class="col-sm-2 control-label">开放时间</label>
-
-									<div class="col-sm-10">
-										<input type="text" name="tpOpentime" class="form-control" id="tpOpentime"
-										       placeholder="${viewPoint.tpOpentime}">
-									</div>
-								</div>
 
 								<%--Content Edit--%>
 								<div class="form-group">
@@ -300,4 +346,34 @@
 
 	</script>
 </body>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	var point = new BMap.Point(120.04866799134317,30.2350180723955);//当前坐标经纬可改
+
+	map.centerAndZoom(point,12);//显示级数越大越细
+	map.addOverlay(new BMap.Marker(point));//定点坐标红点覆盖
+	map.enableScrollWheelZoom(true);
+	var geoc = new BMap.Geocoder();
+
+	map.addEventListener("click", function(e){
+		//通过点击百度地图，可以获取到对应的point, 由point的lng、lat属性就可以获取对应的经度纬度
+		var pt = e.point;
+		geoc.getLocation(pt, function(rs){
+			//addressComponents对象可以获取到详细的地址信息
+			var addComp = rs.addressComponents;
+			var site = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+			//将对应的HTML元素设置值
+			$("#zip").val(site);
+			$("#vlongitude").val(pt.lng);
+			$("#vlatitude").val(pt.lat);
+
+			$("#tpZip").val(site);
+			$("#tpVlongitude").val(pt.lng);
+			$("#tpVlatitude").val(pt.lat);
+
+		});
+	});
+</script>
+
 </html>

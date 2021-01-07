@@ -10,9 +10,16 @@
 	<title>Info | 用户注册</title>
 	<jsp:include page="../../../includes/header.jsp"/>
 </head>
-<script src="${path}/static/assets/bower_components/jquery/dist/jquery.min.js"></script>
-<body class="hold-transition register-page">
-<div class="register-box">
+<style>
+	#box {overflow:hidden; background-color:#EEE;}
+	#box ul {position:absolute; top:0; left:0; }
+	#box ul li {float:left; }
+</style>
+<script src="/static/assets/js/move.js"></script>
+<script src="/static/assets/bower_components/jquery/dist/jquery.min.js"></script>
+<body class="hold-transition register-page" >
+
+<div class="register-box" style="z-index: 99;">
 	<div class="register-logo">
 		<b>Register</b>用户注册
 	</div>
@@ -85,6 +92,7 @@
 	<!-- /.form-box -->
 	<%--版权--%>
 </div>
+
 <!-- /.register-box -->
 <!-- ./wrapper -->
 <jsp:include page="../../../includes/footer.jsp"/>

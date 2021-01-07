@@ -149,6 +149,7 @@ public class UserController {
 		//显示首页的景点
 		String prefix = "/static/upload/useravatar/";
 		String suffix = user.getUpic();
+		System.out.println(suffix);
 		userService.updataUserInfo(user);
 
 		user.setUpic(prefix+suffix);

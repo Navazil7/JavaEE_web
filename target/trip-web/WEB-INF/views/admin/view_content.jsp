@@ -134,6 +134,7 @@
         // wangEditor
         var E = window.wangEditor;
         var editor = new E('#editor');
+		editor.customConfig.zIndex = 10
         editor.create();
 
         // 前端分页

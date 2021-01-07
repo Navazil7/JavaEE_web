@@ -62,4 +62,19 @@
         <!--</mvc:interceptor>-->
 
     <!--</mvc:interceptors>-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--
+                /**的意思是所有文件夹及里面的子文件夹
+                /*是所有文件夹，不含子文件夹
+                /是web项目的根目录
+              -->
+            <mvc:mapping path="/user/regstform" />
+            <!-- 需排除拦截的地址 -->
+            <!--  <mvc:exclude-mapping path="/userController/login"/>  -->
+            <mvc:exclude-mapping path="/static/**" />
+            <bean id="regInterceptor" class="cn.zm.trip.web.interceptor.regInterceptor"></bean> <!--这个类就是我们自定义的Interceptor -->
+        </mvc:interceptor>
+        <!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法  -->
+    </mvc:interceptors>
 </beans>

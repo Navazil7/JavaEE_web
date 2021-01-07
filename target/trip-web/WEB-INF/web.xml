@@ -16,6 +16,7 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
+
   <!--CharacterEncodingFilter-->
   <!--配置字符集过滤器，用于解决中文编码问题-->
   <filter>
@@ -35,6 +36,15 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
+  <!--SessionLoginFilter-->
+  <filter>
+    <filter-name>sessionFilter</filter-name>
+    <filter-class>cn.zm.trip.web.filter.SessionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>sessionFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <!--DispatcherServlet核心组件分发器-->
   <servlet>
     <servlet-name>springServlet</servlet-name>

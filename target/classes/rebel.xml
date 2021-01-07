@@ -10,13 +10,13 @@
 			 xsi:schemaLocation="http://www.zeroturnaround.com http://update.zeroturnaround.com/jrebel/rebel-2_1.xsd">
 
 	<classpath>
-		<dir name="E:/IDEA/JavaEE_web/target/classes">
+		<dir name="D:/Documents/GitHub/JavaEE_web/target/classes">
 		</dir>
 	</classpath>
 
 	<web>
 		<link target="/">
-			<dir name="E:/IDEA/JavaEE_web/src/main/webapp">
+			<dir name="D:/Documents/GitHub/JavaEE_web/src/main/webapp">
 			</dir>
 		</link>
 	</web>
