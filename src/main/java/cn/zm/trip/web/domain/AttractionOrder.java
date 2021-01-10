@@ -16,6 +16,24 @@ public class AttractionOrder {
     public String attr_time; //订单时效
 
     public Integer attr_vid; //景点id
+    public String attr_status; //支付状态
+    public Integer attr_num;  //订单数量
+
+    public Integer getAttr_num() {
+        return attr_num;
+    }
+
+    public void setAttr_num(Integer attr_num) {
+        this.attr_num = attr_num;
+    }
+
+    public String getAttr_status() {
+        return attr_status;
+    }
+
+    public void setAttr_status(String attr_status) {
+        this.attr_status = attr_status;
+    }
 
     public Integer getAttr_vid() {
         return attr_vid;

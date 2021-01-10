@@ -11,6 +11,7 @@
 	<title>Hotel | 酒店</title>
 	<jsp:include page="../../../includes/header.jsp"/>
 </head>
+
 <style>
 	.traffic-choose,.hotel-choose{
 		position: absolute;
@@ -181,14 +182,15 @@
 							<option value="大巴">大巴</option>
 							<option value="ALL" selected>ALL</option></select></div>
 						<div style="display: inline-block;width: 200px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp定制方案:<select  style="float: right" id="diy-type">
-							<option value="1">时间优先</option>
+							<option value="1">综合考虑</option>
 							<option value="2">价格优先</option>
 							<option value="3">奢华定制</option>
 							<option value="4" selected>无要求</option></select></div>
 						<div style="float: right;padding-right: 50px;">
+							<i style="color: red">一键定制需选择交通出行</i><div style="width: 20px;display: inline-block"></div>
 						<button class="btn btn-primary" onclick="ajax_city(currentCity,desCity);" >查询</button>
 							<div style="width: 20px;display: inline-block"></div>
-						<button class="btn btn-primary" >一键定制</button>
+						<button class="btn btn-primary" onclick="autocustomize()" >一键定制</button>
 						</div>
 						<br>
 						<br>
@@ -227,6 +229,7 @@
 						<table id="traffic_table" class="table table-bordered table-striped">
 							<thead>
 							<tr>
+								<th></th>
 								<th>类型</th>
 								<th>出发地</th>
 								<th>目的地</th>
@@ -282,6 +285,7 @@
 <%--		<script src="/static/assets/plugins/jQueryDistpicker20160621/js/distpicker.js"></script>--%>
 		<script src="https://cdn.bootcdn.net/ajax/libs/distpicker/2.0.6/distpicker.js"></script>
 
+		<script src="/static/assets/js/layer/layer.js"></script>>
 	<script>
 
         $.fn.distpicker.setDefaults({
@@ -344,10 +348,28 @@
                         console.log(data);
                         var tpDestination;
                         for (var i = 0; i < data.length; i++) {
-                            var tpCurrentTime = new Date(data[i].tpCurrentTime).Format("yyyy-MM-dd:hh:mm:ss");
-                            var tpArriveTime = new Date(data[i].tpArriveTime).Format("yyyy-MM-dd:hh:mm:ss");
-                            console.log(data[i].tpArriveTime - data[i].tpCurrentTime);
-                            var tpSpendTime = new Date(data[i].tpArriveTime - data[i].tpCurrentTime).Format("hh:mm:ss");
+                            var  tpCurrentTime= new Date(data[i].tpCurrentTime).Format("yyyy-MM-dd hh:mm:ss");
+                            var tpArriveTime = new Date(data[i].tpArriveTime).Format("yyyy-MM-dd hh:mm:ss");
+                            var date3=new Date(data[i].tpArriveTime.replace(/-/g, "/")).getTime() - new Date(data[i].tpCurrentTime.replace(/-/g, "/")).getTime();
+							var days=Math.floor(date3/(24*3600*1000));
+							//计算出小时数
+							var leave1=date3%(24*3600*1000)  ;  //计算天数后剩余的毫秒数
+							var hours=Math.floor(leave1/(3600*1000));
+							//计算相差分钟数
+							var leave2=leave1%(3600*1000)      ;  //计算小时数后剩余的毫秒数
+							var minutes=Math.floor(leave2/(60*1000));
+							//计算相差秒数
+							var leave3=leave2%(60*1000) ;     //计算分钟数后剩余的毫秒数
+							var seconds=Math.round(leave3/1000);
+
+                            var dif = hours+":"+minutes+":"+seconds;
+							// alert(dif);
+							// var tpSpendTime=new Date();
+							// tpSpendTime.setHours(hours);
+							// tpSpendTime.setMinutes(minutes);
+							// tpSpendTime.setSeconds(seconds);
+							// tpSpendTime.Format("hh:mm:ss");
+							// alert(tpSpendTime);
                             $("#traffic_table tbody").append(
                                 '<tr>'
 									+ '<td><label class = "traffic"><input type="radio" name = "traffic-choose" class = "traffic-choose"  value = "'+data[i].tpTid+'">'+'</label></td>'
@@ -356,7 +378,7 @@
                                 + '<td>' + data[i].tpDestination + '</td>'
                                 + '<td>' + tpCurrentTime + '</td>'
                                 + '<td>' + tpArriveTime + '</td>'
-                                + '<td>' + tpSpendTime + '</td>'
+                                + '<td>' + dif+ '</td>'
                                 + '<td><span class="label label-primary">￥' + data[i].tpTprice + '</span></td>'
                                 + '</tr>'
                             );
@@ -380,10 +402,21 @@
 						console.log(data);
 						var tpDestination;
 						for (var i = 0; i < data.length; i++) {
-							var tpCurrentTime = new Date(data[i].tpCurrentTime).Format("yyyy-MM-dd:hh:mm:ss");
-							var tpArriveTime = new Date(data[i].tpArriveTime).Format("yyyy-MM-dd:hh:mm:ss");
-							console.log(data[i].tpArriveTime - data[i].tpCurrentTime);
-							var tpSpendTime = new Date(data[i].tpArriveTime - data[i].tpCurrentTime).Format("hh:mm:ss");
+							var  tpCurrentTime= new Date(data[i].tpCurrentTime).Format("yyyy-MM-dd hh:mm:ss");
+							var tpArriveTime = new Date(data[i].tpArriveTime).Format("yyyy-MM-dd hh:mm:ss");
+							var date3=new Date(data[i].tpArriveTime.replace(/-/g, "/")).getTime() - new Date(data[i].tpCurrentTime.replace(/-/g, "/")).getTime();
+							var days=Math.floor(date3/(24*3600*1000));
+							//计算出小时数
+							var leave1=date3%(24*3600*1000)  ;  //计算天数后剩余的毫秒数
+							var hours=Math.floor(leave1/(3600*1000));
+							//计算相差分钟数
+							var leave2=leave1%(3600*1000)      ;  //计算小时数后剩余的毫秒数
+							var minutes=Math.floor(leave2/(60*1000));
+							//计算相差秒数
+							var leave3=leave2%(60*1000) ;     //计算分钟数后剩余的毫秒数
+							var seconds=Math.round(leave3/1000);
+
+							var dif = hours+":"+minutes+":"+seconds;
 							$("#traffic_table tbody").append(
 									'<tr>'
 									+ '<td><label><input type="radio" name = "traffic-choose" class = "traffic-choose"  value = "'+data[i].tpTid+'">'+'</label></td>'
@@ -392,7 +425,7 @@
 									+ '<td>' + data[i].tpDestination + '</td>'
 									+ '<td>' + tpCurrentTime + '</td>'
 									+ '<td>' + tpArriveTime + '</td>'
-									+ '<td>' + tpSpendTime + '</td>'
+									+ '<td>' + dif + '</td>'
 									+ '<td><span class="label label-primary">￥' + data[i].tpTprice + '</span></td>'
 									+ '</tr>'
 							);
@@ -433,7 +466,7 @@
                             + '<strong>等级: ' + data[i].tpLevel + ' </strong>| '
                             + '<strong> 开放时间:  ' + data[i].tpOpentime + ' </strong>|'
                             + '<strong>类型:  ' + data[i].tpVtype + ' </strong>'
-                            + '<br> 详细地址:  ' + data[i].tpZip + ' '
+                            + '<br> 详细地址:  ' + data[i].tpLocation + ' '
                             + '<br/> 电话:  ' + data[i].tpVphone + ' '
                             + '<div class="form-group" style="text-align: right;">'
                             + '<a class="btn" style="color: #0b93d5" href="/view/content?tpVid=  ' + data[i].tpVid + ' ">查看更多 »</a>'
@@ -466,13 +499,13 @@
 	                        + '<div class="thumbnail"  style="height: 450px;">'
 								+ '<label class = "hotel"><input type="checkbox" name = "hotel-choose" class = "hotel-choose"  value = "'+data[i].hid+'">'+'</label>'
                             + '<a href="/hotel/content?hid=' + data[i].hid + '">'
-                            + '<img src="' + data[i].imgUrl + '">'
+                            + '<img src="/static/upload/hotelavatar/' + data[i].imgUrl + '">'
                             + '</a>'
                             + '<div class="caption">'
                             + '<h3>' + data[i].title + '</h3>'
                             + '<ol>'
                             + '<li><p style="color: #ffa309">城市：' + data[i].local + '|房屋类型：' + data[i].houseType + '|床类型：' + data[i].bedType + '</p> </li>'
-                            + '<li><p style="color: #0b93d5">价格：￥' + data[i].price + '| 详细地址：' + data[i].zip + '</p></li>'
+                            + '<li><p style="color: #0b93d5">价格：￥' + data[i].price + '| 详细地址：' + data[i].loacal + '</p></li>'
                             + '</ol>'
                             + '</div>'
                             + '<div class="form-group" style="text-align: right;">'
@@ -555,7 +588,7 @@
 						"\t\t</div>\n" +
 						"\t<hr>\n" +
 						"\t<div class=\"container\" >\n" +
-						"\t\t<div style=\"width: 200px ;display: inline-block\" ><p>总价:<label id=\"total\"></label></p></div><button class=\"btn btn-primary\" onclick='sub_order()' >提交订单</button>\n" +
+						"\t\t<div style=\"width: 200px ;display: inline-block\" ><p>总价:<label id=\"total\"></label></p></div><button class=\"btn btn-primary\" onclick='payOrder()' >提交订单</button>\n" +
 						"\t</div>\n" +
 						"</div>");
 					$(".close").on("click",function () {
@@ -581,7 +614,6 @@
 						for (var i = 0; i < data.length; i++) {
 							var tpCurrentTime = new Date(data[i].tpCurrentTime).Format("yyyy-MM-dd:hh:mm:ss");
 							var tpArriveTime = new Date(data[i].tpArriveTime).Format("yyyy-MM-dd:hh:mm:ss");
-							console.log(data[i].tpArriveTime - data[i].tpCurrentTime);
 							$("#order_table tbody").append(
 									'<tr>'
 									+ '<td class="ID" ">' + data[i].tpTid + '</td>'
@@ -612,7 +644,7 @@
 								'<tr>'
 								+ '<td class="ID">' + data[i].hid + '</td>'
 								+ '<td><span class="label label-primary kind">住宿</span></td>'
-								+ '<td>' + data[i].title +'---'+data[i].houseType+'---'+ data[i].bedType+'<br>'+data[i].zip + '</td>'
+								+ '<td>' + data[i].title +'---'+data[i].houseType+'---'+ data[i].bedType+'<br>'+data[i].local+ '</td>'
 								+ '<td><div style="display: width: 15px"><input class="plus" style="width:15px" type="button" value="+"onclick="plus(this)" /></div><div style="display: width: 15px"><span class="quantity" type="text" style="width: 15px;" >0</span></div><div style="width: 15px;"><input class="minus" style="width:15px" type="button" value="-" onclick="minus(this)"/></div></td>'
 								+ '<td><span class="label label-primary">' + data[i].price + '</span></td>'
 								+ '</tr>'
@@ -637,7 +669,7 @@
 								'<tr>'
 								+ '<td class="ID">' + data[i].tpVid + '</td>'
 								+ '<td><span class="label label-primary kind">景点</span></td>'
-								+ '<td>' + data[i].tpTitle +'---'+data[i].tpVtype+'---'+ data[i].tpLevel+'星级<br>'+data[i].tpZip + '</td>'
+								+ '<td>' + data[i].tpTitle +'---'+data[i].tpVtype+'---'+ data[i].tpLevel+'星级<br>'+data[i].tpLocation + '</td>'
 								+ '<td><div style="display: width: 15px"><input class="plus" style="width:15px" type="button" value="+" onclick="plus(this)"/></div><div style="display: width: 15px"><span class="quantity" type="text" style="width: 15px;">0</span></div><div style="width: 15px;"><input class="minus" style="width:15px"  type="button" value="-" onclick="minus(this)"/></div></td>'
 								+ '<td><span class="label label-primary price">'+data[i].tpPrice+'</span></td>'
 								+ '</tr>'
@@ -645,6 +677,86 @@
 					}
 				}
 			});
+		}
+
+		function ajax_viewPoint_autocart() {
+        	var addhotels=new Array();
+			$.ajax({
+				url: '/cust/viewPointCartAuto',
+				type: 'POST',
+				 async: false,
+				data: {
+					desCity: desCity
+				},
+				traditional: true,
+				success: function (data) {
+					// console.log(data);
+
+					console.log(addhotels);
+					for (var i = 0; i < data.length&&i<5; i++) {
+						//var title = data[i].tpTitle.substring(0, 9);
+						addhotels.push(data[i]);
+
+						$("#order_table tbody").append(
+								'<tr>'
+								+ '<td class="ID">' + data[i].tpVid + '</td>'
+								+ '<td><span class="label label-primary kind">景点</span></td>'
+								+ '<td>' + data[i].tpTitle + '---' + data[i].tpVtype + '---' + data[i].tpLevel + '星级<br>' + data[i].tpLocation + '</td>'
+								+ '<td><div style="display: width: 15px"><input class="plus" style="width:15px" type="button" value="+" onclick="plus(this)"/></div><div style="display: width: 15px"><span class="quantity" type="text" style="width: 15px;">0</span></div><div style="width: 15px;"><input class="minus" style="width:15px"  type="button" value="-" onclick="minus(this)"/></div></td>'
+								+ '<td><span class="label label-primary price">' + data[i].tpPrice + '</span></td>'
+								+ '</tr>'
+						);
+					}
+				}
+			});
+			//添加对应最近酒店
+			var Vids=[];
+			var lon=[];
+			var lat=[];
+			for (var i = 0; i < addhotels.length &&i<5; i++){
+				lon.push(addhotels[i].tpVlongitude);
+				lat.push(addhotels[i].tpVlatitude);
+				Vids.push(addhotels[i].tpVid);}
+
+			$.ajax({
+				url: '/cust/NearestHotels',
+				type: 'POST',
+				 async: false,
+				data: {
+					lon:lon,
+					lat:lat,
+					City:desCity,
+				},
+				traditional: true,
+				success: function (data) {
+					console.log(data);
+
+					//console.log("distance"+addhotels[i].tpVid);
+					//var str="distance"+addhotels[i].tpVid;
+					//console.log(${str});
+					//var title = data1[i].title.substring(0, 9);
+
+					var data1=data.results;
+					//var dis2=[];
+					var dis=data.distance;
+					console.log(dis);
+					for (var j = 0; j < addhotels.length &&j<5; j++){
+						console.log(addhotels[j].tpTitle);
+						// var dis =['distance1','distance2','distance3','distance4','distance5'];
+
+					$("#order_table tbody").append(
+							'<tr>'
+							+ '<td class="ID">' + data1[j].hid + '</td>'
+							+ '<td><span class="label label-primary kind">住宿</span></td>'
+							+ '<td>' +'距离' +addhotels[j].tpTitle+dis[j]+'米' +'<br>'+ data1[j].title +'---'+data1[j].houseType+'---'+ data1[j].bedType+'<br>'+data1[j].local+ '</td>'
+							+ '<td><div style="display: width: 15px"><input class="plus" style="width:15px" type="button" value="+"onclick="plus(this)" /></div><div style="display: width: 15px"><span class="quantity" type="text" style="width: 15px;" >0</span></div><div style="width: 15px;"><input class="minus" style="width:15px" type="button" value="-" onclick="minus(this)"/></div></td>'
+							+ '<td><span class="label label-primary">' + data1[j].price + '</span></td>'
+							+ '</tr>'
+					);
+					}
+				}
+			});
+
 		}
 		// 计算总价
 		function Total() {
@@ -679,28 +791,164 @@
 			var Num=new Array();
 			var totalPrice=$("#total");
 			$("#order_table tbody .ID").each(function (index,element) {
+				if($(this).next().next().next().find("span").text()!="0"){
 				IDs.push($(this).text());
-				alert($(this).text());
+				console.log($(this).text());
 				Type.push($(this).next().find("span").text());
-				alert($(this).next().find("span").text());
+				 console.log($(this).next().find("span").text());
 				Num.push($(this).next().next().next().find("span").text());
-				alert($(this).next().next().next().find("span").text());
+				console.log($(this).next().next().next().find("span").text());
+				}
 			});
 
 			$.ajax({
 				url: '/cust/HandleOrder',
-				type: 'GET',
+				type: 'POST',
+				//async: false,
+				//contentType:'application/json; charset=utf-8',
 				data: {
 					IDs:IDs,
 					Num:Num,
 					Type:Type,
 					totalPrice:totalPrice,
 				},
+				traditional: true,
 				success: function (data) {
-
+					console.log("sucess");
+					window.location.href="/index";
 				}
 			});
 		}
+		// 一键定制
+		function autocustomize() {
+			// 获取得都是各自得id值，只传入id 通过后台获取所需数据
+			var traf=$("input[name='traffic-choose']:checked").val();
+			//console.log(traf);
+			if(${user==nul}){
+				alert("未登录");
+			}
+			else
+			{
+				if (traf) {
+					$("body").append("<div id=\"order\">\n" +
+							"\t<div class=\"container\">\n" +
+							"\t\t<p class=\"btn bg-orange btn-flat margin\" style=\"cursor: default\">请确认你的订单</p>\n" +
+							"\t\t<span class=\"close\" style=\"float: right\"></span>\n" +
+							"\t</div>\n" +
+							"\t<hr>\n" +
+							"\t<div class=\"container  col-lg-12\"style=\"width:100%;height: 400px;overflow:scroll;\">\n" +
+							"\t\t\t<table id=\"order_table\" class=\"table table-bordered table-striped\">\n" +
+							"\t\t\t\t<thead>\n" +
+							"\t\t\t\t<tr>\n" +
+							"\t\t\t\t\t<th>编号</th>\n" +
+							"\t\t\t\t\t<th>类型</th>\n" +
+							"\t\t\t\t\t<th>内容</th>\n" +
+							"\t\t\t\t\t<th>数量</th>\n" +
+							"\t\t\t\t\t<th>价格</th>\n" +
+							"\t\t\t\t</tr>\n" +
+							"\t\t\t\t</thead>\n" +
+							"\t\t\t\t<tbody>\n" +
+							"\n" +
+							"\t\t\t\t</tbody>\n" +
+							"\t\t\t</table>\n" +
+							"\t\t</div>\n" +
+							"\t<hr>\n" +
+							"\t<div class=\"container\" >\n" +
+							"\t\t<div style=\"width: 200px ;display: inline-block\" ><p>总价:<label id=\"total\"></label></p></div><button class=\"btn btn-primary\" onclick='payOrder()' >提交订单</button>\n" +
+							"\t</div>\n" +
+							"</div>");
+					$(".close").on("click", function () {
+						$(this).parent().parent().remove();
+					});
+					ajax_traffic_cart(traf);
+					ajax_viewPoint_autocart();
+				} else {
+					alert("请先选择交通出行！！");
+				}
+			}
+		}
+
+
+
+
+		function payOrder() {
+
+
+				layer.open({
+					type:1,
+					// area:['200px','150px'],
+					area:'aoto',
+					skin:'layui-layer-rim',
+					title:'订单确认',
+					shade:0,
+					content:'<div style="font-family: arial, sans-serif;vertical-align: middle;text-align: center">确定要提交订单么？</div>',
+					btn:['确定','再考虑一下'],
+					anim:3,
+					btn1:function () {
+						layer.closeAll();
+						layer.alert("<div id='pay'>提交订单成功！请支付！60s后未点击确定按钮订单将失效</div>",{icon:6},function () {
+							layer.closeAll();
+							window.clearInterval(id1);
+							var img = '<img src="/static/upload/img/payQrcode200x200.png" alt="loading..."/>'
+							layer.open({
+								type: 1,//Page层类型
+								// area: ['200px', '250px'],
+								area:'auto',
+								title: '请扫码支付',
+								shade: 0.6 ,//遮罩透明度
+								maxmin: true ,//允许全屏最小化
+								anim: 1 ,//0-6的动画形式，-1不开启
+								content: img,
+								btn: ['已付款', '容朕想想'],
+								yes: function(index, layero) {
+									layer.closeAll();
+									sub_order();
+									layer.alert("<div id='info'>恭喜你，付款成功！将在3秒后自动跳转...</div>",{icon:1,time:3000},function () {
+										window.location.href="/index";
+									});
+									var t=2;
+									var id = window.setInterval(function doUpdate(){
+
+										document.getElementById("info").innerHTML='恭喜你，付款成功！'+'将在'+t+'秒后自动跳转...';
+										if(t==0) {
+											window.clearInterval(id);
+											window.location.href="/index";
+										}
+										t--;
+									}, 1000);
+
+
+								},
+								cancel: function() {
+									//右上角关闭回调
+									layer.closeAll();
+								}
+							});
+						});
+
+						var time=59;
+						var id1 = window.setInterval(function doPass(){
+
+							document.getElementById("pay").innerHTML='提交订单成功！请支付！'+time+'s后未点击确定按钮订单将失效...';
+							if(time==0) {
+								window.clearInterval(id1);
+								layer.alert("订单已失效！",{icon:2})
+							}
+							time--;
+						}, 1000);
+
+
+					},
+					btn2:function () {
+						// layer.closeAll();
+					}
+				});
+
+
+
+
+		}
+
 	</script>
 </body>
 </html>

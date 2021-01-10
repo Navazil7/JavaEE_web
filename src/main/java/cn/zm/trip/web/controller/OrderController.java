@@ -97,6 +97,7 @@ public class OrderController {
                 attractionOrder.setAttr_vid(viewPoint.getTpVid());
 
                 session.setAttribute("order",attractionOrder);
+
                 return "proscenium/order/attractionContent";
 //                return "test";
             }
@@ -138,9 +139,10 @@ public class OrderController {
 //        System.out.println(booktime+"啊啊啊啊啊啊啊啊啊啊啊啊啊");
         System.out.println("啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"+key);
         String booktime=request.getParameter("booktime");
+        Integer num=Integer.parseInt(request.getParameter("num").trim());
         if(key.trim().equals("attraction")){ // 景点订单
             AttractionOrder attractionOrder=(AttractionOrder)session.getAttribute("order");
-
+            attractionOrder.setAttr_num(num);
             attractionOrder.setAttr_time(booktime.trim());
             System.out.println("啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"+attractionOrder.getAttr_time());
             String orderInfo="";
@@ -148,8 +150,8 @@ public class OrderController {
             model.addAttribute("order",attractionOrder);
             orderInfo=attractionOrder.getAttr_name().trim()+"#"+attractionOrder.getAttr_place().trim()+"#"+attractionOrder.getAttr_uemail().trim()+"#"
                     +attractionOrder.getAttr_uphone().trim()+"#"+attractionOrder.getAttr_cost()+"#"+attractionOrder.getAttr_createDate().trim()+"#"
-                    +attractionOrder.getAttr_createTime().trim()+"#"+attractionOrder.getAttr_time().trim()+"#"+attractionOrder.getAttr_vid().toString();
-            orderService.insertOrder(attractionOrder.getAttr_orderId().trim(),attractionOrder.getAttr_uid(),orderInfo);
+                    +attractionOrder.getAttr_createTime().trim()+"#"+attractionOrder.getAttr_time().trim()+"#"+attractionOrder.getAttr_vid().toString()+"#"+attractionOrder.getAttr_num().toString();
+            orderService.insertOrder(attractionOrder.getAttr_orderId().trim(),attractionOrder.getAttr_uid(),orderInfo,"未使用");
 //            return "proscenium/order/attractionsOrder";
             List<AttractionOrder> list= orderService.getAtrractions(Integer.parseInt(request.getParameter("uid").trim()));
             model.addAttribute("attractions",list);
@@ -160,13 +162,14 @@ public class OrderController {
         else if(key.trim().equals("hotel")){
             HotelOrder hotelOrder=(HotelOrder)session.getAttribute("order");
             hotelOrder.setHotel_time(booktime);
+            hotelOrder.setHotel_num(num);
             String orderInfo="";
             session.setAttribute("order",hotelOrder);
             model.addAttribute("order",hotelOrder);
             orderInfo=hotelOrder.getHotel_name().trim()+"#"+hotelOrder.getHotel_place().trim()+"#"+hotelOrder.getHotel_uemail().trim()+"#"
                     +hotelOrder.getHotel_uphone().trim()+"#"+hotelOrder.getHotel_cost()+"#"+hotelOrder.getHotel_createDate().trim()+"#"
-                    +hotelOrder.getHotel_createTime().trim()+"#"+hotelOrder.getHotel_time().trim()+"#"+hotelOrder.getHotel_hid().toString();
-            orderService.insertOrder(hotelOrder.getHotel_orderId(),hotelOrder.getHotel_uid(),orderInfo);
+                    +hotelOrder.getHotel_createTime().trim()+"#"+hotelOrder.getHotel_time().trim()+"#"+hotelOrder.getHotel_hid().toString()+"#"+hotelOrder.getHotel_num().toString();
+            orderService.insertOrder(hotelOrder.getHotel_orderId(),hotelOrder.getHotel_uid(),orderInfo,"未使用");
 //            return "proscenium/order/hotelsOrder";
             List<HotelOrder> list= orderService.getHotels(Integer.parseInt(request.getParameter("uid").trim()));
             model.addAttribute("hotels",list);
@@ -180,6 +183,33 @@ public class OrderController {
 
     }
 
+    /**
+     * 订单更新
+     */
+    @RequestMapping(value = "update",method = RequestMethod.GET)
+    public String updateOrder(String key,String tpoid,Integer tpuid,Model model){
+        Order order=orderService.findOrderByOid(tpoid);
+        order.setTpStatus("已使用");
+        orderService.updateOrder(order);
+        if(key.equals("attraction")){
+            List<AttractionOrder> list= orderService.getAtrractions(tpuid);
+            model.addAttribute("attractions",list);
+            if(list.size()==0) return "proscenium/order/errorPage";
+            return "proscenium/order/attractionsOrder";
+        }
+        else if(key.equals("hotel")){
+            List<HotelOrder> list= orderService.getHotels(tpuid);
+            model.addAttribute("hotels",list);
+            if(list.size()==0) return "proscenium/order/errorPage";
+            return "proscenium/order/hotelsOrder";
+        }
+        else{
+            List<TrafficOrder> list= orderService.getTraffics(tpuid);
+            model.addAttribute("traffics",list);
+            if(list.size()==0) return "proscenium/order/errorPage";
+            return "proscenium/order/trafficsOrder";
+        }
+    }
 
 
     /**

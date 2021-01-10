@@ -61,7 +61,6 @@ public interface OrderMapper {
      */
     int updateByPrimaryKey(Order record);
 
-
     /**
      * 查找某一用户的所有订单
      */

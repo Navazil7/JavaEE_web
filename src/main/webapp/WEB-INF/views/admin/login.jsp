@@ -29,10 +29,11 @@
         <%--Denger alert--%>
         <c:if test="${msg != null}">
             <div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="closeMsg()">&times;</button>
                     ${msg.msg}
             </div>
         </c:if>
+        <% session.removeAttribute("msg");%>
         <%--/.alert--%>
 
         <form action="/admin/login" method="post">
@@ -81,4 +82,6 @@
     });
 </script>
 </body>
+
+
 </html>

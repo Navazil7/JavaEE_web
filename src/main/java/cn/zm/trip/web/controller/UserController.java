@@ -1,28 +1,27 @@
 package cn.zm.trip.web.controller;
 
+import cn.zm.trip.web.commons.CodeUtil;
 import cn.zm.trip.web.commons.Msg;
-import cn.zm.trip.web.dao.CityDao;
 import cn.zm.trip.web.dao.ForumDao;
 import cn.zm.trip.web.dao.UserDao;
 import cn.zm.trip.web.domain.*;
 import cn.zm.trip.web.event.EmailEvent;
 import cn.zm.trip.web.event.EventPublisher;
 import cn.zm.trip.web.service.UserService;
+import cn.zm.trip.web.service.ViewPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.awt.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -36,13 +35,7 @@ public class UserController {
 	@Autowired
 	private ForumDao forumDao;
 	@Autowired
-	private CityDao cityDao;
-	@Autowired
-	private UserDao userDao;
-	@Autowired
-	private ForumExample example;
-	@Autowired
-	private ApplicationContext applicationContext;
+	private ViewPointService viewPointService;
 	@Autowired
 	EventPublisher eventPublisher;
 
@@ -61,9 +54,11 @@ public class UserController {
 		}
 		User user = userService.userLogin(new User(uemail, upwd));
 		if (user != null) {
-			String suffix = user.getUpic();
-			user.setUpic(prefix+suffix);
-			session.setAttribute("user", user);
+			// 原本的代码不能让登录后首页立刻变化
+			User user2=userService.userGet(user.getUid());
+			String suffix = user2.getUpic();
+			user2.setUpic(prefix+suffix);
+			session.setAttribute("user", user2);
 			return "redirect:/index";
 		} else {
 			session.setAttribute("msg", Msg.fail("还未注册或邮箱密码错误,请重新输入!"));
@@ -81,6 +76,49 @@ public class UserController {
 	public String loginOut() {
 		session.invalidate();
 		return "redirect:/index";
+	}
+
+	/**
+	 * 发送验证码
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "sendcaptcha", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean sendcaptcha(String email) {
+		String captcha= CodeUtil.generateSixCode();
+		session.setAttribute("captcha",captcha);
+		EmailEvent emailEvent=new EmailEvent(this,email,captcha);
+		eventPublisher.pushListener(emailEvent);
+		System.out.println("已发送");
+		return true;
+	}
+	/**
+	 * 验证验证码
+	 *
+	 * @return
+	 */
+
+	@RequestMapping(value = "checkcaptcha", method = RequestMethod.POST)
+	@ResponseBody
+	public boolean checkcaptcha(String captcha) {
+		String captcha1= (String) session.getAttribute("captcha");
+		if(captcha.equals(captcha1)){
+			return true;
+		}else {
+			return false;
+		}
+	}
+	/**
+	 * 删除验证码
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "deletecaptcha", method = RequestMethod.POST)
+	public boolean deletecaptcha() throws InterruptedException {
+		Thread.currentThread().sleep(5*60*1000);
+		session.removeAttribute("captcha");
+		return true;
 	}
 
 	/**
@@ -103,11 +141,13 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "regstform", method = RequestMethod.POST)
-	public String regst(String uname, String uemail, String upwd, String reupwd, Model model) throws AWTException {
+	public String regst(String uname, String uemail, String upwd, String reupwd, String phone,Model model) throws AWTException {
 		if (uemail == null || upwd == null || uemail.trim().equals("") || upwd.trim().equals("")) {
 			model.addAttribute("msg", Msg.fail("用户名或密码不可为空,请重新输入!"));
 		} else if (!reupwd.equals(upwd)) {
 			model.addAttribute("msg", Msg.fail("密码不正确请重新输入!"));
+		} else if (phone.length()<=4) {
+			model.addAttribute("msg", Msg.fail("请输入正确的手机号码!"));
 		} else {
 			userService.insertUser(uname, uemail, upwd);
 			model.addAttribute("msg", Msg.success("用户注册成功!"));
@@ -124,6 +164,8 @@ public class UserController {
 				String suffix = user.getUpic();
 				if(suffix==null||suffix=="")suffix="default.jpg";
 				user.setUpic(suffix);
+				user.setPhone(phone);
+
 				userService.updataUserInfo(user);
 				user.setUpic(prefix+suffix);
 				session.setAttribute("user", user);
@@ -144,11 +186,17 @@ public class UserController {
 		String suffix = user.getUpic();
 		user.setUpic(prefix+suffix);
 
+		//-----------------设置景点类型session，供调研使用-----------------
+		if(user.getTp_like()==null||(user.getTp_like().equals(""))){
+			List<ViewPoint> viewPoints = viewPointService.findByViewpoint();
+			HashSet<String> set = new HashSet<String>();
+			for(int i=0;i<viewPoints.size();i++){
+				set.add(viewPoints.get(i).getTpVtype());
+			}
+			session.setAttribute("set", set);
+		}
 
-		//-----------------设置城市session，供调研使用-----------------
-		List<City> cities = cityDao.selectAllCity();
-		session.setAttribute("cities", cities);
-
+		session.setAttribute("most", userService.userLikeVtype(uid));
 		session.setAttribute("user", user);
 		System.out.println(user);
 
@@ -259,10 +307,9 @@ public class UserController {
 
 		User user = userService.userGet(uid);
 		session.setAttribute("user", user);
-		session.setAttribute("most",userService.userLikeCity(uid));
+		session.setAttribute("most",userService.userLikeVtype(uid));
 		return "proscenium/user/info";
 	}
-
 //	/**
 //	 * yyytest
 //	 */

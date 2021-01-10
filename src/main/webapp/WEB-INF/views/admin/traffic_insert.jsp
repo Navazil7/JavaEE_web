@@ -60,31 +60,44 @@
 								<%--tpType--%>
 								<div class="form-group">
 									<label for="tpType" class="col-sm-2 control-label">交通类型</label>
-									<div class="col-sm-10">
-										<input type="text" name="tpType" class="form-control" id="tpType"
-										       placeholder="交通类型">
+									<div class="col-sm-2">
+										<select class="form-control" id="tpType" name="tpType">
+											<option value="火车" selected="selected">火车</option>
+											<option value="飞机">飞机</option>
+											<option value="大巴">大巴</option>
+										</select>
 									</div>
+									<div class="col-sm-8"></div>
 								</div>
 
 								<%--tpCurrent--%>
 								<div class="form-group">
 									<label for="tpCurrent" class="col-sm-2 control-label">出发地</label>
 
-									<div class="col-sm-10">
-										<input type="text" class="form-control" name="tpCurrent" id="tpCurrent"
-										       placeholder="出发地">
+									<div class="col-sm-2">
+										<select class="form-control" id="tpCurrent" name="tpCurrent">
+											<option value="">请选择</option>
+											<c:forEach items="${stations}" var="station">
+												<option value="${station.tpSname}">${station.tpSname}</option>
+											</c:forEach>
+										</select>
 									</div>
+									<div class="col-sm-8"></div>
 								</div>
 
 								<%--tpDestination--%>
 								<div class="form-group">
 									<label for="tpDestination" class="col-sm-2 control-label">终点站</label>
 
-									<div class="col-sm-10">
-										<input type="text" name="tpDestination" class="form-control" id="tpDestination"
-										       placeholder="终点站">
-
+									<div class="col-sm-2">
+										<select class="form-control" id="tpDestination" name="tpDestination">
+											<option value="">请选择</option>
+											<c:forEach items="${stations}" var="station">
+												<option value="${station.tpSname}">${station.tpSname}</option>
+											</c:forEach>
+										</select>
 									</div>
+									<div class="col-sm-8"></div>
 								</div>
 
 								<%--tpCurrentTime--%>
@@ -122,7 +135,7 @@
 
 							<div class="box-footer">
 								<button type="button" class="btn btn-default" onclick="history.go(-1);">返回</button>
-								<button id="btnSunmit" type="submit" class="btn btn-info pull-right" onclick="">提交
+								<button id="btnSunmit" type="submit" class="btn btn-info pull-right" onclick="f1()">提交
 								</button>
 							</div>
 							<!-- /.box-footer -->
@@ -136,8 +149,7 @@
 		</div>
 		<!-- /.content-wrapper -->
 	</div>
-	<%--版权--%>
-	<jsp:include page="../../includes/copyright.jsp"/>
+
 	<%--css--%>
 	<jsp:include page="../../includes/footer.jsp"/>
 	<!-- page script -->
@@ -178,5 +190,26 @@
         //timeFormat: 'hh:mm:ss:l',
         //bootcssVer: 3,
     });
+    function f1() {
+		var current=document.getElementById("tpCurrent").value;
+		var destination=document.getElementById("tpDestination").value;
+		if(current==''){
+			alert("请选择出发地");
+			return false;
+		}
+		if(destination==''){
+			alert("请选择终点站");
+			return false;
+
+		}
+		if(current!='' && destination!=''){
+
+			if(current == destination) {
+				alert("出发地和终点站不能相同");
+				return false;
+			}
+		}
+
+	}
 </script>
 </html>

@@ -10,30 +10,31 @@
 <head>
     <title>Order | 订单生成</title>
     <jsp:include page="../../../includes/header.jsp"/>
-<%--    <link rel="stylesheet" href="../../../../static/assets/js/jquery-input-calendar-datetime/css/dateTime.css">--%>
-<%--    <script type="text/javascript" src="../../../../static/assets/js/My97DatePicker/WdatePicker.js"></script>--%>
-    <script type="text/javascript" src="../../../../static/assets/js/user/login.js"></script>
+
+    <link rel="stylesheet" href="../../../../static/assets/js/My97DatePicker/skin/WdatePicker.css">
+
     <script type="text/javascript"
-            src="../../../../static/assets/js/jquery-input-calendar-datetime/js/jquery.min.js"></script>
-<%--    <script type="text/javascript"--%>
-<%--            src="../../../../static/assets/js/jquery-input-calendar-datetime/js/dateTime.min.js"></script>--%>
+            src="../../../../static/assets/js/jquery.js"></script>
+    <script type="text/javascript"
+            src="../../../../static/assets/js/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="../../../../static/assets/js/qrcode.js"></script>
+    <script type="text/javascript"
+            src="../../../../static/assets/js/layer/layer.js"></script>
+    <script type="text/javascript"
+            src="../../../../static/assets/js/user/login.js"></script>
+
+
+    <script type="text/javascript"
+            src="../../../../static/assets/js/My97DatePicker/WdatePicker.js"></script>
+
+
+
 
 
 </head>
 
 <body class="skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
-<%--<script type="text/javascript">--%>
-<%--    $(window).load(l())--%>
-<%--    function l() {--%>
-<%--        $("#booktime").datetime({--%>
-<%--            type: "date",--%>
-<%--            value: [2019, 9, 31],--%>
-<%--            success: function (res) {--%>
-<%--                console.log(res)--%>
-<%--            }--%>
-<%--        })--%>
-<%--    }--%>
-<%--</script>--%>
 <div class="wrapper" style="height: auto; min-height: 100%;">
 
     <jsp:include page="../../../includes/top_navigation_reception.jsp"/>
@@ -167,37 +168,68 @@
                                 </div>
                             </div>
 
-                            <%--booktime--%>
-                                <div class="form-group ">
-                                    <label for="booktime"
-                                           class="col-sm-2 control-label">预约日期</label>
+                            <%--num--%>
+                            <div class="form-group">
+                                <label for="num"
+                                       class="col-sm-2 control-label">订单数量</label>
 
-                                    <div class="col-sm-10">
-                                        <%--                                    <input type="text" readonly name="booktime" value="${order.attr_time}" class="form-control" id="booktime"--%>
-                                        <%--                                           placeholder="${order.attr_time}">--%>
-                                        <%--                                    <input type="text" id="booktime" name="booktime" class="form-control Wdate" value="<%=java.text.DateFormat.getDateInstance().format(new java.util.Date())%>"--%>
-                                        <%--                                           οnfοcus="WdatePicker({dateFmt:'yyyy-MM-dd'})" style="highLineWeekDay: true;width: 200px"  />--%>
-<%--                                        <input type="text" id="booktime" placeholder="请选择日期">--%>
-                                        <input class="form-control" type="date" name="booktime" id="booktime" value="2021-01-06" style="line-height: inherit">
-
-
-                                        <%--                                    <c:set var="booktime"> $('#booktime').val().trim()</c:set>--%>
-                                    </div>
+                                <div class="col-sm-10">
+                                    <select class="form-control" style="width: 70px" id="num" name="num" size="4">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                    </select>
                                 </div>
+                            </div>
+
+                            <%--booktime--%>
+                            <div class="form-group ">
+                                <label for="booktime"
+                                       class="col-sm-2 control-label">预约日期</label>
+
+                                <div class="col-sm-10">
+                                        <input type="text" id="booktime" name="booktime" class="Wdate form-control" value="<%=java.text.DateFormat.getDateInstance().format(new java.util.Date())%>"
+                                               οnfοcus="WdatePicker({minDate:'%y-%M-%d'})" style="width: 200px" onclick="WdatePicker()" />
+
+<%--                                                                            <input type="text" id="booktime" placeholder="请选择日期">--%>
+<%--                                    <input class="form-control" type="date" name="booktime" id="booktime"--%>
+<%--                                           style="line-height: inherit">--%>
+<%--                                    <script type="text/javascript">--%>
+<%--                                        var ddd = new Date();--%>
+<%--                                        var day = ddd.getDate();--%>
+<%--                                        if (ddd.getMonth() < 10) {--%>
+<%--                                            if (ddd.getMonth() == 9) var month = "10";--%>
+<%--                                            var month = "0" + (ddd.getMonth() + 1);--%>
+<%--                                        }--%>
+<%--                                        if (ddd.getDay() < 10) {--%>
+<%--                                            day = "0" + ddd.getDate();--%>
+<%--                                        }--%>
+<%--                                        var datew = ddd.getFullYear() + "-" + month + "-" + day;--%>
+<%--                                        var datew = datew.toString();--%>
+
+<%--                                        $("#booktime").val(datew);--%>
+
+<%--                                    </script>--%>
+
+                                    <%--                                    <c:set var="booktime"> $('#booktime').val().trim()</c:set>--%>
+                                </div>
+                            </div>
 
                             <div class="form-group" style="height: 40px;line-height: 40px">
                                 <p>
                                     <%--                                    <a href="/view/submit?key=attraction&booktime=${booktime}">--%>
                                     <input type="button"
-                                            style="border-radius: 7px;width: 80px;position: absolute;left: 300px;color:white;background-color: red"
-                                            onclick="submitOrder(1)"
-                                            value="提交订单">
+                                           style="border-radius: 7px;width: 80px;position: absolute;left: 300px;color:white;background-color: red"
+                                           onclick="submitOrder()"
+                                           value="提交订单">
 
                                     <input type="button"
-                                            style="border-radius: 7px;width: 80px;position: absolute;left: 600px;color: white;background-color: gray"
-                                            onclick="cancelOrder()"
-                                            value="取消订单">
-
+                                           style="border-radius: 7px;width: 80px;position: absolute;left: 600px;color: white;background-color: gray"
+                                           onclick="cancelOrder()"
+                                           value="取消订单">
 
 
                                 </p>

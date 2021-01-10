@@ -22,7 +22,7 @@
 <html>
 <%--Header Begin--%>
 <head>
-	<title>View | 景点</title>
+	<title>word | 文章</title>
 	<jsp:include page="../../../includes/header.jsp"/>
 </head>
 
@@ -39,12 +39,11 @@
 			<section class="content-header">
 				<br>
 				<h1>
-					旅游景点 | View
-					<small>最新发布</small>
+					文章 | Word
 				</h1>
 				<ol class="breadcrumb">
 					<br>
-					<li><a href="/view/point"><i class="fa fa-dashboard"></i>旅游景点</a></li>
+					<li><a href="/view/point"><i class="fa fa-dashboard"></i>文章</a></li>
 					<li><a href="#">SHOW</a></li>
 
 				</ol>
@@ -67,19 +66,8 @@
 										<h4 class="post-subtitle" style="font-style: italic">
 											${forum.tpSubTitle}
 										</h4>
-										<strong>编码:${viewPoint.tpFid}</strong>|<strong>等级: ${viewPoint.tpLevel}</strong>|<strong>开放时间: ${viewPoint.tpOpentime}</strong>|<strong>类型: ${viewPoint.tpVtype}</strong><br>
-										详细地址:${viewPoint.tpZip}<br/>联系电话: ${viewPoint.tpVphone}
-										<br>
-
-										<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a>
-											<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友">QQ好友</a>
-											<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
-											<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网">豆瓣网</a>
-											<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
-											<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
-											<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
-											<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
-										</div>
+										<strong>编码:${forum.tpFid}</strong>|<strong>作者: ${forum.tpAuthor}</strong>
+										<br><strong>标签: ${forum.tpTag}</strong>
 										<br>
 										<hr>
 										<br>
@@ -304,28 +292,6 @@
             });
         });
 	</script>
-		<script>window._bd_share_config = {
-            "common": {
-                "bdSnsKey": {},
-                "bdText": "",
-                "bdMini": "2",
-                "bdMiniList": false,
-                "bdPic": "",
-                "bdStyle": "0",
-                "bdSize": "16"
-            },
-            "share": {"bdSize": 16},
-            "image": {
-                "viewList": ["sqq", "weixin", "douban", "tsina", "tqq", "renren", "qzone"],
-                "viewText": "分享到：",
-                "viewSize": "16"
-            },
-            "selectShare": {
-                "bdContainerClass": null,
-                "bdSelectMiniList": ["sqq", "weixin", "douban", "tsina", "tqq", "renren", "qzone"]
-            }
-        };
-        with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
-		</script>
+
 </body>
 </html>

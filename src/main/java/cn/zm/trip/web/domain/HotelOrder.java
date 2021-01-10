@@ -14,6 +14,24 @@ public class HotelOrder {
     public String hotel_time; //订单时效
 
     public Integer hotel_hid;  //酒店编号
+    public String hotel_status; //支付状态
+    public Integer hotel_num;  //订单数量
+
+    public Integer getHotel_num() {
+        return hotel_num;
+    }
+
+    public void setHotel_num(Integer hotel_num) {
+        this.hotel_num = hotel_num;
+    }
+
+    public String getHotel_status() {
+        return hotel_status;
+    }
+
+    public void setHotel_status(String hotel_status) {
+        this.hotel_status = hotel_status;
+    }
 
     public Integer getHotel_hid() {
         return hotel_hid;

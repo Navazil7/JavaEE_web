@@ -36,7 +36,7 @@
 			<%--danger alert--%>
 			<c:if test="${msg.msg != null}" >
 				<div class="alert alert-${msg.status == 200 ? "success" : "danger"} alert-dismissible">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true"  onclick="closeMsg()">×</button>
 					<h4><i class="icon fa fa-ban"></i>${msg.msg}</h4>
 				</div>
 			</c:if>
@@ -142,7 +142,7 @@
 <!-- /.content-wrapper -->
 
 <%--版权--%>
-<jsp:include page="../../includes/copyright.jsp"/>
+
 <%--css--%>
 <jsp:include page="../../includes/footer.jsp"/>
 <script>

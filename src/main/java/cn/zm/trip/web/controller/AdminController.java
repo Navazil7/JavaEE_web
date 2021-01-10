@@ -45,6 +45,8 @@ public class AdminController {
 	private ReplyDao replyDao;
 	@Autowired
 	private StationDao stationDao;
+	@Autowired
+	private CityDao cityDao;
 
 	/**
 	 * **********login start***************
@@ -81,7 +83,7 @@ public class AdminController {
 			session.setAttribute("msg", Msg.success());
 			session.setAttribute("timestamp", timestamp);
 			session.setAttribute("admin", admin);
-			// 明日任务,获取域对象传送user信息
+
 			return "redirect:main";
 		}
 	}
@@ -452,6 +454,9 @@ public class AdminController {
 			session.setAttribute("msg", Msg.success("新增景点成功!"));
 			return "redirect:viewlist";
 		}
+		List<City> cities=cityDao.selectAllCity();
+		session.setAttribute("cities", cities);
+
 		session.setAttribute("msg", Msg.fail("新增景点失败!"));
 		return "redirect:viewlist";
 	}
@@ -463,6 +468,9 @@ public class AdminController {
 	@RequestMapping(value = "viewedit", method = RequestMethod.GET)
 	public String viewEdit(Integer tpVid, Model model) {
 		ViewPoint viewPoint = viewPointService.selectByPrimaryKey(tpVid);
+		List<City> cities=cityDao.selectAllCity();
+
+		model.addAttribute("cities", cities);
 		model.addAttribute("viewPoint", viewPoint);
 		return "admin/view_edit";
 	}
@@ -526,7 +534,9 @@ public class AdminController {
 	public String hotelEdit(Integer hid, Model model) {
 
 		Hotel hotel = hotelDao.selectByPrimaryKey(hid);
+		List<City> cities=cityDao.selectAllCity();
 
+		model.addAttribute("cities", cities);
 		model.addAttribute("hotel", hotel);
 		return "admin/hotel_edit";
 	}
@@ -539,7 +549,8 @@ public class AdminController {
 	public String stationEdit(Integer tpSid, Model model) {
 
 		Station station = stationDao.selectByPrimaryKey(tpSid);
-
+		List<City> cities=cityDao.selectAllCity();
+		model.addAttribute("cities", cities);
 		model.addAttribute("station", station);
 		return "admin/station_edit";
 	}
@@ -555,7 +566,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 跳转景点更新业务
+	 * 跳转酒店更新业务
 	 */
 	@RequestMapping(value = "hoteledithandle", method = RequestMethod.POST)
 	public String hotelEditHandle(Hotel hotel) {
@@ -565,7 +576,7 @@ public class AdminController {
 	}
 
 	/**
-	 * 跳转景点更新业务
+	 * 跳转酒店更新业务
 	 */
 	@RequestMapping(value = "hoteldelete", method = RequestMethod.GET)
 	public String hotelDelete(Integer hid) {
@@ -595,6 +606,8 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "hotelInsertForm", method = RequestMethod.GET)
 	public String hotelInsertForm() {
+		List<City> cities=cityDao.selectAllCity();
+		session.setAttribute("cities", cities);
 		return "admin/hotel_insert";
 	}
 
@@ -719,6 +732,8 @@ public class AdminController {
 		example.setOrderByClause("tp_Tid desc");
 		List<Traffic> traffics = trafficDao.selectByExample(example);
 
+
+
 		model.addAttribute("traffics", traffics);
 		return "admin/traffic_list";
 	}
@@ -744,6 +759,11 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "trafficInsert", method = RequestMethod.GET)
 	public String trafficInsert() {
+		StationExample example = new StationExample();
+		example.setOrderByClause("tp_sid desc");
+		List<Station> stations = stationDao.selectByExample(example);
+
+		session.setAttribute("stations", stations);
 		return "admin/traffic_insert";
 	}
 
@@ -753,6 +773,8 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "stationInsert", method = RequestMethod.GET)
 	public String stationInsert() {
+		List<City> cities=cityDao.selectAllCity();
+		session.setAttribute("cities", cities);
 		return "admin/station_insert";
 	}
 
@@ -835,7 +857,11 @@ public class AdminController {
 	@RequestMapping(value = "trafficEdit", method = RequestMethod.GET)
 	public String trafficEdit(Integer tpTid, Model model) {
 		Traffic traffic = trafficDao.selectByPrimaryKey(tpTid);
+		StationExample example = new StationExample();
+		example.setOrderByClause("tp_sid desc");
+		List<Station> stations = stationDao.selectByExample(example);
 
+		model.addAttribute("stations", stations);
 		model.addAttribute("traffic", traffic);
 		return "admin/traffic_edit";
 	}

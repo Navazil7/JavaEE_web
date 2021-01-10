@@ -10,6 +10,16 @@
 <head>
 	<title>MyShop | 登录</title>
 	<jsp:include page="../includes/header.jsp"/>
+	<script type="text/javascript" src="../../static/assets/js/user/login.js"></script>
+	<style type="text/css" >
+		.zoomImage{
+			/*width: 200px;*/
+			height: 400px;
+			text-align: center;
+			vertical-align: middle;
+			display: table-cell;
+		}
+	</style>
 </head>
 
 <body class="skin-blue layout-top-nav" style="height: auto; min-height: 100%;">
@@ -51,28 +61,58 @@
 							class="active"></li>
 						<li data-target="#myCarousel" data-slide-to="1"></li>
 						<li data-target="#myCarousel" data-slide-to="2"></li>
+<%--						<li data-target="#myCarousel" data-slide-to="3"></li>--%>
+<%--						<li data-target="#myCarousel" data-slide-to="4"></li>--%>
 					</ol>
-					<!-- 轮播（Carousel）项目 -->
-					<div class="carousel-inner">
-						<div class="item active">
-							<img src="/static/assets/img/test/city.png" alt="First slide">
-							<div class="carousel-caption"><h1>来一场说走就走的旅行</h1>Closing WebApplicationContext for namespace
-								'springServlet-servlet': startup date [Thu May 02 10:23:29
+<%--					<c:choose>--%>
+<%--						<c:when test="${user.tp_like == null || user.tp_like==''}">--%>
+							<!-- 轮播（Carousel）项目 -->
+							<div class="carousel-inner" style="text-align: center">
+								<div class="item active">
+									<img src="/static/assets/img/test/city.png" alt="First slide">
+									<div class="carousel-caption"><h1>来一场说走就走的旅行</h1>
+									</div>
+								</div>
+								<div class="item">
+									<img src="/static/assets/img/test/sky.png" alt="Second slide">
+									<div class="carousel-caption"><h1>来一场说走就走的旅行</h1>
+									</div>
+								</div>
+								<div class="item">
+									<img src="/static/assets/img/test/sea.png" alt="Third slide">
+									<div class="carousel-caption"><h1>来一场说走就走的旅行</h1>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="item">
-							<img src="/static/assets/img/test/sky.png" alt="Second slide">
-							<div class="carousel-caption"><h1>来一场说走就走的旅行</h1>Closing WebApplicationContext for namespace
-								'springServlet-servlet': startup date [Thu May 02 10:23:29
-							</div>
-						</div>
-						<div class="item">
-							<img src="/static/assets/img/test/sea.png" alt="Third slide">
-							<div class="carousel-caption"><h1>来一场说走就走的旅行</h1>Closing WebApplicationContext for namespace
-								'springServlet-servlet': startup date [Thu May 02 10:23:29
-							</div>
-						</div>
-					</div>
+<%--						</c:when>--%>
+<%--						<c:otherwise>--%>
+<%--							<div class="carousel-inner" style="height: 400px;text-align: center">--%>
+<%--								<div class="item active" >--%>
+<%--									<img src="/static/assets/img/test/city.png" alt="First slide">--%>
+<%--									<div class="carousel-caption"><h1>接下来为您推荐</h1>--%>
+<%--									</div>--%>
+<%--								</div>--%>
+<%--								<c:forEach items="${viewPoints}" var="viewPoint" begin="0" end="3" step="1" >--%>
+
+<%--									<div class="item" style="text-align: center">--%>
+<%--&lt;%&ndash;										无法居中&ndash;%&gt;--%>
+<%--										<div class="zoomImage">--%>
+<%--											<a href="/view/content?tpVid=${viewPoint.tpVid}" style="text-align: center">--%>
+<%--												<img src="${viewPoint.tpVpic}" style="width: 1110px"></img>--%>
+<%--											</a>--%>
+<%--											<div class="carousel-caption"><h1>--%>
+<%--												[${viewPoint.tpVname}&nbsp;<small>| ${viewPoint.tpVcity}</small>]--%>
+<%--											</h1>--%>
+<%--											</div>--%>
+<%--										</div>--%>
+
+<%--									</div>--%>
+
+<%--								</c:forEach>--%>
+<%--							</div>--%>
+<%--						</c:otherwise>--%>
+<%--					</c:choose>--%>
+
 					<!-- 轮播（Carousel）导航 -->
 					<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -98,23 +138,28 @@
 						<%--自定义内容--%>
 						<div class="col-sm-6 col-md-4 col-lg-3 viewpages">
 							<div class="thumbnail" style="height: 420px;">
-								<a href="/view/content?tpVid=${viewPoint.tpVid}">
-									<img src="${viewPoint.tpVpic}" alt="..." class="img-rounded">
-								</a>
-								<div class="caption">
+
+									<%-- 控制图片大小 保持规范--%>
+								<div>
+									<a href="/view/content?tpVid=${viewPoint.tpVid}">
+										<img src="${viewPoint.tpVpic}" alt="..." class="img-rounded" style="height: 150px;">
+									</a>
+								</div>
+
+								<div class="caption" style="background-color: white">
 									<div class="container-fluid">
 										<div class="row">
+
 											<div class="col-md-12">
 												<h3>${fn:substring(viewPoint.tpTitle,0,30)}</h3>
 												<h5>
-													[${viewPoint.tpVname}&nbsp;<small>| ${viewPoint.tpLocation}</small>
-													]
+													[${viewPoint.tpVname}&nbsp;<small>| ${viewPoint.tpVcity}</small>]
 												</h5>
 												<strong>等级: ${viewPoint.tpLevel}</strong>|
 												<strong>开放时间: ${viewPoint.tpOpentime}</strong>|
 												<strong>景点价格: ${viewPoint.tpPrice}</strong>|
 												<strong>类型: ${viewPoint.tpVtype}</strong><br>
-												详细地址:${fn:substring(viewPoint.tpZip,0,7)}...<br/>
+												详细地址:${fn:substring(viewPoint.tpLocation,0,7)}...<br/>
 												电话: ${viewPoint.tpVphone}
 												<div class="form-group" style="text-align: right;">
 													<a class="btn" style="color: #0b93d5"
@@ -150,13 +195,13 @@
 							<div class="thumbnail"  style="height: 450px;">
 								<a href="/hotel/content?hid=${hotel.hid}">
 										<%--<img src="${viewPoint.tpVpic}" alt="..." class="img-rounded">--%>
-									<img src="${hotel.imgUrl}" alt="...">
+									<img src="${hotel.imgUrl}" alt="..." style="height: 250px;">
 								</a>
 								<div class="caption">
 									<h3>${hotel.title}</h3>
 									<ol>
-										<li><p style="color: #ffa309">城市：${hotel.local}|房屋类型：${hotel.houseType}|床类型：${hotel.bedType}</p> </li>
-										<li><p style="color: #0b93d5">价格：￥${hotel.price} | 详细地址：${hotel.zip}</p></li>
+										<li><p style="color: #ffa309">城市：${hotel.city}|房屋类型：${hotel.houseType}|床类型：${hotel.bedType}</p> </li>
+										<li><p style="color: #0b93d5">价格：￥${hotel.price} | 详细地址：${hotel.local}</p></li>
 									</ol>
 								</div>
 								<div class="form-group" style="text-align: right;">
@@ -188,23 +233,24 @@
 							<div class="container-fluid">
 								<div class="row">
 									<%--danger alert--%>
-									<c:if test="${msg.msg != null}">
-										<div class="alert alert-${msg.status == 200 ? "success" : "danger"} alert-dismissible">
-											<button type="button" class="close" data-dismiss="alert"
-													aria-hidden="true">×
-											</button>
-											<h4>${msg.msg}</h4>
-										</div>
-									</c:if>
+<%--									<c:if test="${msg.msg != null}">--%>
+<%--										<div class="alert alert-${msg.status == 200 ? "success" : "danger"} alert-dismissible">--%>
+<%--											<button type="button" class="close" data-dismiss="alert" onclick="closeMsg()"--%>
+<%--													aria-hidden="true">×--%>
+<%--											</button>--%>
+<%--											<h4>${msg.msg}</h4>--%>
+<%--										</div>--%>
+<%--									</c:if>--%>
 									<%--danger alert--%>
 
-									<%--发点什么?--%>
-									<div class="box-header">
-										<div class="col-lg-2" style="padding-left: 12px; padding-top: 10px;">
-											<a href="/forum/issue?uid=${user.uid}" type="button"
-											   class="btn btn-block btn-primary btn-lg">发点什么?</a>
-										</div>
-									</div>
+<%--									&lt;%&ndash;发点什么?&ndash;%&gt;--%>
+<%--									<div class="box-header">--%>
+<%--										<div class="col-lg-2" style="padding-left: 12px; padding-top: 10px;">--%>
+<%--											<a href="/forum/issue?uid=${user.uid}" type="button"--%>
+<%--											   class="btn btn-block btn-primary btn-lg">发点什么?</a>--%>
+<%--										</div>--%>
+<%--									</div>--%>
+
 									<%--遍历帖子--%>
 									<c:forEach items="${forums}" var="forum">
 										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -236,7 +282,7 @@
 								</div>
 							</div>
 						</div>
-					</
+					</div>
 					div>
 				</div>
 			</section>
@@ -247,9 +293,18 @@
 
 	<%--版权--%>
 	<jsp:include page="../includes/copyright.jsp"/>
+
+
+
 </div>
 <!-- ./wrapper -->
 <%--js--%>
 <jsp:include page="../includes/footer.jsp"/>
 </body>
+<script>
+	function closeMsg() {
+		<% session.removeAttribute("msg");%>
+	}
+</script>
+
 </html>

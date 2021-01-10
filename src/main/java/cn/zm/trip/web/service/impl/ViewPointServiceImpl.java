@@ -74,4 +74,13 @@ public class ViewPointServiceImpl implements ViewPointService {
 	public List<Reply> findByReply() {
 		return viewPointDao.findByReply();
 	}
+
+	/**
+	 * 	查询所有景点信息
+	 */
+	@Override
+	public List<ViewPoint> findByViewpoint() {
+		return viewPointDao.findByViewpoint();
+	}
+
 }

@@ -7,7 +7,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="closeMsg()">
                     &times;
                 </button>
                 <h4 class="modal-title" id="userModalLabel">
@@ -20,10 +20,10 @@
                        <input type="hidden" name="uid" value="${user.uid}">
                    </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">偏爱的城市</label>
-                        <c:forEach items="${cities}" var="city" >
+                        <label class="col-sm-2 control-label">偏爱的景点类型</label>
+                        <c:forEach items="${set}" var="vtype" >
                             <div class="checkbox-inline">
-                                <label><input type="checkbox" value="${city.tpCname}" name="tp_like">${city.tpCname}</label>
+                                <label><input type="checkbox" value="${vtype}" name="tp_like">${vtype}</label>
                             </div>
                         </c:forEach>
                     </div>

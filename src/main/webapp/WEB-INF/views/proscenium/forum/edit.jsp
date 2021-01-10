@@ -55,7 +55,7 @@
 				<%--danger alert--%>
 				<c:if test="${msg.msg != null}">
 					<div class="alert alert-${msg.status == 200 ? "success" : "danger"} alert-dismissible">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true"  onclick="closeMsg()">×
 						</button>
 						<h4>${msg.msg}</h4>
 					</div>

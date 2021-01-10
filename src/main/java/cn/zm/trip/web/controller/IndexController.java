@@ -4,6 +4,7 @@ import cn.zm.trip.web.dao.ForumDao;
 import cn.zm.trip.web.dao.HotelDao;
 import cn.zm.trip.web.dao.ViewPointDao;
 import cn.zm.trip.web.domain.*;
+import cn.zm.trip.web.service.UserService;
 import cn.zm.trip.web.service.ViewPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -22,6 +24,10 @@ public class IndexController {
 	private HotelDao hotelDao;
 	@Autowired
 	private ForumDao forumDao;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private HttpSession session;
 
 	/**
 	 * 跳转首页
@@ -37,7 +43,17 @@ public class IndexController {
 		String prefixHotel = "/static/upload/hotelAvatar/";
 
 		//景点
-		example.setOrderByClause("tp_vid desc");
+		// 智能化推荐首页
+		User user = (User)session.getAttribute("user");
+		if(user!=null){
+			String uid=user.getUid();
+			String vtype=userService.userLikeVtype(uid);
+			example.setOrderByClause("field(tp_vtype,'"+ vtype +"') desc");
+		}
+		else{
+			example.setOrderByClause("tp_vid desc");
+		}
+		//example.setOrderByClause("tp_vid desc");
 		List<ViewPoint> viewPoints = viewPointService.selectByExample(example);
 		for (ViewPoint viewPoint : viewPoints) {
 			String suffix = viewPoint.getTpVpic();

@@ -3,6 +3,7 @@ package cn.zm.trip.web.controller;
 import cn.zm.trip.web.commons.Msg;
 import cn.zm.trip.web.dao.HotelDao;
 import cn.zm.trip.web.domain.*;
+import cn.zm.trip.web.service.UserService;
 import cn.zm.trip.web.service.ViewPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -19,6 +21,7 @@ public class HotelController {
 	private HotelDao hotelDao;
 	@Autowired
 	private ViewPointService viewPointService;
+
 
 	/**
 	 * 跳转首页
@@ -42,7 +45,7 @@ public class HotelController {
 	}
 
 	/**
-	 * 跳转首页
+	 * 跳转酒店介绍
 	 */
 	@RequestMapping(value = "content", method = RequestMethod.GET)
 	public String content(Integer hid, Model model) {
@@ -56,8 +59,13 @@ public class HotelController {
 		model.addAttribute("lr_list",lr_list);
 
 		Hotel hotel = hotelDao.selectByPrimaryKey(hid);
-		model.addAttribute("hotel", hotel);
+		String prefix = "/static/upload/hotelAvatar/";
+		//图片名
+		String suffix = hotel.getImgUrl();
+		//全路径
+		hotel.setImgUrl(prefix + suffix);
 
+		model.addAttribute("hotel", hotel);
 		return "proscenium/hotel/content";
 	}
 

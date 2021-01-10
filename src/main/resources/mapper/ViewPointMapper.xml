@@ -448,6 +448,10 @@
         select * from tp_reply
     </select>
 
+  <!-- 查询所有景点信息 -->
+  <select id="findByViewpoint" resultMap="BaseResultMap">
+        select * from tp_viewpoint
+    </select>
 
 	<!--景点列表模糊搜索-->
 	<select id="viewPointSearch" resultMap="BaseResultMap">

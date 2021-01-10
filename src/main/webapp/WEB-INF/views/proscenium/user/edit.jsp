@@ -85,7 +85,7 @@
 
 								<div class="col-sm-10">
 									<input type="email" name="uemail" class="form-control" id="inputEmail"
-									       placeholder="${user.uemail}">
+									       placeholder="${user.uemail}" value="${user.uemail}">
 								</div>
 							</div>
 
@@ -96,7 +96,7 @@
 
 								<div class="col-sm-10">
 									<input type="password" name="upwd" class="form-control" id="inputPwd"
-									       placeholder="${user.upwd}">
+									       placeholder="${user.upwd}" value="${user.upwd}">
 								</div>
 							</div>
 
@@ -107,7 +107,7 @@
 
 								<div class="col-sm-10">
 									<input type="text" name="age" class="form-control" id="inputAge"
-									       placeholder="${user.age}">
+									       placeholder="${user.age}" value="${user.age}">
 								</div>
 							</div>
 
@@ -118,7 +118,7 @@
 
 								<div class="col-sm-10">
 									<input type="text" name="gender" class="form-control" id="inputGender"
-									       placeholder="${user.gender}">
+									       placeholder="${user.gender}" value="${user.gender}">
 								</div>
 							</div>
 
@@ -129,7 +129,7 @@
 
 								<div class="col-sm-10">
 									<input type="text" name="phone" class="form-control" id="inputPhone"
-									       placeholder="${user.phone}">
+									       placeholder="${user.phone}" value="${user.phone}">
 								</div>
 							</div>
 

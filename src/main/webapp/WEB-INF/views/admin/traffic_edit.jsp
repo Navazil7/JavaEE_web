@@ -150,8 +150,7 @@
 		</div>
 		<!-- /.content-wrapper -->
 	</div>
-	<%--版权--%>
-	<jsp:include page="../../includes/copyright.jsp"/>
+
 
 	<%--css--%>
 	<jsp:include page="../../includes/footer.jsp"/>

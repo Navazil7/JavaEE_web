@@ -48,10 +48,11 @@
             <%--danger alert--%>
             <c:if test="${msg.msg != null}">
                 <div class="alert alert-${msg.status == 200 ? "success" : "danger"} alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="closeMsg()">×</button>
                     <h4>${msg.msg}</h4>
                 </div>
             </c:if>
+                <% session.removeAttribute("msg");%>
             <%--danger alert--%>
             <div class="box">
                 <%--用户表单--%>
@@ -78,19 +79,27 @@
                                 <%--tpStype--%>
                                 <div class="form-group">
                                     <label for="tpStype" class="col-sm-2 control-label">站点类型</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="tpStype" class="form-control" id="tpStype"
-                                                   placeholder="站点类型">
+                                    <div class="col-sm-2">
+                                        <select class="form-control" id="tpStype" name="tpStype">
+                                            <option value="火车" selected="selected">火车</option>
+                                            <option value="飞机">飞机</option>
+                                            <option value="大巴">大巴</option>
+                                        </select>
                                     </div>
+                                    <div class="col-sm-8"></div>
                                 </div>
 
                                     <%--tpScity--%>
                                     <div class="form-group">
                                         <label for="tpScity" class="col-sm-2 control-label">城市</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="tpScity" class="form-control" id="tpScity"
-                                                   placeholder="所在城市">
+                                        <div class="col-sm-2">
+                                            <select class="form-control" id="tpScity" name="tpScity">
+                                                <c:forEach items="${cities}" var="city">
+                                                    <option value="${city.tpCname}">${city.tpCname}</option>
+                                                </c:forEach>
+                                            </select>
                                         </div>
+                                        <div class="col-sm-8"></div>
                                     </div>
 
                                     <div class="form-group">
@@ -166,7 +175,7 @@
         <!-- /.content-wrapper -->
     </div>
     <%--版权--%>
-    <jsp:include page="../../includes/copyright.jsp"/>
+
     <%--css--%>
     <jsp:include page="../../includes/footer.jsp"/>
     <!-- page script -->

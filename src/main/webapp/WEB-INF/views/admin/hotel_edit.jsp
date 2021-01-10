@@ -48,10 +48,11 @@
 			<%--danger alert--%>
 			<c:if test="${msg.msg != null}">
 				<div class="alert alert-${msg.status == 200 ? "success" : "danger"} alert-dismissible">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="closeMsg()">×</button>
 					<h4>${msg.msg}</h4>
 				</div>
 			</c:if>
+				<% session.removeAttribute("msg");%>
 			<%--danger alert--%>
 			<div class="box">
 				<%--用户表单--%>
@@ -87,11 +88,15 @@
 
 								<%--uname--%>
 								<div class="form-group">
-									<label for="local" class="col-sm-2 control-label">城市</label>
-									<div class="col-sm-10">
-										<input type="text" name="local" value="${hotel.city}" class="form-control" id="city"
-										       placeholder="${hotel.city}">
+									<label for="city" class="col-sm-2 control-label">城市</label>
+									<div class="col-sm-2">
+										<select class="form-control" id="city" name="city">
+											<c:forEach items="${cities}" var="city">
+												<option value="${city.tpCname}">${city.tpCname}</option>
+											</c:forEach>
+										</select>
 									</div>
+									<div class="col-sm-8"></div>
 								</div>
 
 								<%--email--%>
@@ -253,8 +258,7 @@
 		</div>
 		<!-- /.content-wrapper -->
 	</div>
-	<%--版权--%>
-	<jsp:include page="../../includes/copyright.jsp"/>
+
 
 	<%--css--%>
 	<jsp:include page="../../includes/footer.jsp"/>

@@ -112,5 +112,9 @@ public interface ViewPointDao {
      */
     List<Reply> findByReply();
 
+    /**
+     * 	查询所有回复信息
+     */
+    List<ViewPoint> findByViewpoint();
 
 }

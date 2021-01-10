@@ -17,8 +17,8 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public void insertOrder(String oid, int uid, String info) {
-        orderdao.insert(new Order(oid,uid,info));
+    public void insertOrder(String oid, int uid, String info,String status) {
+        orderdao.insert(new Order(oid,uid,info,status));
     }
 
     @Override
@@ -65,6 +65,9 @@ public class OrderServiceImpl implements OrderService {
                 attracion.attr_createDate=infos[5].trim();
                 attracion.attr_createTime=infos[6].trim();
                 attracion.attr_time=infos[7].trim();
+                attracion.attr_vid=Integer.parseInt(infos[8].trim());
+                attracion.attr_num=Integer.parseInt(infos[9].trim());
+                attracion.setAttr_status(order.getTpStatus().trim());
                 list_attractions.add(attracion);
             }
 
@@ -98,6 +101,9 @@ public class OrderServiceImpl implements OrderService {
                 hotel.hotel_createDate=infos[5].trim();
                 hotel.hotel_createTime=infos[6].trim();
                 hotel.hotel_time=infos[7].trim();
+                hotel.hotel_hid=Integer.parseInt(infos[8].trim());
+                hotel.hotel_num=Integer.parseInt(infos[9].trim());
+                hotel.hotel_status=order.getTpStatus().trim();
                 list_hotels.add(hotel);
             }
 
@@ -132,11 +138,19 @@ public class OrderServiceImpl implements OrderService {
                 traffic.traffic_cost=Integer.parseInt(infos[9].trim());
                 traffic.traffic_createDate=infos[10].trim();
                 traffic.traffic_createTime=infos[11].trim();
+                traffic.traffic_tid=Integer.parseInt(infos[12].trim());
+                traffic.traffic_num=Integer.parseInt(infos[13].trim());
+                traffic.traffic_status=order.getTpStatus();
                 list_traffics.add(traffic);
             }
 
 
         }
         return list_traffics;
+    }
+
+    @Override
+    public void updateOrder(Order order) {
+        orderdao.updateByPrimaryKey(order);
     }
 }

@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService {
 	 * 用户喜好更新
 	 */
 	@Override
-	public void updataUserLike(String uid, String city) {
+	public void updataUserLike(String uid, String vtype) {
 		User user = userDao.selectByPrimaryKey(Integer.parseInt(uid));
 		String like=user.getTp_like();
 		String newlike="";
@@ -91,14 +91,14 @@ public class UserServiceImpl implements UserService {
 //		log.info(like);
 
 		if(like==null || like.equals("")){
-			newlike+=city+":1#";
+			newlike+=vtype+":1#";
 		}
 		else{
 			boolean flag=true;
 			String likes[] = like.split("#");
 			for(int i=0;i<likes.length;i++){
 				String cityandnum[]=likes[i].split(":");
-				if(cityandnum[0].equals(city)){
+				if(cityandnum[0].equals(vtype)){
 					int num=Integer.parseInt(cityandnum[1]);
 					cityandnum[1]=String.valueOf(num+1);
 					flag=false;
@@ -106,7 +106,7 @@ public class UserServiceImpl implements UserService {
 				newlike+=cityandnum[0]+":"+cityandnum[1]+"#";
 			}
 			if(flag){
-				newlike+=city+":1#";
+				newlike+=vtype+":1#";
 			}
 		}
 		user.setTp_like(newlike);
@@ -148,15 +148,18 @@ public class UserServiceImpl implements UserService {
 
 
 	/**
-	 * 返回用户最喜欢的城市
+	 * 返回用户最喜欢的景点类型
 	 */
 	@Override
-	public String userLikeCity(String uid){
+	public String userLikeVtype(String uid){
 		User user = userDao.selectByPrimaryKey(Integer.parseInt(uid));
 		int maxnum=0;
 		String city=null;
 
 		String like=user.getTp_like();
+		if(like==null||like.equals("")){
+			return "";
+		}
 		String likes[] = like.split("#");
 		for(int i=0;i<likes.length;i++){
 			String cityandnum[]=likes[i].split(":");

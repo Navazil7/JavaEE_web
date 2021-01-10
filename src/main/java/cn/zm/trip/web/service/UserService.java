@@ -69,10 +69,10 @@ public interface UserService {
 	/**
 	 * 用户喜好更新
 	 */
-	void updataUserLike(String uid, String city);
+	void updataUserLike(String uid, String vtype);
 
 	/**
 	 * 返回用户最喜好的城市
 	 */
-	public String userLikeCity(String uid);
+	public String userLikeVtype(String uid);
 }

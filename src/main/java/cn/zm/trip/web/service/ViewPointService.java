@@ -61,4 +61,9 @@ public interface ViewPointService {
 	 * 	查询所有回复信息
 	 */
 	List<Reply> findByReply();
+
+	/**
+	 * 	查询所有回复信息
+	 */
+	List<ViewPoint> findByViewpoint();
 }

@@ -393,6 +393,76 @@ public class OrderExample {
             addCriterion("tp_oinfo not between", value1, value2, "tpOinfo");
             return (Criteria) this;
         }
+
+        public Criteria andTpStatusIsNull() {
+            addCriterion("tp_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStatusIsNotNull() {
+            addCriterion("tp_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStatusEqualTo(String value) {
+            addCriterion("tp_status =", value, "tpStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStatusNotEqualTo(String value) {
+            addCriterion("tp_status <>", value, "tpStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStatusGreaterThan(String value) {
+            addCriterion("tp_status >", value, "tpStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStatusGreaterThanOrEqualTo(String value) {
+            addCriterion("tp_status >=", value, "tpStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStatusLessThan(String value) {
+            addCriterion("tp_status <", value, "tpStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStatusLessThanOrEqualTo(String value) {
+            addCriterion("tp_status <=", value, "tpStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStatusLike(String value) {
+            addCriterion("tp_status like", value, "tpStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStatusNotLike(String value) {
+            addCriterion("tp_status not like", value, "tpStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStatusIn(List<String> values) {
+            addCriterion("tp_status in", values, "tpStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStatusNotIn(List<String> values) {
+            addCriterion("tp_status not in", values, "tpStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStatusBetween(String value1, String value2) {
+            addCriterion("tp_status between", value1, value2, "tpStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andTpStatusNotBetween(String value1, String value2) {
+            addCriterion("tp_status not between", value1, value2, "tpStatus");
+            return (Criteria) this;
+        }
     }
 
     /**

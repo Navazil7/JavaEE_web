@@ -10,7 +10,7 @@
 <head>
 	<title>View | 景点</title>
 	<jsp:include page="../../../includes/header.jsp"/>
-	<script type="text/javascript" src="../../static/assets/js/user/login.js"></script>
+	<script type="text/javascript" src="../../../../static/assets/js/user/login.js"></script>
 </head>
 
 <body class="skin-blue layout-top-nav" style="height: auto; min-height: 100%;">

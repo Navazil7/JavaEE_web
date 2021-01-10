@@ -18,10 +18,11 @@ public class EmailNotifier implements ApplicationListener<EmailEvent> {
                     emailEvent.getAddress());
             System.out.println("需要发送邮件的邮件正文" +
                     emailEvent.getText());
-            mailSenderSrvService.sendEmail(emailEvent.getAddress(),"ssm框架测试邮件发送","<p>这是使用spring,springmvc,mybatis整合框架的邮件功能发送的一封邮件,测试</p>");
+            mailSenderSrvService.sendEmail(emailEvent.getAddress(),"ssm框架邮件发送","<p>这是使用spring,springmvc,mybatis整合框架的邮件功能发送的一封邮件,测试验证码</p>"+emailEvent.getText());
         } else {
             System.out.println("容器本身的事件" + evt);
         }
+        return;
     }
 
 }

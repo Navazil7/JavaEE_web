@@ -36,16 +36,16 @@
 			<br>
 			<jsp:include page="../../../includes/user_saidbar.jsp"/>
 
-			<%-- 用户喜好模态框 --%>
-<%--			<c:if test="${user.tp_like == null || user.tp_like==''}">--%>
-<%--				<script>--%>
-<%--					alert("请填写用户喜好调查表，有助您获得更好的浏览体验！");--%>
-<%--				</script>--%>
+<%--			 用户喜好模态框 --%>
+			<c:if test="${user.tp_like == null || user.tp_like==''}">
+				<script>
+					alert("请填写用户喜好调查表，有助您获得更好的浏览体验！");
+				</script>
 				<div style="text-align:center;">
 					<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#userliketable">个人喜好调查</button>
 				</div>
 				<jsp:include page="../../../includes/user_likemodal.jsp"/>
-<%--			</c:if>--%>
+			</c:if>
 
 			<%--信息--%>
 			<section class="content col-lg-10 left">
@@ -161,27 +161,7 @@
 								</div>
 							</div>
 
-							<%--tp_like--%>
-							<div class="form-group">
-								<label for="tp_like"
-									   class="col-sm-2 control-label">tp_like</label>
 
-								<div class="col-sm-10">
-									<input type="text" readonly name="phone" class="form-control" id="tp_like"
-										   placeholder="${user.tp_like}">
-								</div>
-							</div>
-
-							<%--tp_like--%>
-							<div class="form-group">
-								<label for="tp_like"
-									   class="col-sm-2 control-label">tp_like</label>
-
-								<div class="col-sm-10">
-									<input type="text" readonly name="phone" class="form-control" id="most"
-										   placeholder="${most}">
-								</div>
-							</div>
 
 						</form>
 					</div>
@@ -198,5 +178,6 @@
 <!-- ./wrapper -->
 <%--js--%>
 <jsp:include page="../../../includes/footer.jsp"/>
+
 </body>
 </html>

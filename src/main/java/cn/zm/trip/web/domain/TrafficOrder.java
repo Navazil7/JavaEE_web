@@ -16,6 +16,34 @@ public class TrafficOrder {
     public String traffic_createDate; //订单创建日期
     public String traffic_createTime; //订单创建时间
 
+    public Integer traffic_tid;  //交通编号
+    public String traffic_status; //支付状态
+    public Integer traffic_num;  //订单数量
+
+    public Integer getTraffic_tid() {
+        return traffic_tid;
+    }
+
+    public void setTraffic_tid(Integer traffic_tid) {
+        this.traffic_tid = traffic_tid;
+    }
+
+    public String getTraffic_status() {
+        return traffic_status;
+    }
+
+    public void setTraffic_status(String traffic_status) {
+        this.traffic_status = traffic_status;
+    }
+
+    public Integer getTraffic_num() {
+        return traffic_num;
+    }
+
+    public void setTraffic_num(Integer traffic_num) {
+        this.traffic_num = traffic_num;
+    }
+
     public String getTraffic_orderId() {
         return traffic_orderId;
     }

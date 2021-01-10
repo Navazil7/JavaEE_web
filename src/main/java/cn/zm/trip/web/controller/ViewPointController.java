@@ -3,6 +3,7 @@ package cn.zm.trip.web.controller;
 import cn.zm.trip.web.commons.Msg;
 import cn.zm.trip.web.dao.ViewPointDao;
 import cn.zm.trip.web.domain.*;
+import cn.zm.trip.web.service.UserService;
 import cn.zm.trip.web.service.ViewPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,9 @@ import java.util.List;
 public class ViewPointController {
 	@Autowired
 	private ViewPointService viewPointService;
-
+	@Autowired
+	private UserService userService;
+	@Autowired
 	private HttpSession session;
 	@Autowired
 	private ViewPointExample viewPointExample;
@@ -75,6 +78,12 @@ public class ViewPointController {
 	 */
 	@RequestMapping(value = "content", method = RequestMethod.GET)
 	public String viewContent(Integer tpVid, Model model) {
+
+		// 用户喜好添加
+		User user = (User)session.getAttribute("user");
+		String vtype=viewPointService.selectByPrimaryKey(tpVid).getTpVtype();
+		userService.updataUserLike(user.getUid(),vtype);
+
 		//封装留言信息
 		List<Words> lw_list = viewPointService.findByWords();
 		model.addAttribute("lw_list",lw_list);
@@ -84,6 +93,11 @@ public class ViewPointController {
 		model.addAttribute("lr_list",lr_list);
 
 		ViewPoint viewPoint = viewPointService.selectByPrimaryKey(tpVid);
+		String prefix = "/static/upload/viewavatar/";
+		//图片名
+		String suffix = viewPoint.getTpVpic();
+		//全路径
+		viewPoint.setTpVpic(prefix + suffix);
 		model.addAttribute("viewPoint", viewPoint);
 
 		return "proscenium/viewpoint/content";

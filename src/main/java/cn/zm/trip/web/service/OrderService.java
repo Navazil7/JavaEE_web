@@ -9,7 +9,7 @@ public interface OrderService {
     /**
      *新增订单
      */
-    void insertOrder(String oid, int uid, String info);
+    void insertOrder(String oid, int uid, String info, String status);
 
     /**
      * 删除订单
@@ -45,4 +45,9 @@ public interface OrderService {
      * 读取某一用户的交通订单
      */
     public List<TrafficOrder> getTraffics(int uid);
+
+    /**
+     * 更新订单
+     */
+    public void updateOrder(Order order);
 }

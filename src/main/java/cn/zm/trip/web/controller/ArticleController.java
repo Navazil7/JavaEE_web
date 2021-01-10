@@ -111,7 +111,6 @@ public class ArticleController {
 	/**
 	 * 跳转到论坛
 	 */
-
 	@RequestMapping(value="/toForumArticleView")
 	public String toForumArticleView(@RequestParam int tpFid, Model model){
 		//封装留言信息
