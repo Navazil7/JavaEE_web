@@ -8,7 +8,7 @@
 <html>
 <%--Header Begin--%>
 <head>
-	<title>Hotel | 酒店</title>
+	<title>Cust | 定制</title>
 	<jsp:include page="../../../includes/header.jsp"/>
 </head>
 
@@ -284,7 +284,6 @@
 <%--		<script src="/static/assets/plugins/jQueryDistpicker20160621/js/distpicker.data.js"></script>--%>
 <%--		<script src="/static/assets/plugins/jQueryDistpicker20160621/js/distpicker.js"></script>--%>
 		<script src="https://cdn.bootcdn.net/ajax/libs/distpicker/2.0.6/distpicker.js"></script>
-
 		<script src="/static/assets/js/layer/layer.js"></script>>
 	<script>
 
@@ -462,7 +461,7 @@
                             + '</a>'
                             + '<div class="col-md-12">'
                             + '<h3> ' + title + ' ...</h3>'
-                            + '<h5> [ ' + data[i].tpVname + ' &nbsp;<small>| ' + data[i].tpLocation + ' </small>] </h5>'
+                            + '<h5> [ ' + data[i].tpVname + ' &nbsp;<small>| ' + data[i].tpVcity + ' </small>] </h5>'
                             + '<strong>等级: ' + data[i].tpLevel + ' </strong>| '
                             + '<strong> 开放时间:  ' + data[i].tpOpentime + ' </strong>|'
                             + '<strong>类型:  ' + data[i].tpVtype + ' </strong>'
@@ -499,16 +498,16 @@
 	                        + '<div class="thumbnail"  style="height: 450px;">'
 								+ '<label class = "hotel"><input type="checkbox" name = "hotel-choose" class = "hotel-choose"  value = "'+data[i].hid+'">'+'</label>'
                             + '<a href="/hotel/content?hid=' + data[i].hid + '">'
-                            + '<img src="/static/upload/hotelavatar/' + data[i].imgUrl + '">'
+                            + '<img src="/static/upload/hotelAvatar/' + data[i].imgUrl + '" style="300px">'
                             + '</a>'
                             + '<div class="caption">'
                             + '<h3>' + data[i].title + '</h3>'
                             + '<ol>'
-                            + '<li><p style="color: #ffa309">城市：' + data[i].local + '|房屋类型：' + data[i].houseType + '|床类型：' + data[i].bedType + '</p> </li>'
-                            + '<li><p style="color: #0b93d5">价格：￥' + data[i].price + '| 详细地址：' + data[i].loacal + '</p></li>'
+                            + '<li><p style="color: #ffa309">城市：' + data[i].city + '|房屋类型：' + data[i].houseType + '|床类型：' + data[i].bedType + '</p> </li>'
+                            + '<li><p style="color: #0b93d5">价格：￥' + data[i].price + '| 详细地址：' + data[i].local + '</p></li>'
                             + '</ol>'
                             + '</div>'
-                            + '<div class="form-group" style="text-align: right;">'
+                            + '<div class="form-group" style="text-align: right; height: 50px">'
                             + '<a class="btn" style="color: #0b97c4" href="/hotel/content?hid=' + data[i].hid + '">查看详情»</a>'
                             + '</div>'
                             + '</div>'
@@ -554,13 +553,16 @@
 				console.log($(this).val());
 				views.push($(this).val());
 			});
-			if(traf==''){
+			if(${user==null}){
+				alert("请先登录");
+			}
+			else if(traf==''||traf==undefined){
 				alert("交通工具未选择");
 			}
-			else if(views[0]==''){
+			else if(views[0]==''||views[0]==undefined){
 				alert("景点未选择");
 			}
-			else if(hotels[0]==''){
+			else if(hotels[0]==''||hotels[0]==undefined){
 				alert("旅馆未选择");
 			}
 			else{
@@ -824,7 +826,7 @@
 			// 获取得都是各自得id值，只传入id 通过后台获取所需数据
 			var traf=$("input[name='traffic-choose']:checked").val();
 			//console.log(traf);
-			if(${user==nul}){
+			if(${user==null}){
 				alert("未登录");
 			}
 			else

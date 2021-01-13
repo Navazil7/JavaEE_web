@@ -42,38 +42,6 @@ public class ViewPointServiceImpl implements ViewPointService {
 	public void updateByPrimaryKeySelective(ViewPoint viewPoint) {
 		viewPointDao.updateByPrimaryKeySelective(viewPoint);
 	}
-	/**
-	 * 保存留言信息功能
-	 * @param words
-	 * @return
-	 */
-	@Override
-	public void saveWords(Words words) {
-		viewPointDao.saveWords(words);
-	}
-	/**
-	 * 保存回复信息
-	 * @param reply
-	 */
-	@Override
-	public void saveReply(Reply reply) {
-		viewPointDao.saveReply(reply);
-	}
-	/**
-	 * 查询所有留言信息
-	 * @return
-	 */
-	@Override
-	public List<Words> findByWords() {
-		return viewPointDao.findByWords();
-	}
-	/**
-	 * 	查询所有回复信息
-	 */
-	@Override
-	public List<Reply> findByReply() {
-		return viewPointDao.findByReply();
-	}
 
 	/**
 	 * 	查询所有景点信息

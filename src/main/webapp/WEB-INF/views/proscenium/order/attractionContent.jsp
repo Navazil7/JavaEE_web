@@ -174,7 +174,7 @@
                                        class="col-sm-2 control-label">订单数量</label>
 
                                 <div class="col-sm-10">
-                                    <select class="form-control" style="width: 70px" id="num" name="num" size="4">
+                                    <select class="form-control" style="width: 70px" id="num" name="num">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -192,7 +192,7 @@
 
                                 <div class="col-sm-10">
                                         <input type="text" id="booktime" name="booktime" class="Wdate form-control" value="<%=java.text.DateFormat.getDateInstance().format(new java.util.Date())%>"
-                                               οnfοcus="WdatePicker({minDate:'%y-%M-%d'})" style="width: 200px" onclick="WdatePicker()" />
+                                               onfocus="WdatePicker({minDate:'#now'})" style="width: 200px;cursor: pointer" onclick="WdatePicker()" />
 
 <%--                                                                            <input type="text" id="booktime" placeholder="请选择日期">--%>
 <%--                                    <input class="form-control" type="date" name="booktime" id="booktime"--%>

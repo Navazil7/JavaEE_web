@@ -7,6 +7,7 @@ import cn.zm.trip.web.domain.*;
 import cn.zm.trip.web.service.AdminService;
 import cn.zm.trip.web.service.UserService;
 import cn.zm.trip.web.service.ViewPointService;
+import cn.zm.trip.web.service.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +32,8 @@ public class AdminController {
 	private HttpSession session;
 	@Autowired
 	private ViewPointService viewPointService;
+	@Autowired
+	private WordService wordService;
 	@Autowired
 	private HotelDao hotelDao;
 	@Autowired
@@ -893,7 +896,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "wordsList", method = RequestMethod.GET)
 	public String wordsList(Model model) {
-		List<Words> byWords = viewPointService.findByWords();
+		List<Words> byWords = wordService.findByWords();
 		model.addAttribute("byWords", byWords);
 		return "admin/words_list";
 	}
@@ -908,8 +911,13 @@ public class AdminController {
 
 		for (Integer tp_wid : tp_wids){
 			wordsDao.deleteByPrimaryKey(tp_wid);
+//			Reply reply = new Reply();
+//			reply.setTp_r_forumId(tp_wid.toString());
+//			List<Reply> list = replyDao.replyPointSearch(reply);
+//			replyDao.deleteByPrimaryKey(list.get(0).getTp_rid());
 
 		}
+
 		model.addAttribute("msg", Msg.success(Arrays.toString(tp_wids) + "号删除成功！"));
 		return "1";
 	}
@@ -931,7 +939,7 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "replyList", method = RequestMethod.GET)
 	public String ReplyList(Model model) {
-		List<Reply> replys = viewPointService.findByReply();
+		List<Reply> replys = wordService.findByReply();
 		model.addAttribute("replys", replys);
 		return "admin/reply_list";
 	}

@@ -65,7 +65,7 @@
 						<!-- ITEM -->
 						<div class="col-lg-1"></div>
 						<div class="col-sm-6 col-md-4 col-lg-5">
-							<div class="thumbnail"  style="height: 470px;">
+							<div class="thumbnail"  style="height: 500px;">
 								<a href="/hotel/content?hid=${hotel.hid}">
 										<%--<img src="${viewPoint.tpVpic}" alt="..." class="img-rounded">--%>
 									<img src="${hotel.imgUrl}" alt="...">

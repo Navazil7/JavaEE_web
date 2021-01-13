@@ -33,6 +33,7 @@ public class SessionFilter extends OncePerRequestFilter {
 
         // 不过滤的uri
         String[] notFilter = new String[] { "/index","captcha",
+                "error/product_off",
                 "/admin/login","/static",
                 "/view/point","/hotel/content",
                 "/user/login","/user/regst"

@@ -21,4 +21,5 @@ public class ForumServiceImpl implements ForumService {
 		List<Forum> forums = forumDao.selectByExample(example);
 		return forums;
 	}
+
 }

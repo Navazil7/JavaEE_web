@@ -9,6 +9,7 @@
 > Spring+SpringMvc+Mybatis  
 > Maven管理jar包  
 > IDE：IDEA  
+> JDBC连接池：com.alibaba.druid  
 
 # 应用基本功能
 ### 用户

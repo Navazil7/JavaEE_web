@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -77,7 +80,16 @@ public class TrafficController {
 		List<Traffic> queryTraffics = new ArrayList<>();
 		for(Traffic traffic : traffics) {
 			// 出发时间当然要比现在迟
-
+			try {
+				SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+				Date nowTime = new Date(System.currentTimeMillis());
+				Date currentTime=sdf.parse(traffic.getTpCurrentTime());
+				if(nowTime.after(currentTime)){
+					continue;
+				}
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 
 			if (trafic.equals("ALL")) {
 				// 匹配traffic的出发站和终点站是否符合要求

@@ -18,6 +18,37 @@
 		<result column="tp_w_hotelId" jdbcType="VARCHAR" property="tp_w_hotelId" />
 	</resultMap>
 
+
+
+	<!-- 保存留言信息 -->
+	<insert id="saveWords" parameterType="cn.zm.trip.web.domain.Words">
+        insert into tp_words(
+          tp_wname,
+          tp_wdate,
+          tp_wcontent,
+          tp_w_for_name,
+          tp_w_viewpointId,
+          tp_w_forumId,
+          tp_w_hotelId
+        )
+        values(
+          #{tp_wname},
+          #{tp_wdate},
+          #{tp_wcontent},
+          #{tp_w_for_name},
+          #{tp_w_viewpointId},
+          #{tp_w_forumId},
+          #{tp_w_hotelId}
+        )
+    </insert>
+
+
+
+	<!-- 查询所有留言信息 -->
+	<select id="findByWords" resultMap="BaseResultMap">
+        select * from tp_words
+    </select>
+
 	<!--删除用户-->
 	<delete id="deleteByPrimaryKey">
 		delete from

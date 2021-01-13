@@ -104,16 +104,16 @@ public class CustController {
 		// 规范城市名
 		local=local.substring(0,2);
 
-		String filePath = "/static/upload/hotelAvatar/";
+//		String filePath = "/static/upload/hotelAvatar/";
 		HotelExample example = new HotelExample();
 		example.createCriteria().andCityEqualTo(local);
 		example.setOrderByClause("hid desc");
 		System.out.println(example);
 		List<Hotel> hotels = hotelDao.selectByExample(example);
-		for (Hotel hotel : hotels){
-			String fileSuffix = hotel.getImgUrl();
-			hotel.setImgUrl(filePath + fileSuffix);
-		}
+//		for (Hotel hotel : hotels){
+//			String fileSuffix = hotel.getImgUrl();
+//			hotel.setImgUrl(filePath + fileSuffix);
+//		}
 		System.out.println(hotels);
 		return hotels;
 	}
@@ -213,7 +213,7 @@ public class CustController {
 
 						String orderInfo=attractionOrder.getAttr_name().trim()+"#"+attractionOrder.getAttr_place().trim()+"#"+attractionOrder.getAttr_uemail().trim()+"#"
 								+attractionOrder.getAttr_uphone().trim()+"#"+attractionOrder.getAttr_cost()+"#"+attractionOrder.getAttr_createDate().trim()+"#"
-								+attractionOrder.getAttr_createTime().trim()+"#"+"任意时间"+"#"+attractionOrder.getAttr_vid().toString();
+								+attractionOrder.getAttr_createTime().trim()+"#"+"任意时间"+"#"+attractionOrder.getAttr_vid().toString()+"#"+Num[i];
 						orderService.insertOrder(attractionOrder.getAttr_orderId().trim(),attractionOrder.getAttr_uid(),orderInfo,"未使用");
 						System.out.println("111");
 					}
@@ -240,11 +240,11 @@ public class CustController {
 					}
 					else{
 						Traffic traffic=trafficDao.selectByPrimaryKey(Integer.parseInt(IDs[i]));
-						String oid="H"+dt+user.getPhone().trim().substring(7);
+						String oid="T"+dt+user.getPhone().trim().substring(7);
 						TrafficOrder trafficorder=new TrafficOrder();
 						trafficorder.setTraffic_orderId(oid);
 						trafficorder.setTraffic_uid(Integer.parseInt(tpUid));
-						trafficorder.setTraffic_cost(Integer.parseInt(IDs[i])*Integer.parseInt(Num[i]));
+						trafficorder.setTraffic_cost(Integer.parseInt(traffic.getTpTprice())*Integer.parseInt(Num[i]));
 						trafficorder.setTraffic_createDate(date);
 						trafficorder.setTraffic_createTime(time);
 						trafficorder.setTraffic_depart(traffic.getTpCurrent());
@@ -259,12 +259,13 @@ public class CustController {
 						String dtime[]=traffic.getTpArriveTime().split(" ");
 						trafficorder.setTraffic_desDate(dtime[0]);
 						trafficorder.setTraffic_desTime(dtime[1]);
+
 						String orderInfo=trafficorder.getTraffic_type().trim()+"#"+trafficorder.getTraffic_uemail().trim()+"#"
 								+trafficorder.getTraffic_uphone().trim()+"#"+trafficorder.getTraffic_depart()+"#"+trafficorder.getTraffic_des().trim()+"#"
 								+trafficorder.getTraffic_departDate().trim()+"#"+trafficorder.getTraffic_departTime().trim()+"#"+trafficorder.getTraffic_desDate()+"#"+trafficorder.getTraffic_desTime()
-								+"#"+trafficorder.getTraffic_cost()+"#"+trafficorder.getTraffic_createDate()+"#"+trafficorder.getTraffic_createTime()+"#"+Num[i];
+								+"#"+trafficorder.getTraffic_cost()+"#"+trafficorder.getTraffic_createDate()+"#"+trafficorder.getTraffic_createTime()+"#"+trafficorder.getTraffic_tid()+"#"+Num[i];
 						orderService.insertOrder(trafficorder.getTraffic_orderId(),trafficorder.getTraffic_uid(),orderInfo,"未使用");
-						System.out.println("1113");
+						System.out.println("1113"+orderInfo);
 					}
 
 				}

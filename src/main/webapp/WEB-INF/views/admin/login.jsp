@@ -49,11 +49,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label>
-                            <input name="isRemember" type="checkbox"> 记住我?
-                        </label>
-                    </div>
+
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
@@ -63,7 +59,6 @@
             </div>
         </form>
 
-        <a href="#">忘记密码?</a><br>
     </div>
     <!-- /.UserService-box-body -->
 </div>

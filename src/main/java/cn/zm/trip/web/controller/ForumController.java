@@ -9,6 +9,7 @@ import cn.zm.trip.web.domain.Words;
 import cn.zm.trip.web.service.ForumService;
 import cn.zm.trip.web.service.ViewPointService;
 //import com.sun.org.apache.xpath.internal.operations.Mod;
+import cn.zm.trip.web.service.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +35,7 @@ public class ForumController {
 	@Autowired
 	Reply reply;
 	@Autowired
-	ViewPointService viewPointService;
+	private WordService wordService;
 
 	private Model model;
 	/**
@@ -54,11 +55,11 @@ public class ForumController {
 	@RequestMapping(value = "content", method = RequestMethod.GET)
 	public String content(Integer tpFid, Model model){
 		//封装留言信息
-		List<Words> byWords = viewPointService.findByWords();
+		List<Words> byWords = wordService.findByWords();
 		model.addAttribute("lw_list",byWords);
 
 		//封装回复信息
-		List<Reply> byReply = viewPointService.findByReply();
+		List<Reply> byReply = wordService.findByReply();
 		model.addAttribute("lr_list",byReply);
 
 		Forum forum = forumDao.selectByPrimaryKey(tpFid);

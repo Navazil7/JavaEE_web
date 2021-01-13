@@ -72,7 +72,7 @@ public interface UserService {
 	void updataUserLike(String uid, String vtype);
 
 	/**
-	 * 返回用户最喜好的城市
+	 * 返回用户最喜好的景点类型
 	 */
-	public String userLikeVtype(String uid);
+	String userLikeVtype(String uid);
 }

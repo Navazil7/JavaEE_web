@@ -30,6 +30,37 @@
 		where tp_rid = #{tp_rid};
 	</delete>
 
+	<!-- 保存回复信息 -->
+	<insert id="saveReply" parameterType="cn.zm.trip.web.domain.Reply">
+        insert into tp_reply(
+          tp_rname,
+          tp_rdate,
+          tp_rcontent,
+          tp_r_for_name,
+          tp_r_for_words,
+          tp_r_for_reply,
+          tp_r_viewpointId,
+          tp_r_forumId,
+          tp_r_hotelId
+        )
+        values(
+          #{tp_rname},
+          #{tp_rdate},
+          #{tp_rcontent},
+          #{tp_r_for_name},
+          #{tp_r_for_words},
+          #{tp_r_for_reply},
+          #{tp_r_viewpointId},
+          #{tp_r_forumId},
+          #{tp_r_hotelId}
+        )
+    </insert>
+
+	<!-- 查询所有回复信息 -->
+	<select id="findByReply" resultMap="BaseResultMap">
+        select * from tp_reply
+    </select>
+
 	<!--回复列表模糊搜索-->
 	<select id="replyPointSearch" resultMap="BaseResultMap">
 		SELECT

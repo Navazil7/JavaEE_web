@@ -1,7 +1,11 @@
 package cn.zm.trip.web.service.impl;
 
+import cn.zm.trip.web.dao.OrderMapper;
 import cn.zm.trip.web.dao.UserDao;
+import cn.zm.trip.web.domain.OrderExample;
 import cn.zm.trip.web.domain.User;
+import cn.zm.trip.web.domain.ViewPointExample;
+import cn.zm.trip.web.service.ForumService;
 import cn.zm.trip.web.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +24,8 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private ForumService forumService;
 
 	@Override
 	public void insertUser(String uname, String uemail, String upwd) {
@@ -52,6 +58,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void userDelete(String uid) {
+//		OrderExample example = new OrderExample();
+//		OrderExample.Criteria criteria = example.createCriteria();
+//		criteria.andTpUidEqualTo()
+
 		userDao.userDelete(uid);
 	}
 

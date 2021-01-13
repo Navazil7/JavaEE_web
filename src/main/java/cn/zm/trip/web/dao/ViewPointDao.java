@@ -89,31 +89,7 @@ public interface ViewPointDao {
     List<ViewPoint> viewPointSearch(ViewPoint viewPoint);
 
     /**
-     * 保存回复
-     * @param words
-     * @return
-     */
-    void saveWords(Words words);
-
-    /**
-     * 保存回复信息
-     * @param reply
-     */
-    void saveReply(Reply reply);
-
-    /**
-     * 查询所有留言信息
-     * @return
-     */
-    List<Words> findByWords();
-
-    /**
-     * 	查询所有回复信息
-     */
-    List<Reply> findByReply();
-
-    /**
-     * 	查询所有回复信息
+     * 	查询所有景点信息
      */
     List<ViewPoint> findByViewpoint();
 

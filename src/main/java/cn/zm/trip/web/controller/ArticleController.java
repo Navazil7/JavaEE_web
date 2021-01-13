@@ -4,6 +4,7 @@ import cn.zm.trip.web.dao.ForumDao;
 import cn.zm.trip.web.dao.HotelDao;
 import cn.zm.trip.web.domain.*;
 import cn.zm.trip.web.service.ViewPointService;
+import cn.zm.trip.web.service.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,15 +26,16 @@ public class ArticleController {
 	ForumDao forumDao;
 	@Autowired
 	HotelDao hotelDao;
-
+	@Autowired
+	private WordService wordService;
 	/**
-	 * 保存景点留言信息
+	 * 保存留言信息
 	 */
 	@RequestMapping(value="/saveWords")
 	public String saveWords(Words words){
 		if(words != null){
 			String r_id = words.getTp_w_viewpointId();
-			viewPointService.saveWords(words);
+			wordService.saveWords(words);
 			return "redirect:toArticleView.do?r_id="+r_id;
 		}else{
 			return null;
@@ -46,7 +48,7 @@ public class ArticleController {
 	@RequestMapping(value="/saveReply")
 	public String saveReply(Reply reply){
 		if(reply != null){
-			viewPointService.saveReply(reply);
+			wordService.saveReply(reply);
 			String r_id = reply.getTp_r_viewpointId();
 			return "redirect:toArticleView.do?r_id="+r_id;
 		}else{
@@ -60,11 +62,11 @@ public class ArticleController {
 	@RequestMapping(value="/toArticleView")
 	public String toArticleView(@RequestParam int r_id, Model model){
 		//封装留言信息
-		lw_list = viewPointService.findByWords();
+		lw_list = wordService.findByWords();
 		model.addAttribute("lw_list",lw_list);
 
 		//封装回复信息
-		lr_list = viewPointService.findByReply();
+		lr_list = wordService.findByReply();
 		model.addAttribute("lr_list",lr_list);
 
 		//查询文章信息
@@ -86,7 +88,7 @@ public class ArticleController {
 	@RequestMapping(value="/saveForumReply")
 	public String saveForumReply(Reply reply){
 		if(reply != null){
-			viewPointService.saveReply(reply);
+			wordService.saveReply(reply);
 			String tpFid = reply.getTp_r_forumId();
 			return "redirect:toForumArticleView.do?tpFid=" + tpFid;
 		}else{
@@ -101,7 +103,7 @@ public class ArticleController {
 	public String saveForumWords(Words words){
 		if(words != null){
 			String forumId = words.getTp_w_forumId();//获取什么类型的ID
-			viewPointService.saveWords(words);
+			wordService.saveWords(words);
 			return "redirect:toForumArticleView.do?tpFid=" + forumId;
 		}else{
 			return null;
@@ -114,11 +116,11 @@ public class ArticleController {
 	@RequestMapping(value="/toForumArticleView")
 	public String toForumArticleView(@RequestParam int tpFid, Model model){
 		//封装留言信息
-		lw_list = viewPointService.findByWords();
+		lw_list = wordService.findByWords();
 		model.addAttribute("lw_list",lw_list);
 
 		//封装回复信息
-		lr_list = viewPointService.findByReply();
+		lr_list = wordService.findByReply();
 		model.addAttribute("lr_list",lr_list);
 
 		//查询文章信息
@@ -141,7 +143,7 @@ public class ArticleController {
 	@RequestMapping(value="/saveHotelReply")
 	public String saveHotelReply(Reply reply){
 		if(reply != null){
-			viewPointService.saveReply(reply);
+			wordService.saveReply(reply);
 			String hid = reply.getTp_r_hotelId();
 			return "redirect:toHotelArticleView.do?hid=" + hid;
 		}else{
@@ -156,7 +158,7 @@ public class ArticleController {
 	public String saveHotelWords(Words words){
 		if(words != null){
 			String hid = words.getTp_w_hotelId();
-			viewPointService.saveWords(words);
+			wordService.saveWords(words);
 			return "redirect:toHotelArticleView.do?hid=" + hid;
 		}else{
 			return null;
@@ -170,11 +172,11 @@ public class ArticleController {
 	@RequestMapping(value="/toHotelArticleView")
 	public String toHotelArticleView(@RequestParam int hid, Model model){
 		//封装留言信息
-		lw_list = viewPointService.findByWords();
+		lw_list = wordService.findByWords();
 		model.addAttribute("lw_list",lw_list);
 
 		//封装回复信息
-		lr_list = viewPointService.findByReply();
+		lr_list = wordService.findByReply();
 		model.addAttribute("lr_list",lr_list);
 
 		//查询文章信息

@@ -5,6 +5,7 @@ import cn.zm.trip.web.dao.ViewPointDao;
 import cn.zm.trip.web.domain.*;
 import cn.zm.trip.web.service.UserService;
 import cn.zm.trip.web.service.ViewPointService;
+import cn.zm.trip.web.service.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,9 +25,9 @@ public class ViewPointController {
 	@Autowired
 	private HttpSession session;
 	@Autowired
-	private ViewPointExample viewPointExample;
-	@Autowired
 	private ViewPointDao viewPointDao;
+	@Autowired
+	private WordService wordService;
 
 	/**
 	 * 返回首页
@@ -78,21 +79,24 @@ public class ViewPointController {
 	 */
 	@RequestMapping(value = "content", method = RequestMethod.GET)
 	public String viewContent(Integer tpVid, Model model) {
-
+		ViewPoint viewPoint = viewPointService.selectByPrimaryKey(tpVid);
+		if(viewPoint==null){
+			return "error/product_off";
+		}
 		// 用户喜好添加
 		User user = (User)session.getAttribute("user");
 		String vtype=viewPointService.selectByPrimaryKey(tpVid).getTpVtype();
 		userService.updataUserLike(user.getUid(),vtype);
 
 		//封装留言信息
-		List<Words> lw_list = viewPointService.findByWords();
+		List<Words> lw_list = wordService.findByWords();
 		model.addAttribute("lw_list",lw_list);
 
 		//封装回复信息
-		List<Reply> lr_list = viewPointService.findByReply();
+		List<Reply> lr_list = wordService.findByReply();
 		model.addAttribute("lr_list",lr_list);
 
-		ViewPoint viewPoint = viewPointService.selectByPrimaryKey(tpVid);
+
 		String prefix = "/static/upload/viewavatar/";
 		//图片名
 		String suffix = viewPoint.getTpVpic();

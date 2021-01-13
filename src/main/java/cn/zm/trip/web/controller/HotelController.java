@@ -5,6 +5,7 @@ import cn.zm.trip.web.dao.HotelDao;
 import cn.zm.trip.web.domain.*;
 import cn.zm.trip.web.service.UserService;
 import cn.zm.trip.web.service.ViewPointService;
+import cn.zm.trip.web.service.WordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,7 @@ public class HotelController {
 	@Autowired
 	private HotelDao hotelDao;
 	@Autowired
-	private ViewPointService viewPointService;
+	private WordService wordService;
 
 
 	/**
@@ -50,15 +51,19 @@ public class HotelController {
 	@RequestMapping(value = "content", method = RequestMethod.GET)
 	public String content(Integer hid, Model model) {
 
+		Hotel hotel = hotelDao.selectByPrimaryKey(hid);
+		if(hotel==null){
+			return "error/product_off";
+		}
 		//封装留言信息
-		List<Words> lw_list = viewPointService.findByWords();
+		List<Words> lw_list = wordService.findByWords();
 		model.addAttribute("lw_list",lw_list);
 
 		//封装回复信息
-		List<Reply> lr_list = viewPointService.findByReply();
+		List<Reply> lr_list = wordService.findByReply();
 		model.addAttribute("lr_list",lr_list);
 
-		Hotel hotel = hotelDao.selectByPrimaryKey(hid);
+
 		String prefix = "/static/upload/hotelAvatar/";
 		//图片名
 		String suffix = hotel.getImgUrl();
