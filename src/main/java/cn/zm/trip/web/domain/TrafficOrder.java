@@ -1,5 +1,7 @@
 package cn.zm.trip.web.domain;
 
+import java.util.Objects;
+
 public class TrafficOrder {
     public String traffic_orderId; // 订单号
     public int traffic_uid; //用户Id
@@ -154,5 +156,29 @@ public class TrafficOrder {
 
     public void setTraffic_cost(int traffic_cost) {
         this.traffic_cost = traffic_cost;
+    }
+
+    @Override
+    public String toString() {
+        return "Traffic{" +
+                "toid=" + traffic_orderId +
+                ", tuid='" + traffic_uid + '\'' +
+                ", temail='" + traffic_uemail + '\'' +
+                ", trafficid='" + traffic_tid + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(obj==null||obj.getClass()!=this.getClass()) return false;
+        TrafficOrder trafficOrder=(TrafficOrder) obj;
+        return (this.getTraffic_num().equals(trafficOrder.getTraffic_num()))&&(this.getTraffic_tid().equals(trafficOrder.getTraffic_tid()))
+                &&(this.getTraffic_uid()==trafficOrder.getTraffic_uid())&&(this.getTraffic_uemail().equals(trafficOrder.getTraffic_uemail()))
+                &&(this.getTraffic_uphone().equals(trafficOrder.getTraffic_uphone()))&&(this.getTraffic_orderId().equals(trafficOrder.getTraffic_orderId()));
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(getTraffic_depart(),getTraffic_createDate(),getTraffic_departTime(),getTraffic_des(),getTraffic_desDate(),getTraffic_departTime(),getTraffic_cost(),getTraffic_createDate(),getTraffic_createTime(),getTraffic_orderId(),getTraffic_uemail(),getTraffic_uid(),getTraffic_uphone(),getTraffic_tid(),getTraffic_num(),getTraffic_status(),getTraffic_type());
     }
 }

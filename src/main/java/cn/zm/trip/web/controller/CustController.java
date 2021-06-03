@@ -263,7 +263,8 @@ public class CustController {
 						String orderInfo=trafficorder.getTraffic_type().trim()+"#"+trafficorder.getTraffic_uemail().trim()+"#"
 								+trafficorder.getTraffic_uphone().trim()+"#"+trafficorder.getTraffic_depart()+"#"+trafficorder.getTraffic_des().trim()+"#"
 								+trafficorder.getTraffic_departDate().trim()+"#"+trafficorder.getTraffic_departTime().trim()+"#"+trafficorder.getTraffic_desDate()+"#"+trafficorder.getTraffic_desTime()
-								+"#"+trafficorder.getTraffic_cost()+"#"+trafficorder.getTraffic_createDate()+"#"+trafficorder.getTraffic_createTime()+"#"+trafficorder.getTraffic_tid()+"#"+Num[i];
+								+"#"+trafficorder.getTraffic_cost()+"#"+trafficorder.getTraffic_createDate()+"#"+trafficorder.getTraffic_createTime()+"#"+trafficorder.getTraffic_tid()
+								+"#"+Num[i];
 						orderService.insertOrder(trafficorder.getTraffic_orderId(),trafficorder.getTraffic_uid(),orderInfo,"未使用");
 						System.out.println("1113"+orderInfo);
 					}

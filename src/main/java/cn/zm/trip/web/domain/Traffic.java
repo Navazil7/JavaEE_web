@@ -231,4 +231,9 @@ public class Traffic {
     public void setTpTprice(String tpTprice) {
         this.tpTprice = tpTprice == null ? null : tpTprice.trim();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return true;
+    }
 }

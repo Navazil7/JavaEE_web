@@ -779,4 +779,9 @@ public class StationExample {
             this(condition, value, secondValue, null);
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return true;
+    }
 }

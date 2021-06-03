@@ -533,4 +533,10 @@ public class ViewPoint {
     public void setTpVcontent(String tpVcontent) {
         this.tpVcontent = tpVcontent == null ? null : tpVcontent.trim();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        ViewPoint a = (ViewPoint)obj;
+        return tpVname.equals(a.getTpVname()) ;
+    }
 }

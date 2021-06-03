@@ -13,6 +13,10 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminDao adminDao;
 
+	public void setAdminDao(AdminDao adminDao){
+		this.adminDao=adminDao;
+	}
+
 	@Override
 	public Admin login(String email, String pwd) {
 		Admin admin = adminDao.selectAdmin(new Admin(email, pwd));

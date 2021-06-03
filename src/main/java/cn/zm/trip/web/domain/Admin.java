@@ -59,4 +59,12 @@ public class Admin implements Serializable {
 				", apwd='" + apwd + '\'' +
 				'}';
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Admin a = (Admin)obj;
+
+		return aemail.equals(a.getAemail()) && apwd.equals(a.getApwd());
+	}
+
 }

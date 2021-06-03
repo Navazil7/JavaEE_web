@@ -143,4 +143,10 @@ public class User implements Serializable {
                 ", tp_like='" + tp_like + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        User a = (User)obj;
+        return uname.equals(a.getUname()) && uemail.equals(a.getUemail());
+    }
 }

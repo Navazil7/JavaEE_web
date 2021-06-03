@@ -16,6 +16,14 @@ public class ViewPointServiceImpl implements ViewPointService {
 	@Autowired
 	private ViewPointDao viewPointDao;
 
+	public ViewPointDao getViewPointDao() {
+		return viewPointDao;
+	}
+
+	public void setViewPointDao(ViewPointDao viewPointDao) {
+		this.viewPointDao = viewPointDao;
+	}
+
 	@Override
 	public ViewPoint selectByPrimaryKey(Integer tpVid) {
 		ViewPoint viewPoint = viewPointDao.selectByPrimaryKey(tpVid);

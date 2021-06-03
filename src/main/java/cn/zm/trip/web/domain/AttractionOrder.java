@@ -2,6 +2,8 @@ package cn.zm.trip.web.domain;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 
 public class AttractionOrder {
     public String attr_orderId; // 订单号
@@ -121,5 +123,30 @@ public class AttractionOrder {
 
     public void setAttr_time(String attr_time) {
         this.attr_time = attr_time;
+    }
+
+    @Override
+    public String toString() {
+        return "Attraction{" +
+                "aoid=" + attr_orderId +
+                ", auid='" + attr_uid + '\'' +
+                ", aemail='" + attr_uemail + '\'' +
+                ", attracionid='" + attr_vid + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(obj==null||obj.getClass()!=this.getClass()) return false;
+        AttractionOrder attractionOrder=(AttractionOrder) obj;
+        return (this.getAttr_num().equals(attractionOrder.getAttr_num()))&&(this.getAttr_vid().equals(attractionOrder.getAttr_vid()))
+                &&(this.getAttr_uid()==attractionOrder.getAttr_uid())&&(this.getAttr_time().equals(attractionOrder.getAttr_time()))
+                &&(this.getAttr_uemail().equals(attractionOrder.getAttr_uemail()))&&(this.getAttr_uphone().equals(attractionOrder.getAttr_uphone()))
+        &&(this.getAttr_orderId().equals(attractionOrder.getAttr_orderId()));
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(getAttr_cost(),getAttr_createDate(),getAttr_createTime(),getAttr_name(),getAttr_orderId(),getAttr_place(),getAttr_uemail(),getAttr_uid(),getAttr_uphone(),getAttr_vid(),getAttr_num(),getAttr_time(),getAttr_status());
     }
 }

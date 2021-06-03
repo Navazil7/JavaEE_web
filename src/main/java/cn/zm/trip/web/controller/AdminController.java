@@ -51,6 +51,8 @@ public class AdminController {
 	@Autowired
 	private CityDao cityDao;
 
+
+
 	/**
 	 * **********login start***************
 	 * 从前端跳转到后台登录
@@ -429,13 +431,14 @@ public class AdminController {
 	}
 
 	/**
-	 * 用户单个单击删除
+	 * 景点单个单击删除
 	 */
 	@RequestMapping(value = "viewdelete", method = RequestMethod.GET)
 	public String viewDelete(Integer tpVid) {
 		viewPointService.deleteviews(tpVid);
 
-		session.setAttribute("msg", Msg.success(tpVid + "号用户删除成功!"));
+		//session.setAttribute("msg", Msg.success(tpVid + "号用户删除成功!"));
+		session.setAttribute("msg", Msg.success(tpVid + "号景点删除成功!"));
 		return "redirect:viewlist";
 	}
 
@@ -969,5 +972,107 @@ public class AdminController {
 		model.addAttribute("msg", Msg.success(tp_rid + "号删除成功！"));
 		return "redirect:replyList";
 	}
+	public UserService getUserService() {
+		return userService;
+	}
 
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+	public AdminService getAdminService() {
+		return adminService;
+	}
+
+	public void setAdminService(AdminService adminService) {
+		this.adminService = adminService;
+	}
+
+	public HttpSession getSession() {
+		return session;
+	}
+
+	public void setSession(HttpSession session) {
+		this.session = session;
+	}
+
+	public ViewPointService getViewPointService() {
+		return viewPointService;
+	}
+
+	public void setViewPointService(ViewPointService viewPointService) {
+		this.viewPointService = viewPointService;
+	}
+
+	public WordService getWordService() {
+		return wordService;
+	}
+
+	public void setWordService(WordService wordService) {
+		this.wordService = wordService;
+	}
+
+	public HotelDao getHotelDao() {
+		return hotelDao;
+	}
+
+	public void setHotelDao(HotelDao hotelDao) {
+		this.hotelDao = hotelDao;
+	}
+
+	public ViewPointDao getViewPointDao() {
+		return viewPointDao;
+	}
+
+	public void setViewPointDao(ViewPointDao viewPointDao) {
+		this.viewPointDao = viewPointDao;
+	}
+
+	public ForumDao getForumDao() {
+		return forumDao;
+	}
+
+	public void setForumDao(ForumDao forumDao) {
+		this.forumDao = forumDao;
+	}
+
+	public TrafficDao getTrafficDao() {
+		return trafficDao;
+	}
+
+	public void setTrafficDao(TrafficDao trafficDao) {
+		this.trafficDao = trafficDao;
+	}
+
+	public WordsDao getWordsDao() {
+		return wordsDao;
+	}
+
+	public void setWordsDao(WordsDao wordsDao) {
+		this.wordsDao = wordsDao;
+	}
+
+	public ReplyDao getReplyDao() {
+		return replyDao;
+	}
+
+	public void setReplyDao(ReplyDao replyDao) {
+		this.replyDao = replyDao;
+	}
+
+	public StationDao getStationDao() {
+		return stationDao;
+	}
+
+	public void setStationDao(StationDao stationDao) {
+		this.stationDao = stationDao;
+	}
+
+	public CityDao getCityDao() {
+		return cityDao;
+	}
+
+	public void setCityDao(CityDao cityDao) {
+		this.cityDao = cityDao;
+	}
 }

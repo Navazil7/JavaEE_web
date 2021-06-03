@@ -32,6 +32,45 @@ public class OrderController {
     @Autowired
     private HttpSession session;
 
+    public UserService getUserService() {
+        return userService;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    public ViewPointDao getViewPointDao() {
+        return viewPointDao;
+    }
+
+    public void setViewPointDao(ViewPointDao viewPointDao) {
+        this.viewPointDao = viewPointDao;
+    }
+
+    public HttpSession getSession() {
+        return session;
+    }
+
+    public void setSession(HttpSession session) {
+        this.session = session;
+    }
+
+    public OrderService getOrderService() {
+        return orderService;
+    }
+
+    public void setOrderService(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    public HotelDao getHotelDao() {
+        return hotelDao;
+    }
+
+    public void setHotelDao(HotelDao hotelDao) {
+        this.hotelDao = hotelDao;
+    }
 
     /**
      * 跳转到订单显示页面
@@ -65,7 +104,7 @@ public class OrderController {
      * 跳转到订单页
      */
     @RequestMapping(value = "page",method = RequestMethod.GET)
-    public String orderPage(String key, String tpVid, String tpUid, Model model){
+    public String orderPage(String key, String tpVHid, String tpUid){
         Date d=new Date();
         SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date_time=df.format(d);
@@ -81,7 +120,7 @@ public class OrderController {
         User user=userService.findUser(tpUid);
         if(user!=null){
             if(key.trim().equals("attraction")){ // 景点订单
-                ViewPoint viewPoint=viewPointDao.selectByPrimaryKey(Integer.parseInt(tpVid));
+                ViewPoint viewPoint=viewPointDao.selectByPrimaryKey(Integer.parseInt(tpVHid));
                 String oid="A"+dt+user.getPhone().trim().substring(7);
                 AttractionOrder attractionOrder=new AttractionOrder();
                 attractionOrder.setAttr_orderId(oid);
@@ -103,7 +142,7 @@ public class OrderController {
             }
 
             else if(key.trim().equals("hotel")){ //酒店订单
-                Hotel hotel=hotelDao.selectByPrimaryKey(Integer.parseInt(tpVid));
+                Hotel hotel=hotelDao.selectByPrimaryKey(Integer.parseInt(tpVHid));
                 String oid="H"+dt+user.getPhone().trim().substring(7);
                 HotelOrder hotelorder=new HotelOrder();
                 hotelorder.setHotel_orderId(oid);
@@ -137,14 +176,14 @@ public class OrderController {
     @RequestMapping(value = "commit",method = RequestMethod.POST)
     public String createOrder(String key, Model model, HttpServletRequest request){
 //        System.out.println(booktime+"啊啊啊啊啊啊啊啊啊啊啊啊啊");
-        System.out.println("啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"+key);
+//        System.out.println("啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"+key);
         String booktime=request.getParameter("booktime");
         Integer num=Integer.parseInt(request.getParameter("num").trim());
         if(key.trim().equals("attraction")){ // 景点订单
             AttractionOrder attractionOrder=(AttractionOrder)session.getAttribute("order");
             attractionOrder.setAttr_num(num);
             attractionOrder.setAttr_time(booktime.trim());
-            System.out.println("啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"+attractionOrder.getAttr_time());
+//            System.out.println("啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"+attractionOrder.getAttr_time());
             String orderInfo="";
             session.setAttribute("order",attractionOrder);
             model.addAttribute("order",attractionOrder);

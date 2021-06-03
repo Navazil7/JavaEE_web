@@ -22,8 +22,19 @@ import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+
 	@Autowired
 	private UserDao userDao;
+
+	public UserDao getUserDao() {
+		return userDao;
+	}
+
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
 	@Autowired
 	private ForumService forumService;
 

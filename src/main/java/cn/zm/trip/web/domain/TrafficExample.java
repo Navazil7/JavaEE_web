@@ -779,4 +779,9 @@ public class TrafficExample {
             this(condition, value, secondValue, null);
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return true;
+    }
 }

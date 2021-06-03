@@ -30,32 +30,32 @@ public class TrafficController {
 	@Autowired
 	StationDao stationDao;
 
+	public TrafficDao getTrafficDao() {
+		return trafficDao;
+	}
+
+	public void setTrafficDao(TrafficDao trafficDao) {
+		this.trafficDao = trafficDao;
+	}
+
+	public StationDao getStationDao() {
+		return stationDao;
+	}
+
+	public void setStationDao(StationDao stationDao) {
+		this.stationDao = stationDao;
+	}
+
 	/**
 	 *
 	 * @param currentCity
 	 * @param desCity
-	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value = "selectByCurrentAndDestination", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Traffic> traffic(String currentCity, String desCity,String trafic,Model model) {
-//		TrafficExample example = new TrafficExample();
-//		List<Traffic> traffics = trafficDao.selectByExample(example);
-//
-//		List<Traffic> queryTraffics = new ArrayList<>();
-//
-//		for(Traffic traffic : traffics) {
-//			if (trafic.equals("ALL")) {
-//				if (currentCity.equals(traffic.getTpCurrent()) && desCity.equals(traffic.getTpDestination())) {
-//					queryTraffics.add(traffic);
-//				}
-//			} else {
-//				if (currentCity.equals(traffic.getTpCurrent()) && desCity.equals(traffic.getTpDestination()) && traffic.getTpType().equals(trafic)) {
-//					queryTraffics.add(traffic);
-//				}
-//			}
-//		}
+	public List<Traffic> traffic(String currentCity, String desCity,String traffic_type) {
+
 		//规范城市名
 		currentCity=currentCity.substring(0,2);
 		desCity=desCity.substring(0,2);
@@ -91,7 +91,9 @@ public class TrafficController {
 				e.printStackTrace();
 			}
 
-			if (trafic.equals("ALL")) {
+			//任意交通工具
+			if (traffic_type.equals("ALL")) {
+
 				// 匹配traffic的出发站和终点站是否符合要求
 				boolean flag1=false;
 				for(Station station:stations1){
@@ -108,7 +110,7 @@ public class TrafficController {
 				}
 			} else {
 				//符合需要的交通工具
-				if(traffic.getTpType().equals(trafic)){
+				if(traffic.getTpType().equals(traffic_type)){
 					// 匹配traffic的出发站和终点站是否符合要求
 					boolean flag1=false;
 					for(Station station:stations1){

@@ -1,5 +1,7 @@
 package cn.zm.trip.web.domain;
 
+import java.util.Objects;
+
 public class HotelOrder {
     public String hotel_orderId; // 订单号
     public int hotel_uid; //用户Id
@@ -127,5 +129,30 @@ public class HotelOrder {
 
     public void setHotel_time(String hotel_time) {
         this.hotel_time = hotel_time;
+    }
+
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "aoid=" + hotel_orderId +
+                ", auid='" + hotel_uid + '\'' +
+                ", aemail='" + hotel_uemail + '\'' +
+                ", attracionid='" + hotel_hid + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(obj==null||obj.getClass()!=this.getClass()) return false;
+        HotelOrder hotelOrder=(HotelOrder) obj;
+        return (this.getHotel_num().equals(hotelOrder.getHotel_num()))&&(this.getHotel_hid().equals(hotelOrder.getHotel_hid()))
+                &&(this.getHotel_uid()==hotelOrder.getHotel_uid())&&(this.getHotel_time().equals(hotelOrder.getHotel_time()))
+                &&(this.getHotel_uemail().equals(hotelOrder.getHotel_uemail()))&&(this.getHotel_uphone().equals(hotelOrder.getHotel_uphone()))
+                &&(this.getHotel_orderId().equals(hotelOrder.getHotel_orderId()));
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(getHotel_cost(),getHotel_createDate(),getHotel_createTime(),getHotel_name(),getHotel_orderId(),getHotel_place(),getHotel_uemail(),getHotel_uid(),getHotel_uphone(),getHotel_hid(),getHotel_num(),getHotel_time(),getHotel_status());
     }
 }

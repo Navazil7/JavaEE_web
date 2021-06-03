@@ -141,4 +141,9 @@ public class Order {
     public void setTpStatus(String tpStatus) {
         this.tpStatus = tpStatus == null ? null : tpStatus.trim();
     }
+
+    @Override
+    public String toString(){
+        return "[ 订单ID: "+this.tpOid+", 用户ID: "+this.tpUid+", 订单信息: "+this.tpOinfo+", 订单核销情况: "+this.tpStatus+" ]";
+    }
 }
